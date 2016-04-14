@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.8.34 {}
+// Compiled by ClojureScript 1.8.40 {}
 goog.provide('om.next.cache');
 goog.require('cljs.core');
 
@@ -14,16 +14,16 @@ this.size = size;
 om.next.cache.Cache.prototype.add = (function (id,x){
 var self__ = this;
 var this$ = this;
-var x_SINGLEQUOTE__19647 = cljs.core.vary_meta.call(null,x,cljs.core.assoc,new cljs.core.Keyword(null,"client-time","client-time",-1212214195),(new Date()));
+var x_SINGLEQUOTE__19629 = cljs.core.vary_meta.call(null,x,cljs.core.assoc,new cljs.core.Keyword(null,"client-time","client-time",-1212214195),(new Date()));
 if((self__.size <= self__.arr.length)){
-var id_SINGLEQUOTE__19648 = self__.arr.shift();
-cljs.core.swap_BANG_.call(null,self__.index,((function (id_SINGLEQUOTE__19648,x_SINGLEQUOTE__19647,this$){
-return (function (p1__19646_SHARP_){
-return cljs.core.assoc.call(null,cljs.core.dissoc.call(null,p1__19646_SHARP_,id_SINGLEQUOTE__19648),id,x_SINGLEQUOTE__19647);
-});})(id_SINGLEQUOTE__19648,x_SINGLEQUOTE__19647,this$))
+var id_SINGLEQUOTE__19630 = self__.arr.shift();
+cljs.core.swap_BANG_.call(null,self__.index,((function (id_SINGLEQUOTE__19630,x_SINGLEQUOTE__19629,this$){
+return (function (p1__19628_SHARP_){
+return cljs.core.assoc.call(null,cljs.core.dissoc.call(null,p1__19628_SHARP_,id_SINGLEQUOTE__19630),id,x_SINGLEQUOTE__19629);
+});})(id_SINGLEQUOTE__19630,x_SINGLEQUOTE__19629,this$))
 );
 } else {
-cljs.core.swap_BANG_.call(null,self__.index,cljs.core.assoc,id,x_SINGLEQUOTE__19647);
+cljs.core.swap_BANG_.call(null,self__.index,cljs.core.assoc,id,x_SINGLEQUOTE__19629);
 }
 
 return self__.arr.push(id);
@@ -43,8 +43,8 @@ om.next.cache.Cache.cljs$lang$type = true;
 
 om.next.cache.Cache.cljs$lang$ctorStr = "om.next.cache/Cache";
 
-om.next.cache.Cache.cljs$lang$ctorPrWriter = (function (this__19004__auto__,writer__19005__auto__,opt__19006__auto__){
-return cljs.core._write.call(null,writer__19005__auto__,"om.next.cache/Cache");
+om.next.cache.Cache.cljs$lang$ctorPrWriter = (function (this__19051__auto__,writer__19052__auto__,opt__19053__auto__){
+return cljs.core._write.call(null,writer__19052__auto__,"om.next.cache/Cache");
 });
 
 om.next.cache.__GT_Cache = (function om$next$cache$__GT_Cache(arr,index,size){
