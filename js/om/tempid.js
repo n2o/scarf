@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.8.34 {}
+// Compiled by ClojureScript 1.8.40 {}
 goog.provide('om.tempid');
 goog.require('cljs.core');
 
@@ -52,8 +52,8 @@ om.tempid.TempId.cljs$lang$type = true;
 
 om.tempid.TempId.cljs$lang$ctorStr = "om.tempid/TempId";
 
-om.tempid.TempId.cljs$lang$ctorPrWriter = (function (this__19004__auto__,writer__19005__auto__,opt__19006__auto__){
-return cljs.core._write.call(null,writer__19005__auto__,"om.tempid/TempId");
+om.tempid.TempId.cljs$lang$ctorPrWriter = (function (this__19051__auto__,writer__19052__auto__,opt__19053__auto__){
+return cljs.core._write.call(null,writer__19052__auto__,"om.tempid/TempId");
 });
 
 om.tempid.__GT_TempId = (function om$tempid$__GT_TempId(id,__hash){
@@ -61,23 +61,23 @@ return (new om.tempid.TempId(id,__hash));
 });
 
 om.tempid.tempid = (function om$tempid$tempid(var_args){
-var args21475 = [];
-var len__19467__auto___21478 = arguments.length;
-var i__19468__auto___21479 = (0);
+var args19568 = [];
+var len__19514__auto___19571 = arguments.length;
+var i__19515__auto___19572 = (0);
 while(true){
-if((i__19468__auto___21479 < len__19467__auto___21478)){
-args21475.push((arguments[i__19468__auto___21479]));
+if((i__19515__auto___19572 < len__19514__auto___19571)){
+args19568.push((arguments[i__19515__auto___19572]));
 
-var G__21480 = (i__19468__auto___21479 + (1));
-i__19468__auto___21479 = G__21480;
+var G__19573 = (i__19515__auto___19572 + (1));
+i__19515__auto___19572 = G__19573;
 continue;
 } else {
 }
 break;
 }
 
-var G__21477 = args21475.length;
-switch (G__21477) {
+var G__19570 = args19568.length;
+switch (G__19570) {
 case 0:
 return om.tempid.tempid.cljs$core$IFn$_invoke$arity$0();
 
@@ -87,7 +87,7 @@ return om.tempid.tempid.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args21475.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args19568.length)].join('')));
 
 }
 });

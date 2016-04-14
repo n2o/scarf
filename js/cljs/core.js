@@ -1,10 +1,10 @@
-// Compiled by ClojureScript 1.8.34 {:static-fns true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true}
 goog.provide('cljs.core');
 goog.require('goog.string');
 goog.require('goog.object');
 goog.require('goog.array');
 goog.require('goog.string.StringBuffer');
-cljs.core._STAR_clojurescript_version_STAR_ = "1.8.34";
+cljs.core._STAR_clojurescript_version_STAR_ = "1.8.40";
 cljs.core._STAR_unchecked_if_STAR_ = false;
 
 /** @define {string} */
