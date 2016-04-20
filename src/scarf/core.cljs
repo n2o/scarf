@@ -97,37 +97,3 @@
 
 ;; For mutating state
 ;; https://github.com/omcljs/om/wiki/Quick-Start-%28om.next%29#a-mutation-function
-
-
-;;; Example with Raphael.js
-(defn- attr [object attributes]
-  (.attr object (clj->js attributes)))
-
-(defn create-hand [paper]
-  (.getColor.reset js/Raphael)
-  (-> (.set paper)
-      (.push (-> (.path paper "M320,240c-50,100,50,110,0,190")
-                 (attr {:fill "none", :stroke-width 2})))
-      (.push (-> (.circle paper 320 450 20)
-                 (attr {:fill "none", :stroke-width 2})))
-      (.push (-> (.circle paper 320 240 5)
-                 (attr {:fill "none", :stroke-width 10})))
-      (.attr "stroke" (.getColor js/Raphael))))
-
-(defn create-circle [paper angle hand]
-  (let [c (.getColor js/Raphael)
-        t (str "r" angle " 320 240")
-        circle (.circle paper 320 450 20)]
-    (-> circle
-        (attr {:stroke c, :fill c, :transform t, :fill-opacity .4})
-        (.click #(.animate hand (clj->js {:stroke c, :transform t}) 2000 "bounce"))
-        (.mouseover #(.animate circle (clj->js {:fill-opacity .75}) 500))
-        (.mouseout #(.animate circle (clj->js {:fill-opacity .4}) 500)))))
-
-(defn ^:export draw []
-  (let [paper (js/Raphael 0 0 640 480)]
-    (let [hand (create-hand paper)]
-      (doseq [angle (range 0 360 30)]
-        (create-circle paper angle hand)))))
-
-; (draw)
