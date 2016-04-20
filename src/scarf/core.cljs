@@ -14,7 +14,12 @@
     {:app/title "Animals"
      :animals/list
                 [[1 "Ant"] [2 "Antelope"] [3 "Bird"] [4 "Cat"] [5 "Dog"]
-                 [6 "Lion"] [7 "Mouse"] [8 "Monkey"] [9 "Snake"] [10 "Zebra"]]}))
+                 [6 "Lion"] [7 "Mouse"] [8 "Monkey"] [9 "Snake"] [10 "Zebra"]]
+     :scarf {:color1 "#ff0000"}
+     :colors {:red   "#ff0000"
+              :green "#00ff00"
+              :blue  "#0000ff"}
+     :user {:selected-color ""}}))
 
 (defmulti read (fn [env key params] key))
 
@@ -67,8 +72,7 @@
                              (dom/polygon #js {:fill "#008800"
                                                :points "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})
                              (dom/polygon #js {:fill "#FF0000"
-                                               :points "246.666,0 29.333,0 138.001,108.833"}))))
-    ))
+                                               :points "246.666,0 29.333,0 138.001,108.833"}))))))
 
 
 (def reconciler
@@ -82,6 +86,9 @@
 (om/add-root! reconciler
               ScarfExample (gdom/getElement "scarf-example"))
 
+
+;; For mutating state
+;; https://github.com/omcljs/om/wiki/Quick-Start-%28om.next%29#a-mutation-function
 
 
 ;;; Example with Raphael.js
