@@ -94,6 +94,11 @@
 (om/add-root! reconciler
               ScarfExample (gdom/getElement "scarf-example"))
 
-
 ;; For mutating state
 ;; https://github.com/omcljs/om/wiki/Quick-Start-%28om.next%29#a-mutation-function
+
+;;;; Setting Colors
+(defn save-selected-color!
+  "Store the selected color in the app-state."
+  [color]
+  (om/transact! reconciler `[(color/set {:color ~color})]))
