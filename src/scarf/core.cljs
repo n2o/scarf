@@ -75,10 +75,18 @@
                                                :points "246.666,0 29.333,0 138.001,108.833"}))))))
 
 
+(defmulti mutate om/dispatch)
+
+(defmethod mutate 'color/set
+  [{:keys [state]} _ {:keys [name color]}]
+  {:action (fn [] (swap! state update-in [:user :selected-color] (fn [] color)))})
+
+;; (om/transact! reconciler `[(color/set {:color :foo})])
+
 (def reconciler
   (om/reconciler
     {:state app-state
-     :parser (om/parser {:read read})}))
+     :parser (om/parser {:read read :mutate mutate})}))
 
 (om/add-root! reconciler
               AnimalsList (gdom/getElement "app"))
