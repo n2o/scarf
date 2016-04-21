@@ -11,8 +11,10 @@
 ;;;;;;;;;;;;;;;;
 
 (om/add-root! lib/reconciler
-              views/ScarfExample (gdom/getElement "scarf-example"))
+              views/Colors (gdom/getElement "scarf-colors"))
 
+(om/add-root! lib/reconciler
+              views/ScarfExample (gdom/getElement "scarf-example"))
 
 ;;;; Old stuff from tutorial
 
