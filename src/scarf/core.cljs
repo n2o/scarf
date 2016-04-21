@@ -1,7 +1,6 @@
 (ns scarf.core
   (:require [goog.dom :as gdom]
-            [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]
+            [om.next :as om]
             [scarf.lib :as lib]
             [scarf.views :as views]))
 

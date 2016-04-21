@@ -10,7 +10,7 @@
   Object
   (render [this]
     (dom/div nil
-             (dom/h1 nil "Hello World")
+             (dom/h4 nil "scarf-cljs")
              (dom/svg #js {:enable-background "new 0 0 276 138"
                            :viewBow           "0 0 276 128"
                            :height            "138px"
