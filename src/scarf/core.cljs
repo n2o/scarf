@@ -9,12 +9,8 @@
 ;;;;;;;;;;;;;;;;
 ;; https://github.com/omcljs/om/wiki/Components%2C-Identity-%26-Normalization#something-to-look-at
 ;;;;;;;;;;;;;;;;
-
 (om/add-root! lib/reconciler
-              views/Colors (gdom/getElement "scarf-colors"))
-
-(om/add-root! lib/reconciler
-              views/ScarfExample (gdom/getElement "scarf-example"))
+              views/Main (gdom/getElement "scarf"))
 
 ;;;; Old stuff from tutorial
 
