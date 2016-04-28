@@ -12,6 +12,7 @@
                                   :asset-path "js"
                                   :output-to "resources/public/js/main.js"
                                   :output-dir "resources/public/js"
-                                  :verbose true}}]})
+                                  :verbose true}}]
+   :css-dirs ["resources/public/css"]})
 
 (ra/cljs-repl)

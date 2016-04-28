@@ -7,11 +7,11 @@
      :animals/list
                 [[1 "Ant"] [2 "Antelope"] [3 "Bird"] [4 "Cat"] [5 "Dog"]
                  [6 "Lion"] [7 "Mouse"] [8 "Monkey"] [9 "Snake"] [10 "Zebra"]]
-     :scarf {:color1 "#ff0000"}
-     :colors {:red   "#ff0000"
-              :green "#00ff00"
-              :blue  "#0000ff"}
-     :user {:selected-color ""}}))
+     :scarf     {:color1 "#ff0000"}
+     :colors    ["#ff0000"
+                 "#00ff00"
+                 "#0000ff"]
+     :user      {:selected-color ""}}))
 
 ;;;; Functions concerning the reconciler
 (defmulti read (fn [env key params] key))
@@ -40,3 +40,9 @@
   "Store the selected color in the app-state."
   [color]
   (om/transact! reconciler `[(color/set {:color ~color})]))
+
+;;;; Getter
+(defn get-colors
+  "Return list with all available colors."
+  []
+  (:colors @app-state))

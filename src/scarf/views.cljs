@@ -1,7 +1,10 @@
 (ns scarf.views
   (:require [goog.dom :as gdom]
             [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]))
+            [om.dom :as dom]
+            [scarf.lib :as lib]))
+
+(enable-console-print!)
 
 (def width "276px")
 (def height "138px")
@@ -25,23 +28,31 @@
                                                :points "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf {}))
 
+(defui ColorBlock
+  Object
+  (render [this]
+    (let [color (:color (om/props this))]
+      (dom/div #js {:className "color-block-wrapper"}
+               (dom/div #js {:className "color-block"
+                             })))))
+(def color-block (om/factory ColorBlock {}))
+
 (defui Colors
   Object
   (render [this]
     (dom/div nil
-             (dom/h4 nil "Available Colors"))))
-
-(defui ColorBlock
-  Object
-  (render [this]
-    (dom/div #js {:className "color-block"}
-             "Yeah, color..."
-             this)))
-(def color-block (om/factory ColorBlock {}))
+             (dom/h4 nil "Available Colors")
+             (let [colors (lib/get-colors)]
+               (apply dom/ul #js {:id "colors"}
+                      (map #(color-block {:color %}) colors))
+               ))))
+(def colors (om/factory Colors {}))
 
 (defui Main
   Object
   (render [this]
     (dom/div nil
              (dom/h4 nil "scarf")
-             (scarf))))
+             (scarf)
+             (colors)
+             )))
