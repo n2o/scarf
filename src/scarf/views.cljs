@@ -32,9 +32,9 @@
   Object
   (render [this]
     (let [color (:color (om/props this))]
-      (dom/div #js {:className "color-block-wrapper"}
-               (dom/div #js {:className "color-block"
-                             })))))
+      (dom/div #js {:className "color-block-wrapper"
+                    :style {:color color}}
+               (dom/div #js {:className "color-block"})))))
 (def color-block (om/factory ColorBlock {}))
 
 (defui Colors
@@ -44,8 +44,7 @@
              (dom/h4 nil "Available Colors")
              (let [colors (lib/get-colors)]
                (apply dom/ul #js {:id "colors"}
-                      (map #(color-block {:color %}) colors))
-               ))))
+                      (map #(color-block {:color %}) colors))))))
 (def colors (om/factory Colors {}))
 
 (defui Main
