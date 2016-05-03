@@ -1,8 +1,20 @@
 (ns scarf.views
   (:require [goog.dom :as gdom]
+            [devcards.core :as dc :refer-macros [defcard deftest]]
+            [cljs.test :refer-macros [is testing]]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.lib :as lib]))
+
+; (defcard foo (dom/div nil "foo"))
+(defcard bar
+         (dc/tests "## foooobar"
+                   (is (= 1 1))))
+
+(deftest foo "## Awesome tests"
+         (testing
+           "failing"
+           (is (= 1 2))))
 
 (enable-console-print!)
 
