@@ -3,7 +3,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.8.40"]
                  [org.omcljs/om "1.0.0-alpha31"]
-                 [figwheel-sidecar "0.5.2" :scope "test"]]
+                 [figwheel-sidecar "0.5.2" :scope "test"]
+                 [devcards "0.2.1-6"]]
   :plugins [[lein-figwheel "0.5.1"]
             [lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.9.4"]
@@ -12,12 +13,21 @@
   :cljsbuild {:builds
                              [{:id "dev"
                                :source-paths ["src"]
-
                                ;; If no code is to be run, set :figwheel true for continued automagical reloading
-                               :figwheel {                                 ;:load-warninged-code true
-                                          :on-jsload "scarf.core/on-js-reload"}
+                               :figwheel {:on-jsload "scarf.core/on-js-reload"}
 
                                :compiler {:main scarf.core
+                                          :asset-path "js/compiled/out"
+                                          :output-to "resources/public/js/compiled/scarf.js"
+                                          :output-dir "resources/public/js/compiled/out"
+                                          :source-map-timestamp true}}
+                              {:id "devcards"
+                               :source-paths ["src"]
+                               ;; If no code is to be run, set :figwheel true for continued automagical reloading
+                               :figwheel {:on-jsload "scarf.core/on-js-reload"}
+
+                               :compiler {:main scarf.core
+                                          :devcards true
                                           :asset-path "js/compiled/out"
                                           :output-to "resources/public/js/compiled/scarf.js"
                                           :output-dir "resources/public/js/compiled/out"
