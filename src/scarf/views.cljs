@@ -6,16 +6,6 @@
             [om.dom :as dom]
             [scarf.lib :as lib]))
 
-; (defcard foo (dom/div nil "foo"))
-(defcard bar
-         (dc/tests "## foooobar"
-                   (is (= 1 1))))
-
-(deftest foo "## Awesome tests"
-         (testing
-           "failing"
-           (is (= 1 2))))
-
 (enable-console-print!)
 
 (def width "276px")
@@ -32,11 +22,11 @@
                            :x                 "0"
                            :y                 "0"}
                       (dom/g nil
-                             (dom/polygon #js {:fill "#AA0000"
+                             (dom/polygon #js {:fill   "#AA0000"
                                                :points "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
-                             (dom/polygon #js {:fill "#008800"
+                             (dom/polygon #js {:fill   "#008800"
                                                :points "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})
-                             (dom/polygon #js {:fill "#AA0000"
+                             (dom/polygon #js {:fill   "#AA0000"
                                                :points "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf {}))
 
@@ -45,7 +35,7 @@
   (render [this]
     (let [color (:color (om/props this))]
       (dom/div #js {:className "color-block-wrapper"
-                    :style {:color color}}
+                    :style     {:color color}}
                (dom/div #js {:className "color-block"})))))
 (def color-block (om/factory ColorBlock {}))
 
@@ -57,13 +47,30 @@
              (let [colors (lib/get-colors)]
                (apply dom/ul #js {:id "colors"}
                       (map #(color-block {:color %}) colors))))))
-(def colors (om/factory Colors {}))
+(defn colors
+  "Create color palette"
+  ([data] (om/factory Colors data))
+  ([]     (colors {})))
 
-(defui Main
-  Object
-  (render [this]
-    (dom/div nil
-             (dom/h4 nil "scarf")
-             (scarf)
-             (colors)
-             )))
+;(defui Main
+;  Object
+;  (render [this]
+;    (dom/div nil
+;             (dom/h4 nil "scarf")
+;             (scarf)
+;             (colors))))
+
+
+(defcard scarf-card
+         "## Main Scarf component"
+         (scarf))
+
+(defcard colors-card
+         "## Choose your color"
+         (colors))
+
+(deftest scarf-tests
+         "## Testing main component"
+         (testing
+           "failing"
+           (is (= 1 2))))
