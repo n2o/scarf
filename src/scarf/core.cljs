@@ -6,8 +6,5 @@
 
 (enable-console-print!)
 
-;;;;;;;;;;;;;;;;
-;; https://github.com/omcljs/om/wiki/Components%2C-Identity-%26-Normalization#something-to-look-at
-;;;;;;;;;;;;;;;;
-(om/add-root! lib/reconciler
+#_(om/add-root! lib/reconciler
               views/Main (gdom/getElement "scarf"))
