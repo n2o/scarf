@@ -35,7 +35,7 @@
   (render [this]
     (let [color (:color (om/props this))]
       (dom/div #js {:className "color-block-wrapper"
-                    :style     {:color color}}
+                    :style #js {:background-color color}}
                (dom/div #js {:className "color-block"})))))
 (def color-block (om/factory ColorBlock {}))
 
