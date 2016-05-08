@@ -3,14 +3,14 @@
 
 (def app-state
   (atom
-    {:app/title "Animals"
-     :animals/list
-                [[1 "Ant"] [2 "Antelope"] [3 "Bird"] [4 "Cat"] [5 "Dog"]
-                 [6 "Lion"] [7 "Mouse"] [8 "Monkey"] [9 "Snake"] [10 "Zebra"]]
-     :scarf     {:color1 "#ff0000"}
+    {:scarf     {:color1 "#ff0000"
+                 :color2 "#00ff00"}
+     :scarf/color1 "#ff0000"
+     :scarf/color2 "#00ff00"
      :colors    ["#ff0000"
                  "#00ff00"
-                 "#0000ff"]
+                 "#0000ff"
+                 "yellow"]
      :user      {:selected-color ""}}))
 
 ;;;; Functions concerning the reconciler
@@ -25,10 +25,14 @@
 
 (defmulti mutate om/dispatch)
 
-(defmethod mutate 'color/set
+(defmethod mutate 'color/temp
   [{:keys [state]} _ {:keys [name color]}]
   {:action (fn [] (swap! state update-in [:user :selected-color] (fn [] color)))})
-;; (om/transact! reconciler `[(color/set {:color :foo})])
+
+(defmethod mutate 'color/set
+  [{:keys [state]} _ {:keys [name field]}]
+  (let [color (get-in @app-state [:user :selected-color])]
+    {:action (fn [] (swap! state update-in [:scarf field] (fn [] color)))}))
 
 (def reconciler
   (om/reconciler
@@ -39,7 +43,12 @@
 (defn save-selected-color!
   "Store the selected color in the app-state."
   [color]
-  (om/transact! reconciler `[(color/set {:color ~color})]))
+  (om/transact! reconciler `[(color/temp {:color ~color})]))
+
+(defn update-color!
+  "Update color selection."
+  [field]
+  (om/transact! reconciler `[(color/set {:field ~field})]))
 
 ;;;; Getter
 (defn get-colors

@@ -12,7 +12,12 @@
 (def height "138px")
 
 (defui Scarf
+  static om/IQuery
+  (query [this]
+    [:scarf])
   Object
+  (componentDidUpdate [this prev-props prev-state]
+    (println "componentdidupdate"))
   (render [this]
     (dom/div nil
              (dom/svg #js {:enable-background "new 0 0 276 138"
@@ -22,11 +27,14 @@
                            :x                 "0"
                            :y                 "0"}
                       (dom/g nil
-                             (dom/polygon #js {:fill   "#AA0000"
+                             (dom/polygon #js {:onClick #(lib/update-color! :color1)
+                                               :fill   (get-in @lib/app-state [:scarf :color1])
                                                :points "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
-                             (dom/polygon #js {:fill   "#008800"
+                             (dom/polygon #js {:onClick #(lib/update-color! :color2)
+                                               :fill   (get-in @lib/app-state [:scarf :color2])
                                                :points "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})
-                             (dom/polygon #js {:fill   "#AA0000"
+                             (dom/polygon #js {:onClick #(lib/update-color! :color1)
+                                               :fill   (get-in @lib/app-state [:scarf :color1])
                                                :points "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf {}))
 
@@ -35,7 +43,8 @@
   (render [this]
     (let [color (:color (om/props this))]
       (dom/div #js {:className "color-block-wrapper"
-                    :style #js {:background-color color}}
+                    :onClick   #(lib/save-selected-color! color)
+                    :style     #js {:backgroundColor color}}
                (dom/div #js {:className "color-block"})))))
 (def color-block (om/factory ColorBlock {}))
 
@@ -50,7 +59,7 @@
 (defn colors
   "Create color palette"
   ([data] (om/factory Colors data))
-  ([]     (colors {})))
+  ([] (colors {})))
 
 ;(defui Main
 ;  Object
@@ -59,7 +68,6 @@
 ;             (dom/h4 nil "scarf")
 ;             (scarf)
 ;             (colors))))
-
 
 (defcard scarf-card
          "## Main Scarf component"
