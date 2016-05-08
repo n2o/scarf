@@ -1,6 +1,7 @@
 (ns scarf.views
   (:require [goog.dom :as gdom]
             [devcards.core :as dc :refer-macros [defcard deftest]]
+            [devcards-om-next.core :as don :refer-macros [om-next-root defcard-om-next]]
             [cljs.test :refer-macros [is testing]]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
@@ -11,13 +12,11 @@
 (def width "276px")
 (def height "138px")
 
-(defui Scarf
+(defui ^:once Scarf
   static om/IQuery
   (query [this]
     [:scarf])
   Object
-  (componentDidUpdate [this prev-props prev-state]
-    (println "componentdidupdate"))
   (render [this]
     (dom/div nil
              (dom/svg #js {:enable-background "new 0 0 276 138"
@@ -61,17 +60,18 @@
   ([data] (om/factory Colors data))
   ([] (colors {})))
 
-;(defui Main
-;  Object
-;  (render [this]
-;    (dom/div nil
-;             (dom/h4 nil "scarf")
-;             (scarf)
-;             (colors))))
+#_(defui Main
+  Object
+  (render [this]
+    (dom/div nil
+             (dom/h4 nil "scarf")
+             (scarf)
+             (colors))))
 
-(defcard scarf-card
-         "## Main Scarf component"
-         (scarf))
+(defcard-om-next scarf-om-next
+                 "## Main Scarf Component"
+                 Scarf
+                 lib/reconciler)
 
 (defcard colors-card
          "## Choose your color"
