@@ -5,10 +5,32 @@
   (atom
     {:scarf     {:color1 "white"
                  :color2 "white"}
-     :colors    ["#ff0000"
-                 "#00ff00"
-                 "#0000ff"
-                 "yellow"]
+     :colors    [["#efe406" "Hellgelb"]
+                 ["#f3e747" "Zitrone"]
+                 ["#c98200" "Orange"]
+                 ["#b92f1f" "Scharlachrot"]
+                 ["#b92f1f" "Dunkelrot"]
+                 ["#480d2c" "Kastanienbraun"]
+                 ["#5c068c" "Lila"]
+                 ["#c98f47" "Gold"]
+                 ["#826e57" "Kaki"]
+                 ["#422310" "Schokolade"]
+                 ["#7b0065" "Traube"]
+                 ["#1a6a30" "Smaragdgrün"]
+                 ["#1a6a30" "Piniengrün"]
+                 ["#143422" "Scoutgrün"]
+                 ["#afc3d5" "Himmelfarben"]
+                 ["#21145c" "Königsblau"]
+                 ["#152442" "Marineblau"]
+                 ["#f9f9f9" "Weiß"]
+                 ["#7e7f84" "Grau"]
+                 ["#000000" "Schwarz"]
+                 ["#cd6888" "Pink"]
+                 ["#b9cfe4" "Blaugrau"]
+                 ["#44bce3" "Türkis"]
+                 ["#ff5e00" "Orangerot"]
+                 ["#c2bcec" "Fliederfarben"]
+                 ["#e6ff15" "Tageslicht Gelb"]]
      :user      {:selected-color ""}}))
 
 ;;;; Functions concerning the reconciler
