@@ -40,14 +40,16 @@
 (defui ColorBlock
   Object
   (render [this]
-    (let [color (:color (om/props this))]
+    (let [[color name] (:color (om/props this))]
+      (println name)
       (dom/div #js {:className "color-block-wrapper"
                     :onClick   #(lib/save-selected-color! color)
                     :style     #js {:backgroundColor color}}
-               (dom/div #js {:className "color-block"})))))
+               (dom/div #js {:className "color-block"})
+               (dom/span #js {:className "tooltiptext"} name)))))
 (def color-block (om/factory ColorBlock {}))
 
-(defui Colors
+(defui ^:once Colors
   Object
   (render [this]
     (dom/div nil
@@ -73,9 +75,10 @@
                  Scarf
                  lib/reconciler)
 
-(defcard colors-card
+(defcard-om-next colors-card
          "## Choose your color"
-         (colors))
+         Colors
+         lib/reconciler)
 
 (deftest scarf-tests
          "## Testing main component"
