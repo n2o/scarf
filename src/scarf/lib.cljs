@@ -1,7 +1,7 @@
 (ns scarf.lib
   (:require [om.next :as om :refer-macros [defui]]))
 
-(def app-state
+(defonce app-state
   (atom
     {:scarf     {:color1 "#ff0000"
                  :color2 "#00ff00"}
@@ -34,7 +34,7 @@
   (let [color (get-in @app-state [:user :selected-color])]
     {:action (fn [] (swap! state update-in [:scarf field] (fn [] color)))}))
 
-(def reconciler
+(defonce reconciler
   (om/reconciler
     {:state app-state
      :parser (om/parser {:read read :mutate mutate})}))
