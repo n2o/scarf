@@ -1,4 +1,6 @@
 .color-block-wrapper
+  position: relative
+  display: inline-block
   margin: 1em
   width: 20px
   height: 20px
@@ -8,3 +10,22 @@ polygon
   stroke: black
   stroke-width: 1px
 
+/* Tooltip text */
+.color-block-wrapper .tooltiptext
+  position: absolute
+  z-index: 1
+  visibility: hidden
+  width: 120px
+  bottom: 120%
+  left: 50%
+  margin-left: -75px
+  padding: 0.25em 1em 0.2em 1em
+  border-radius: 6px
+  background-color: black
+  opacity: 0.8
+  color: #fff
+  text-align: center
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.color-block-wrapper:hover .tooltiptext
+  visibility: visible
