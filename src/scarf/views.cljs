@@ -27,8 +27,8 @@
                            :y                 "0"}
                       (dom/g nil
                              (dom/polygon #js {:onClick #(lib/update-color! :color1)
-                                               :fill   (get-in @lib/app-state [:scarf :color1])
-                                               :points "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
+                                               :fill    (get-in @lib/app-state [:scarf :color1])
+                                               :points  "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
                              (dom/polygon #js {:onClick #(lib/update-color! :color2)
                                                :fill   (get-in @lib/app-state [:scarf :color2])
                                                :points "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})

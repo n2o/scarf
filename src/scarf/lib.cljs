@@ -3,10 +3,8 @@
 
 (defonce app-state
   (atom
-    {:scarf     {:color1 "#ff0000"
-                 :color2 "#00ff00"}
-     :scarf/color1 "#ff0000"
-     :scarf/color2 "#00ff00"
+    {:scarf     {:color1 "white"
+                 :color2 "white"}
      :colors    ["#ff0000"
                  "#00ff00"
                  "#0000ff"
