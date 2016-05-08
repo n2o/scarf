@@ -3,8 +3,10 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.8.40"]
                  [org.omcljs/om "1.0.0-alpha31"]
-                 [figwheel-sidecar "0.5.2" :scope "test"]
-                 [devcards "0.2.1-6"]]
+                 [figwheel-sidecar "0.5.2"                  ;:scope "test"
+                  ]
+                 [devcards "0.2.1-6" :scope "devcards"]
+                 [devcards-om-next "0.1.1" :scope "devcards"]]
   :plugins [[lein-figwheel "0.5.1"]
             [lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.9.4"]
