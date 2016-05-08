@@ -37,11 +37,10 @@
                                                :points "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf {}))
 
-(defui ColorBlock
+(defui ^:once ColorBlock
   Object
   (render [this]
     (let [[color name] (:color (om/props this))]
-      (println name)
       (dom/div #js {:className "color-block-wrapper"
                     :onClick   #(lib/save-selected-color! color)
                     :style     #js {:backgroundColor color}}
@@ -53,7 +52,6 @@
   Object
   (render [this]
     (dom/div nil
-             (dom/h4 nil "Available Colors")
              (let [colors (lib/get-colors)]
                (apply dom/ul #js {:id "colors"}
                       (map #(color-block {:color %}) colors))))))
@@ -75,10 +73,14 @@
                  Scarf
                  lib/reconciler)
 
-(defcard-om-next colors-card
+#_(defcard-om-next colors-card
          "## Choose your color"
          Colors
          lib/reconciler)
+
+(defcard colors
+         ""
+         (colors))
 
 (deftest scarf-tests
          "## Testing main component"
