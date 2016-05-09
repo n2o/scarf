@@ -14,9 +14,7 @@
 
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src"]
-                        ;; If no code is to be run, set :figwheel true for continued automagical reloading
                         :figwheel {:on-jsload "scarf.core/on-js-reload"}
-
                         :compiler {:main scarf.core
                                    :asset-path "js/compiled/out"
                                    :output-to "resources/public/js/compiled/scarf.js"
@@ -24,17 +22,12 @@
                                    :source-map-timestamp true}}
                        {:id "devcards"
                         :source-paths ["src"]
-                        ;; If no code is to be run, set :figwheel true for continued automagical reloading
                         :figwheel {:devcards true}
-
                         :compiler {:main scarf.core
                                    :asset-path "js/compiled/out"
                                    :output-to "resources/public/js/compiled/scarf.js"
                                    :output-dir "resources/public/js/compiled/out"
                                    :source-map-timestamp true}}
-                       ;; This next build is an compressed minified build for
-                       ;; production. You can build this with:
-                       ;; lein cljsbuild once min
                        {:id "min"
                         :source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"
