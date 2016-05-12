@@ -1,11 +1,11 @@
 (defproject scarf "0.1.0-SNAPSHOT"
   :description "My first Om program!"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.8.40"]
+                 [org.clojure/clojurescript "1.8.51"]
                  [org.omcljs/om "1.0.0-alpha31"]
-                 [figwheel-sidecar "0.5.2"                  ;:scope "test"
+                 [figwheel-sidecar "0.5.3-1"                  ;:scope "test"
                   ]
-                 [devcards "0.2.1-6" :scope "devcards"]
+                 [devcards "0.2.1-7" :scope "devcards"]
                  [devcards-om-next "0.1.1" :scope "devcards"]]
   :plugins [[lein-figwheel "0.5.1"]
             [lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]
@@ -33,13 +33,7 @@
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"
                                    :main scarf.core
                                    :optimizations :advanced
-                                   :pretty-print false}}
-                       {:id "test"
-                        :source-paths ["src" "test"]
-                        :notify-command ["phantomjs" "resources/test/phantom/runner.js" "resources/public/js/compiled/scarf-test.js"]
-                        :compiler {:output-to "resources/public/js/compiled/scarf-test.js"
-                                   :optimizations :whitespace
-                                   :pretty-print true}}]}
+                                   :pretty-print false}}]}
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
              ;; :server-port 3449 ;; default
              ;; :server-ip "127.0.0.1"
