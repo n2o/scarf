@@ -33,6 +33,12 @@
                  ["#e6ff15" "Tageslicht Gelb"]]
      :user      {:selected-color ""}}))
 
+;;;; Auxiliary
+(defn get-selected-color
+  "Return the user's current selection."
+  []
+  (get-in @app-state [:user :selected-color]))
+
 ;;;; Functions concerning the reconciler
 (defmulti read (fn [env key params] key))
 
@@ -51,7 +57,7 @@
 
 (defmethod mutate 'color/set
   [{:keys [state]} _ {:keys [name field]}]
-  (let [color (get-in @app-state [:user :selected-color])]
+  (let [color (get-selected-color)]
     {:action (fn [] (swap! state update-in [:scarf field] (fn [] color)))}))
 
 (defonce reconciler
