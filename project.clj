@@ -21,12 +21,12 @@
                                    :output-dir "resources/public/js/compiled/out"
                                    :source-map-timestamp true}}
                        {:id "devcards"
-                        :source-paths ["src"]
+                        :source-paths ["src/scarf" "src/devcards"]
                         :figwheel {:devcards true}
-                        :compiler {:main scarf.core
-                                   :asset-path "js/compiled/out"
-                                   :output-to "resources/public/js/compiled/scarf.js"
-                                   :output-dir "resources/public/js/compiled/out"
+                        :compiler {:main scarf.devcards.core
+                                   :asset-path "../js/compiled/devcards/out"
+                                   :output-to "resources/public/js/compiled/devcards/scarf.js"
+                                   :output-dir "resources/public/js/compiled/devcards/out"
                                    :source-map-timestamp true}}
                        {:id "min"
                         :source-paths ["src"]
