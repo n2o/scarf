@@ -58,7 +58,8 @@
                                                :points  "246.666,0 29.333,0 138.001,108.833"})))
              (dom/div nil
                       (dom/span nil "Current selection:")
-                      (color-block (lib/get-selected-color))))))
+                      (dom/span #js {:id "current-selection"}
+                                (color-block (lib/get-selected-color)))))))
 (def scarf (om/factory Scarf {}))
 
 #_(defui Main
