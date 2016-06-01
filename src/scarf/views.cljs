@@ -26,9 +26,8 @@
   Object
   (render [this]
     (dom/div nil
-             (let [colors (lib/get-colors)]
-               (apply dom/ul #js {:id "colors"}
-                      (map #(color-block %) colors))))))
+             (apply dom/ul #js {:id "colors"}
+                    (map #(color-block %) lib/colors)))))
 (defn colors
   "Create color palette"
   [] (om/factory Colors {}))

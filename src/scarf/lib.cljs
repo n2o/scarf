@@ -1,37 +1,40 @@
 (ns scarf.lib
   (:require [om.next :as om :refer-macros [defui]]))
 
+(def colors
+  "Define all available colors."
+  [{:rgb "#efe406", :name "Hellgelb", :price (rand 5)}
+   {:rgb "#f3e747", :name "Zitrone", :price (rand 5)}
+   {:rgb "#c98200", :name "Orange", :price (rand 5)}
+   {:rgb "#b92f1f", :name "Scharlachrot", :price (rand 5)}
+   {:rgb "#b92f1f", :name "Dunkelrot", :price (rand 5)}
+   {:rgb "#480d2c", :name "Kastanienbraun", :price (rand 5)}
+   {:rgb "#5c068c", :name "Lila", :price (rand 5)}
+   {:rgb "#c98f47", :name "Gold", :price (rand 5)}
+   {:rgb "#826e57", :name "Kaki", :price (rand 5)}
+   {:rgb "#422310", :name "Schokolade", :price (rand 5)}
+   {:rgb "#7b0065", :name "Traube", :price (rand 5)}
+   {:rgb "#1a6a30", :name "Smaragdgrün", :price (rand 5)}
+   {:rgb "#1a6a30", :name "Piniengrün", :price (rand 5)}
+   {:rgb "#143422", :name "Scoutgrün", :price (rand 5)}
+   {:rgb "#afc3d5", :name "Himmelfarben", :price (rand 5)}
+   {:rgb "#21145c", :name "Königsblau", :price (rand 5)}
+   {:rgb "#152442", :name "Marineblau", :price (rand 5)}
+   {:rgb "#f9f9f9", :name "Weiß", :price (rand 5)}
+   {:rgb "#7e7f84", :name "Grau", :price (rand 5)}
+   {:rgb "#000000", :name "Schwarz", :price (rand 5)}
+   {:rgb "#cd6888", :name "Pink", :price (rand 5)}
+   {:rgb "#b9cfe4", :name "Blaugrau", :price (rand 5)}
+   {:rgb "#44bce3", :name "Türkis", :price (rand 5)}
+   {:rgb "#ff5e00", :name "Orangerot", :price (rand 5)}
+   {:rgb "#c2bcec", :name "Fliederfarben", :price (rand 5)}
+   {:rgb "#e6ff15", :name "Tageslicht Gelb", :price (rand 5)}])
+
 (defonce app-state
          (atom
-           {:scarf  {:color1 "white"
-                     :color2 "white"}
-            :colors [{:rgb "#efe406", :name "Hellgelb", :price (rand 5)}
-                     {:rgb "#f3e747", :name "Zitrone", :price (rand 5)}
-                     {:rgb "#c98200", :name "Orange", :price (rand 5)}
-                     {:rgb "#b92f1f", :name "Scharlachrot", :price (rand 5)}
-                     {:rgb "#b92f1f", :name "Dunkelrot", :price (rand 5)}
-                     {:rgb "#480d2c", :name "Kastanienbraun", :price (rand 5)}
-                     {:rgb "#5c068c", :name "Lila", :price (rand 5)}
-                     {:rgb "#c98f47", :name "Gold", :price (rand 5)}
-                     {:rgb "#826e57", :name "Kaki", :price (rand 5)}
-                     {:rgb "#422310", :name "Schokolade", :price (rand 5)}
-                     {:rgb "#7b0065", :name "Traube", :price (rand 5)}
-                     {:rgb "#1a6a30", :name "Smaragdgrün", :price (rand 5)}
-                     {:rgb "#1a6a30", :name "Piniengrün", :price (rand 5)}
-                     {:rgb "#143422", :name "Scoutgrün", :price (rand 5)}
-                     {:rgb "#afc3d5", :name "Himmelfarben", :price (rand 5)}
-                     {:rgb "#21145c", :name "Königsblau", :price (rand 5)}
-                     {:rgb "#152442", :name "Marineblau", :price (rand 5)}
-                     {:rgb "#f9f9f9", :name "Weiß", :price (rand 5)}
-                     {:rgb "#7e7f84", :name "Grau", :price (rand 5)}
-                     {:rgb "#000000", :name "Schwarz", :price (rand 5)}
-                     {:rgb "#cd6888", :name "Pink", :price (rand 5)}
-                     {:rgb "#b9cfe4", :name "Blaugrau", :price (rand 5)}
-                     {:rgb "#44bce3", :name "Türkis", :price (rand 5)}
-                     {:rgb "#ff5e00", :name "Orangerot", :price (rand 5)}
-                     {:rgb "#c2bcec", :name "Fliederfarben", :price (rand 5)}
-                     {:rgb "#e6ff15", :name "Tageslicht Gelb", :price (rand 5)}]
-            :user   {:selected-color ""}}))
+           {:scarf {:color1 "white"
+                    :color2 "white"}
+            :user  {:selected-color ""}}))
 
 ;;;; Auxiliary
 (defn get-selected-color
@@ -78,8 +81,3 @@
   "Update color selection."
   [field]
   (om/transact! reconciler `[(color/set {:field ~field})]))
-
-(defn get-colors
-  "Return list with all available colors."
-  []
-  (:colors @app-state))
