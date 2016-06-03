@@ -1,7 +1,7 @@
 (defproject scarf "0.1.0-SNAPSHOT"
   :description "My first Om program!"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.8.51"]
+                 [org.clojure/clojurescript "1.9.14"]
                  [org.omcljs/om "1.0.0-alpha31"]
                  [figwheel-sidecar "0.5.3-2"]
                  [devcards "0.2.1-7" :scope "devcards"]

@@ -1,38 +1,38 @@
 (ns scarf.lib
   (:require [om.next :as om :refer-macros [defui]]))
 
-(defn ->currency
+(defn num->currency
   [value]
   (.toLocaleString value "de-DE" #js {:style "currency" :currency "EUR"}))
 
 (def colors
   "Define all available colors."
-  [{:rgb "#efe406", :name "Hellgelb", :price (->currency (rand 5))}
-   {:rgb "#f3e747", :name "Zitrone", :price (->currency (rand 5))}
-   {:rgb "#c98200", :name "Orange", :price (->currency (rand 5))}
-   {:rgb "#b92f1f", :name "Scharlachrot", :price (->currency (rand 5))}
-   {:rgb "#b92f1f", :name "Dunkelrot", :price (->currency (rand 5))}
-   {:rgb "#480d2c", :name "Kastanienbraun", :price (->currency (rand 5))}
-   {:rgb "#5c068c", :name "Lila", :price (->currency (rand 5))}
-   {:rgb "#c98f47", :name "Gold", :price (->currency (rand 5))}
-   {:rgb "#826e57", :name "Kaki", :price (->currency (rand 5))}
-   {:rgb "#422310", :name "Schokolade", :price (->currency (rand 5))}
-   {:rgb "#7b0065", :name "Traube", :price (->currency (rand 5))}
-   {:rgb "#1a6a30", :name "Smaragdgrün", :price (->currency (rand 5))}
-   {:rgb "#1a6a30", :name "Piniengrün", :price (->currency (rand 5))}
-   {:rgb "#143422", :name "Scoutgrün", :price (->currency (rand 5))}
-   {:rgb "#afc3d5", :name "Himmelfarben", :price (->currency (rand 5))}
-   {:rgb "#21145c", :name "Königsblau", :price (->currency (rand 5))}
-   {:rgb "#152442", :name "Marineblau", :price (->currency (rand 5))}
-   {:rgb "#f9f9f9", :name "Weiß", :price (->currency (rand 5))}
-   {:rgb "#7e7f84", :name "Grau", :price (->currency (rand 5))}
-   {:rgb "#000000", :name "Schwarz", :price (->currency (rand 5))}
-   {:rgb "#cd6888", :name "Pink", :price (->currency (rand 5))}
-   {:rgb "#b9cfe4", :name "Blaugrau", :price (->currency (rand 5))}
-   {:rgb "#44bce3", :name "Türkis", :price (->currency (rand 5))}
-   {:rgb "#ff5e00", :name "Orangerot", :price (->currency (rand 5))}
-   {:rgb "#c2bcec", :name "Fliederfarben", :price (->currency (rand 5))}
-   {:rgb "#e6ff15", :name "Tageslicht Gelb", :price (->currency (rand 5))}])
+  [{:rgb "#efe406", :name "Hellgelb", :price (num->currency (rand 5))}
+   {:rgb "#f3e747", :name "Zitrone", :price (num->currency (rand 5))}
+   {:rgb "#c98200", :name "Orange", :price (num->currency (rand 5))}
+   {:rgb "#b92f1f", :name "Scharlachrot", :price (num->currency (rand 5))}
+   {:rgb "#b92f1f", :name "Dunkelrot", :price (num->currency (rand 5))}
+   {:rgb "#480d2c", :name "Kastanienbraun", :price (num->currency (rand 5))}
+   {:rgb "#5c068c", :name "Lila", :price (num->currency (rand 5))}
+   {:rgb "#c98f47", :name "Gold", :price (num->currency (rand 5))}
+   {:rgb "#826e57", :name "Kaki", :price (num->currency (rand 5))}
+   {:rgb "#422310", :name "Schokolade", :price (num->currency (rand 5))}
+   {:rgb "#7b0065", :name "Traube", :price (num->currency (rand 5))}
+   {:rgb "#1a6a30", :name "Smaragdgrün", :price (num->currency (rand 5))}
+   {:rgb "#1a6a30", :name "Piniengrün", :price (num->currency (rand 5))}
+   {:rgb "#143422", :name "Scoutgrün", :price (num->currency (rand 5))}
+   {:rgb "#afc3d5", :name "Himmelfarben", :price (num->currency (rand 5))}
+   {:rgb "#21145c", :name "Königsblau", :price (num->currency (rand 5))}
+   {:rgb "#152442", :name "Marineblau", :price (num->currency (rand 5))}
+   {:rgb "#f9f9f9", :name "Weiß", :price (num->currency (rand 5))}
+   {:rgb "#7e7f84", :name "Grau", :price (num->currency (rand 5))}
+   {:rgb "#000000", :name "Schwarz", :price (num->currency (rand 5))}
+   {:rgb "#cd6888", :name "Pink", :price (num->currency (rand 5))}
+   {:rgb "#b9cfe4", :name "Blaugrau", :price (num->currency (rand 5))}
+   {:rgb "#44bce3", :name "Türkis", :price (num->currency (rand 5))}
+   {:rgb "#ff5e00", :name "Orangerot", :price (num->currency (rand 5))}
+   {:rgb "#c2bcec", :name "Fliederfarben", :price (num->currency (rand 5))}
+   {:rgb "#e6ff15", :name "Tageslicht Gelb", :price (num->currency (rand 5))}])
 
 (defonce app-state
          (atom
