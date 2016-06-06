@@ -17,8 +17,7 @@
          ""
          (views/colors))
 
-(deftest scarf-tests
-         "## Testing main component"
-         (testing
-           "failing"
-           (is (= 1 2))))
+(deftest test-lib
+         "## Testing library"
+         (testing "Generate unique react-key"
+           (is (not= (lib/get-unique-key) (lib/get-unique-key)))))
