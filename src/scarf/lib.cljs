@@ -1,5 +1,6 @@
 (ns scarf.lib
-  (:require [om.next :as om :refer-macros [defui]]))
+  (:require [om.next :as om :refer-macros [defui]]
+            [scarf.config :as config]))
 
 (defn num->currency
   [value]
@@ -39,6 +40,14 @@
            {:scarf {:color1 "white"
                     :color2 "white"}
             :user  {:selected-color ""}}))
+
+(defonce counter (atom 0))
+
+(defn get-unique-key
+  "Return unique react-key."
+  []
+  (println (:name config/project))
+  (str (:name config/project) "-unique-react-key-" (swap! counter inc)))
 
 ;;;; Auxiliary
 (defn get-selected-color
