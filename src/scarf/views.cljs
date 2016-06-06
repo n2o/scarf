@@ -27,7 +27,7 @@
   (render [this]
     (dom/div nil
              (apply dom/ul #js {:id "colors"}
-                    (map #(color-block %) lib/colors)))))
+                    (map #(color-block (merge {:react-key (rand-int 1000)} %)) lib/colors)))))
 (defn colors
   "Create color palette"
   [] (om/factory Colors {}))
