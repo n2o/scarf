@@ -46,7 +46,6 @@
 (defn get-unique-key
   "Return unique react-key."
   []
-  (println (:name config/project))
   (str (:name config/project) "-unique-react-key-" (swap! counter inc)))
 
 ;;;; Auxiliary

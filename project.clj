@@ -1,4 +1,4 @@
-(defproject scarf "0.1.0-SNAPSHOT"
+(defproject scarf "0.1.64"
   :description "My first Om program!"
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.36"]
