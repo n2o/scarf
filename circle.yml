@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t scarf-cljs .
+
+compile:
+  override:
+    - docker run -v $CIRCLE_ARTIFACTS:/resources/public/js/compiled scarf-cljs
