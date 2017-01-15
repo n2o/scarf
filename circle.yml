@@ -9,4 +9,4 @@ dependencies:
 
 test:
   override:
-    - docker run -v $CIRCLE_ARTIFACTS:/resources/public/js/compiled scarf-cljs
+    - docker run -v $CIRCLE_ARTIFACTS:/code/resources/public/js/compiled scarf-cljs
