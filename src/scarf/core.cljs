@@ -6,5 +6,7 @@
 
 (enable-console-print!)
 
-#_(om/add-root! lib/reconciler
+(println "Johoo")
+
+(om/add-root! lib/reconciler
               views/Main (gdom/getElement "scarf"))
