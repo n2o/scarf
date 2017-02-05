@@ -56,7 +56,6 @@
   [{:keys [state]} key _]
   {:value (get-list state key)})
 
-
 (defmulti mutate om/dispatch)
 (defmethod mutate 'color/temp
   [{:keys [state]} _ {:keys [color]}]
