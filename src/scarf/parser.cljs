@@ -9,6 +9,7 @@
 (def init-data
   {:scarf/color1 "lightgrey"
    :scarf/color2 "darkred"
+   :color/selected "black"
    :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (num->currency (rand 5))}
                  {:id 1 :rgb "#f3e747", :name "Zitrone", :price (num->currency (rand 5))}
                  {:id 2 :rgb "#c98200", :name "Orange", :price (num->currency (rand 5))}
@@ -34,8 +35,7 @@
                  {:id 22 :rgb "#44bce3", :name "Türkis", :price (num->currency (rand 5))}
                  {:id 23 :rgb "#ff5e00", :name "Orangerot", :price (num->currency (rand 5))}
                  {:id 24 :rgb "#c2bcec", :name "Fliederfarben", :price (num->currency (rand 5))}
-                 {:id 25 :rgb "#e6ff15", :name "Tageslicht Gelb", :price (num->currency (rand 5))}]
-   :user  {:selected-color ""}})
+                 {:id 25 :rgb "#e6ff15", :name "Tageslicht Gelb", :price (num->currency (rand 5))}]})
 
 ;; -----------------------------------------------------------------------------
 ;; Parsing
@@ -56,12 +56,30 @@
   [{:keys [state]} key _]
   {:value (get-list state key)})
 
+(defmethod read :color/by-id
+  [{:keys [state]} _ {:keys [id]}]
+  (let [st @state
+        color (for [item (get st :color/items) :when (= id (:id item))] item)]
+    (when (seq color)
+      {:value color})))
+;; (read {:state (om/app-state scarf.core/reconciler)} :color/by-id {:id 200})
+
 (defmulti mutate om/dispatch)
 (defmethod mutate 'color/temp
   [{:keys [state]} _ {:keys [color]}]
   {:action (fn [] (swap! state update-in [:user :selected-color] (fn [] color)))})
 
+(defmethod mutate 'color/selected
+  [{:keys [state]} _ {:keys [color]}])
+
 #_(defmethod mutate 'color/set
     [{:keys [state]} _ {:keys [name field]}]
     (let [color (get-selected-color)]
       {:action (fn [] (swap! state update-in [:scarf field] (fn [] color)))}))
+
+
+;; -----------------------------------------------------------------------------
+;; Testing the parser
+
+;; (def my-parser (om/parser {:read read}))
+;; (my-parser {:state init-data} [:color/items])

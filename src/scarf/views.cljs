@@ -43,7 +43,7 @@
 (defui Scarf
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :user])
+         [:scarf/color1 :scarf/color2 :color/by-id])
   Object
   (render [this]
           (let [{:keys [scarf/color1 scarf/color2]} (om/props this)]
