@@ -7,8 +7,8 @@
   (.toLocaleString value "de-DE" #js {:style "currency" :currency "EUR"}))
 
 (def init-data
-  {:scarf/color1 "lightgrey"
-   :scarf/color2 "darkred"
+  {:scarf/color1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (num->currency (rand 5))}
+   :scarf/color2 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (num->currency (rand 5))}
    :color/selected "black"
    :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (num->currency (rand 5))}
                  {:id 1 :rgb "#f3e747", :name "Zitrone", :price (num->currency (rand 5))}
@@ -69,14 +69,17 @@
   [{:keys [state]} _ {:keys [color]}]
   {:action (fn [] (swap! state update-in [:user :selected-color] (fn [] color)))})
 
-(defmethod mutate 'color/selected
-  [{:keys [state]} _ {:keys [color]}])
+(defmethod mutate 'scarf/selected
+  [{:keys [state]} _ {:keys [field]}]
+  {:action (fn [] (swap! state update-in [:scarf/selected] (fn [] field)))})
+;; (om/transact! scarf.core/reconciler `[(scarf/selected {:field :scarf/color1})])
 
-#_(defmethod mutate 'color/set
-    [{:keys [state]} _ {:keys [name field]}]
-    (let [color (get-selected-color)]
-      {:action (fn [] (swap! state update-in [:scarf field] (fn [] color)))}))
-
+(defmethod mutate 'color/set
+  [{:keys [state]} _ color]
+  (let [st @state
+        field (:scarf/selected st)]
+    {:action (fn [] (swap! state update-in [field] (fn [] color)))}))
+;; (om/transact! scarf.core/reconciler `[(color/set {:id 4, :rgb "#b92f1f", :name "Dunkelrot", :price "2,44 €"})])
 
 ;; -----------------------------------------------------------------------------
 ;; Testing the parser
