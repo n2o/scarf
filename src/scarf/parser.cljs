@@ -40,10 +40,6 @@
 ;; -----------------------------------------------------------------------------
 ;; Parsing
 
-(defn get-list [state key]
-  (let [st @state]
-    (mapv #(get-in st %) (get st key))))
-
 (defmulti read (fn [env key params] key))
 (defmethod read :default
   [{:keys [state] :as env} key params]
@@ -53,8 +49,9 @@
       {:value :not-found})))
 
 (defmethod read :color/items
-  [{:keys [state]} key _]
-  {:value (get-list state key)})
+  [{:keys [query state]} key _]
+  (let [st @state]
+    {:value (om/db->tree query (get st k) st)}))
 
 (defmethod read :color/by-id
   [{:keys [state]} _ {:keys [id]}]

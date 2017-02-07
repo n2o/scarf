@@ -38,6 +38,18 @@
                      (map color-block items)))))
 (def colors (om/factory Colors))
 
+(defui Selection
+  static om/IQuery
+  (query [this]
+         [:color/selected])
+  Object
+  (render [this]
+          (let [{:keys [color/selected]} (om/props this)]
+            (dom/div #js {:className "smooth"}
+                     (when-not selected
+                       (dom/p nil "Bitte wähle zunächst eine Farbe aus"))))))
+(def selection (om/factory Selection))
+
 (defui Scarf
   static om/IQuery
   (query [this]
@@ -68,8 +80,13 @@
   Object
   (render [this]
           (dom/div nil
-                   (dom/h4 nil "scarf")
-                   (scarf (om/props this))
+                   (dom/h4 nil "Halstuchkonfigurator")
+                   (dom/div #js {:className "row"}
+                            (dom/div #js {:className "col-md-6"}
+                                     (scarf (om/props this)))
+                            (dom/div #js {:className "col-md-6"}
+                                     (selection (om/props this))))
+
                    (colors (om/props this)))))
 
 
