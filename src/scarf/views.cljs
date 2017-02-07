@@ -3,6 +3,7 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.extensions]
+            [scarf.components.calculator :as calc]
             [scarf.lib :as lib]))
 (enable-console-print!)
 
@@ -19,8 +20,9 @@
 
   Object
   (render [this]
-          (let [{:keys [rgb name price id] :as color} (om/props this)]
-            (dom/div #js {:className "color-block-wrapper"
+          (let [{:keys [rgb name price id selected] :as color-complete} (om/props this)
+                color (dissoc color-complete :selected)]
+            (dom/div #js {:className (str "color-block-wrapper" (when (= id (:id selected)) " block-active"))
                           :onClick #(om/transact! this `[(color/selected ~color)])
                           :style #js {:backgroundColor rgb}}
                      (dom/div #js {:className "color-block"})
@@ -30,12 +32,13 @@
 (defui Colors
   static om/IQuery
   (query [this]
-         `[{:color/items ~(om/get-query ColorBlock)}])
+         `[{:color/items ~(om/get-query ColorBlock)}
+           :color/selected])
   Object
   (render [this]
-          (let [{:keys [color/items]} (om/props this)]
+          (let [{:keys [color/items color/selected]} (om/props this)]
             (dom/div nil
-                     (map color-block items)))))
+                     (map #(color-block (merge % {:selected selected})) items)))))
 (def colors (om/factory Colors))
 
 (defui Selection
@@ -76,18 +79,22 @@
                                               :points  "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf))
 
+
+
 (defui Main
   Object
   (render [this]
           (dom/div nil
                    (dom/h4 nil "Halstuchkonfigurator")
+                   (dom/br nil)
                    (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-6"}
+                            (dom/div #js {:className "col-md-offset-2 col-md-4"}
                                      (scarf (om/props this)))
-                            (dom/div #js {:className "col-md-6"}
+                            (dom/div #js {:className "col-md-4"}
+                                     (colors (om/props this))
                                      (selection (om/props this))))
-
-                   (colors (om/props this)))))
+                   (dom/hr nil)
+                   (calc/view (om/props this)))))
 
 
 ;; (def norm-data (om/tree->db Scarf scarf.parser/init-data true))
