@@ -36,3 +36,4 @@ bower_components
 compiled
 resources/public/js
 .#*
+.sass-cache

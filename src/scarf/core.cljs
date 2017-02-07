@@ -7,7 +7,7 @@
 
 (enable-console-print!)
 
-(def reconciler
+(defonce reconciler
   (om/reconciler
    {:state  p/init-data
     :parser (om/parser {:read p/read :mutate p/mutate})}))

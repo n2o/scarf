@@ -21,7 +21,7 @@
   (render [this]
           (let [{:keys [rgb name price id] :as color} (om/props this)]
             (dom/div #js {:className "color-block-wrapper"
-                          :onClick #(om/transact! this `[(color/set ~color)])
+                          :onClick #(om/transact! this `[(color/selected ~color)])
                           :style #js {:backgroundColor rgb}}
                      (dom/div #js {:className "color-block"})
                      (dom/span #js {:className "tooltiptext"} name)))))
@@ -41,7 +41,7 @@
 (defui Scarf
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :color/by-id])
+         [:scarf/color1 :scarf/color2])
   Object
   (render [this]
           (let [{:keys [scarf/color1 scarf/color2]} (om/props this)
@@ -53,13 +53,13 @@
                           :x "0"
                           :y "0"}
                      (dom/g nil
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/selected {:field :scarf/color1})])
+                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color1})])
                                               :fill c1
                                               :points  "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/selected {:field :scarf/color2})])
+                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color2})])
                                               :fill c2
                                               :points  "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/selected {:field :scarf/color1})])
+                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color1})])
                                               :fill c1
                                               :points  "246.666,0 29.333,0 138.001,108.833"}))))))
 (def scarf (om/factory Scarf))
