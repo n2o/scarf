@@ -3,11 +3,13 @@
   <head lang="en">
     <meta charset="UTF-8">
     <title>Scarf CLJS</title>
+
+    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/scarf.css">
   </head>
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-transparent bg-transparent">
       <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -16,19 +18,38 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                 </li>
+                 <li class="nav-item">
+                 <a class="nav-link" href="#">Kontakt</a>
+                 </li> -->
+          </ul>
+          <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url('/login') }}">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Kontakt</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url('/register') }}">Kontakt</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url('/register') }}">Impressum</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="full-height">
-      
+    <div class="jumbotron vertical-center">
+      <div class="container">
+        <div class="centering">
+          <h1><i class="fa fa-fire" aria-hidden="true"></i></h1>
+          <br/>
+          <h1>Stelle dein persönliches Halstuch zusammen</h1>
+          <br/>
+          <span class="button-header">Zum Konfigurator</span>
+        </div>
+      </div>
     </div>
 
     <div class="container" style="padding-top: 1em;">
