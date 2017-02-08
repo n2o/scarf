@@ -1,0 +1,42 @@
+.navbar
+  font-size: 1.5em
+  font-weight: 300
+  opacity: 0.9
+
+.navbar-brand
+  font-size: 1.2em
+
+.navbar-transparent
+  .navbar-brand, .navbar-toggler
+    color: white
+  .navbar-brand
+    &:focus, &:hover
+      color: white
+  .navbar-toggler
+    &:focus, &:hover
+      color: white
+  .navbar-nav
+    .nav-link
+      color: rgba(255, 255, 255, 0.5)
+      &:focus, &:hover
+        color: rgba(255, 255, 255, 0.75)
+      &.disabled
+        color: rgba(255, 255, 255, 0.25)
+    .open > .nav-link, .active > .nav-link
+      color: white
+    .nav-link
+      &.open, &.active
+        color: white
+  .navbar-toggler
+    border-color: rgba(255, 255, 255, 0.1)
+  .navbar-toggler-icon
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
+  .navbar-text
+    color: rgba(255, 255, 255, 0.5)
+
+.bg-transparent
+  background-color: transparent !important
+
+a.bg-transparent
+  &:focus, &:hover
+    background-color: #025aa5 !important
