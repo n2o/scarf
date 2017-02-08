@@ -2,7 +2,8 @@
   (:require [goog.string :as gstring]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.extensions]))
+            [scarf.extensions]
+            [scarf.lib :as lib]))
 
 (defui Calculator
   static om/IQuery
@@ -27,13 +28,13 @@
                                                              (dom/tr nil
                                                                      (dom/td nil 1)
                                                                      (dom/td nil (:name color1))
-                                                                     (dom/td nil (:price color1)))
+                                                                     (dom/td nil (lib/num->currency (:price color1))))
                                                              (dom/tr nil
                                                                      (dom/td nil 2)
                                                                      (dom/td nil (:name color2))
-                                                                     (dom/td nil (:price color2)))
+                                                                     (dom/td nil (lib/num->currency (:price color2))))
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
                                                                      (dom/td nil (gstring/unescapeEntities "&sum;"))
                                                                      (dom/td nil "Summe")
-                                                                     (dom/td nil (+ (:price color1) (:price color2))))))))))))
+                                                                     (dom/td nil (lib/num->currency (+ (:price color1) (:price color2)))))))))))))
 (def view (om/factory Calculator))
