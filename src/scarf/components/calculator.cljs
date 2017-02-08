@@ -2,7 +2,6 @@
   (:require [goog.string :as gstring]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.extensions]
             [scarf.lib :as lib]))
 
 (defui Calculator

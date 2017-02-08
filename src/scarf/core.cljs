@@ -12,5 +12,5 @@
    {:state  p/init-data
     :parser (om/parser {:read p/read :mutate p/mutate})}))
 
-(om/add-root! reconciler 
+(om/add-root! reconciler
               views/Main (gdom/getElement "scarf"))

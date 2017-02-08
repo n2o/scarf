@@ -20,7 +20,7 @@
                                    :output-to "resources/public/js/compiled/scarf.js"
                                    :output-dir "resources/public/js/compiled/out"
                                    :source-map-timestamp true
-                                   :preloads [devtools.preload]}}
+                                   :preloads [devtools.preload scarf.extensions]}}
                        {:id "min"
                         :source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"

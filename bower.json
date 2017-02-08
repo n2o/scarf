@@ -17,7 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootswatch-dist": "3.3.6-paper",
-    "jquery": "~2"
+    "jquery": "~3"
   }
 }

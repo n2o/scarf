@@ -2,7 +2,6 @@
   (:require [goog.dom :as gdom]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.extensions]
             [scarf.components.calculator :as calc]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -85,8 +84,6 @@
   Object
   (render [this]
           (dom/div nil
-                   (dom/h4 nil "Halstuchkonfigurator")
-                   (dom/br nil)
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col-md-offset-2 col-md-4"}
                                      (scarf (om/props this)))
