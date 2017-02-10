@@ -14,14 +14,45 @@
 
 ;; -----------------------------------------------------------------------------
 
-(defui TriangleStripeEdge
-  "Dreieck mit dünnem Streifen und Randstück."
+(defui TriangleStripe
+  "Dreieck mit Randstreifen.
+   ID: 1"
   static om/IQuery
   (query [this]
          [:scarf/color1 :scarf/color2 :color/selected])
   Object
   (render [this]
-          (let [{:keys [scarf/color1 scarf/color2]} (om/props this)
+          (let [id 1
+                {:keys [scarf/color1 scarf/color2]} (om/props this)
+                c1 (:rgb color1)
+                c2 (:rgb color2)]
+            (dom/svg #js {:enableBackground (str "new 0 0 " width " " height)
+                          :height height
+                          :width width
+                          :x "0"
+                          :y "0"}
+                     (dom/g nil #_#js {:transform "scale(2)"}
+                            (dom/polygon #js {:onClick #(colorize this :scarf/color2)
+                                              :fill c2
+                                              :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
+                            (dom/polygon #js {:onClick #(colorize this :scarf/color1)
+                                              :fill c1
+                                              :points  "247,0 29,0 138,109"}))))))
+(def triangle-stripe (om/factory TriangleStripe {:foo :foo}))
+
+#_(defn triangle-stripe [this scale]
+  (om/factory TriangleStripe (merge this {:scale scale})))
+
+(defui TriangleStripeEdge
+  "Dreieck mit dünnem Streifen und Randstück.
+   ID: 0"
+  static om/IQuery
+  (query [this]
+         [:scarf/color1 :scarf/color2 :color/selected])
+  Object
+  (render [this]
+          (let [id 2
+                {:keys [scarf/color1 scarf/color2]} (om/props this)
                 c1 (:rgb color1)
                 c2 (:rgb color2)]
             (dom/svg #js {:enableBackground (str "new 0 0 " width " " height)

@@ -56,7 +56,8 @@
           (dom/div nil
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col-md-6 text-center"}
-                                     (scarfs/triangle-stripe-edge (om/props this)))
+                                     (scarfs/triangle-stripe-edge (om/props this))
+                                     (scarfs/triangle-stripe (om/props this)))
                             (dom/div #js {:className "col-md-offset-1 col-md-4 text-center"}
                                      (colors (om/props this))
                                      (selection (om/props this))))
