@@ -6,8 +6,17 @@
             [scarf.lib :as lib]))
 (enable-console-print!)
 
-(def width "276px")
-(def height "138px")
+(def width "280px")
+(def height "140px")
+
+(defn- colorize
+  "Verify that a color has been selected before transacting a nil-value."
+  [this field]
+  (let [{:keys [color/selected]} (om/props this)]
+    (when-not (nil? selected)
+      (om/transact! this `[(scarf/colorize {:field ~field})]))))
+
+;; -----------------------------------------------------------------------------
 
 (defui ColorBlock
   static om/IQuery
@@ -55,7 +64,7 @@
 (defui Scarf
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2])
+         [:scarf/color1 :scarf/color2 :color/selected])
   Object
   (render [this]
           (let [{:keys [scarf/color1 scarf/color2]} (om/props this)
@@ -67,27 +76,25 @@
                           :x "0"
                           :y "0"}
                      (dom/g nil
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color1})])
+                            (dom/polygon #js {:onClick #(colorize this :scarf/color1)
                                               :fill c1
-                                              :points  "266.118,0 138.001,127.452 9.882,0 0,0 138.001,138 276,0"})
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color2})])
+                                              :points  "266,0 138,127 10,0 0,0 138,138 276,0"})
+                            (dom/polygon #js {:onClick #(colorize this :scarf/color2)
                                               :fill c2
-                                              :points  "266.118,0 246.666,0 138.001,108.833 29.333,0 9.882,0 138.001,127.452"})
-                            (dom/polygon #js {:onClick #(om/transact! this '[(scarf/colorize {:field :scarf/color1})])
+                                              :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
+                            (dom/polygon #js {:onClick #(colorize this :scarf/color1)
                                               :fill c1
-                                              :points  "246.666,0 29.333,0 138.001,108.833"}))))))
+                                              :points  "247,0 29,0 138,109"}))))))
 (def scarf (om/factory Scarf))
-
-
 
 (defui Main
   Object
   (render [this]
           (dom/div nil
                    (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-offset-2 col-md-4"}
+                            (dom/div #js {:className "col-md-6 text-center"}
                                      (scarf (om/props this)))
-                            (dom/div #js {:className "col-md-4"}
+                            (dom/div #js {:className "col-md-offset-1 col-md-4 text-center"}
                                      (colors (om/props this))
                                      (selection (om/props this))))
                    (dom/hr nil)
