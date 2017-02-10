@@ -5,8 +5,15 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t scarf-cljs .
+    - docker build -t scarf .
 
 test:
   override:
-    - docker run -v $CIRCLE_ARTIFACTS:/code/resources/public/js/compiled scarf-cljs
+    - docker run -it scarf lein ancient
+    - docker run -it scarf lein codox
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - docker run -v $CIRCLE_ARTIFACTS:/code/resources/public/js/compiled scarf-cljs
