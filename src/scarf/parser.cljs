@@ -8,6 +8,7 @@
 (def init-data
   {:scarf/color1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
    :scarf/color2 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
+   :scarf/current 0
    :color/selected nil
    :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (random-price 5)}
                  {:id 1 :rgb "#f3e747", :name "Zitrone", :price (random-price 5)}
@@ -71,6 +72,10 @@
   (let [st @state
         color (:color/selected st)]
     {:action (fn [] (swap! state update-in [field] (fn [] color)))}))
+
+(defmethod mutate 'scarf/current
+  [{:keys [state]} _ {:keys [id]}]
+  {:action (fn [] (swap! state update-in [:scarf/current] (fn [] id)))})
 
 (defmethod mutate 'color/selected
   [{:keys [state]} _ color]
