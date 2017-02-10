@@ -1,8 +1,12 @@
 .navbar
   margin-top: 3px
-  font-size: 1.3em
+  font-size: 1.2em
   font-weight: 500
   opacity: 0.9
+
+.navbar-brand
+  img
+    height: 40px
 
 .navbar-transparent
   .navbar-brand, .navbar-toggler
@@ -32,9 +36,5 @@
   .navbar-text
     color: rgba(255, 255, 255, 0.5)
 
-.bg-transparent
-  background-color: $ausruesterrot !important
-
-a.bg-transparent
-  &:focus, &:hover
-    background-color: #025aa5 !important
+.bg-ausruester
+  background: linear-gradient(180deg, $ausruesterrot, #5e0000)
