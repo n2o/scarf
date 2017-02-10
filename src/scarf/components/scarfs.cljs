@@ -23,6 +23,17 @@
   (when-not (= 1 scale)
     (om/transact! this `[(scarf/current {:id ~id})])))
 
+(defn- change-cursor [scale]
+  (if (= 1 scale)
+    "crosshair"
+    "pointer"))
+
+(defn- gray-thumb [scale]
+  (when-not (= 1 scale)
+    "grayscale smooth"))
+
+
+
 ;; -----------------------------------------------------------------------------
 
 (defui TriangleStripe
@@ -40,9 +51,11 @@
                 c2 (:rgb color2)
                 swidth (scale-dimensions scale width)
                 sheight (scale-dimensions scale height)]
-            (dom/svg #js {:onClick #(switch-chosen-one this id scale)
+            (dom/svg #js {:className (gray-thumb scale)
+                          :onClick #(switch-chosen-one this id scale)
                           :height sheight
-                          :width swidth}
+                          :width swidth
+                          :style #js {:cursor (change-cursor scale)}}
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize this scale :scarf/color2)
                                               :fill c2
@@ -67,9 +80,11 @@
                 c2 (:rgb color2)
                 swidth (scale-dimensions scale width)
                 sheight (scale-dimensions scale height)]
-            (dom/svg #js {:onClick #(switch-chosen-one this id scale)
+            (dom/svg #js {:className (gray-thumb scale)
+                          :onClick #(switch-chosen-one this id scale)
                           :height sheight
-                          :width swidth}
+                          :width swidth
+                          :style #js {:cursor (change-cursor scale)}}
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize this scale :scarf/color1)
                                               :fill c1
@@ -88,7 +103,7 @@
   Object
   (render [this]
           (let [scale 0.4]
-            (dom/div #js {:filter "gray"}
+            (dom/div nil
                      (triangle-stripe-edge (merge (om/props this) {:scale scale}))
                      (triangle-stripe (merge (om/props this) {:scale scale}))))))
 (def list-scarfs (om/factory ListScarfs))
