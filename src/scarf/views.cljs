@@ -7,6 +7,14 @@
             [scarf.lib :as lib]))
 (enable-console-print!)
 
+(defn dispatch-current-scarf [this]
+  (let [{:keys [scarf/current]} (om/props this)]
+    (cond
+      (= 0 current) (scarfs/triangle-stripe-edge (om/props this))
+      (= 1 current) (scarfs/triangle-stripe (om/props this)))))
+
+;; -----------------------------------------------------------------------------
+
 (defui ColorBlock
   static om/IQuery
   (query [this]
@@ -56,10 +64,11 @@
           (dom/div nil
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col-md-6 text-center"}
-                                     (scarfs/triangle-stripe-edge (om/props this)))
+                                     (dispatch-current-scarf this))
                             (dom/div #js {:className "col-md-offset-1 col-md-4 text-center"}
                                      (colors (om/props this))
                                      (selection (om/props this))))
+                   (scarfs/list-scarfs (om/props this))
                    (dom/hr nil)
                    (calc/view (om/props this)))))
 

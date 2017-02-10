@@ -1,16 +1,22 @@
 (ns scarf.components.calculator
   (:require [goog.string :as gstring]
+            [clojure.string :refer [lower-case]]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.lib :as lib]))
 
+(take 3 "fooooo")
+
+(defn- order-no [color1 color2 current]
+  (str "ht-s" current "_" (subs (lower-case (:name color1)) 0 5) "-" (subs (lower-case (:name color2)) 0 5)))
+
 (defui Calculator
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2])
+         [:scarf/color1 :scarf/color2 :scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf/color1 scarf/color2]} (om/props this)]
+          (let [{:keys [scarf/color1 scarf/color2 scarf/current]} (om/props this)]
             (dom/div nil
                      (dom/h6 nil "Berechnungen")
                      (dom/p nil
@@ -35,5 +41,9 @@
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
                                                                      (dom/td nil (gstring/unescapeEntities "&sum;"))
                                                                      (dom/td nil "Summe")
-                                                                     (dom/td nil (lib/num->currency (+ (:price color1) (:price color2)))))))))))))
+                                                                     (dom/td nil (lib/num->currency (+ (:price color1) (:price color2)))))
+                                                             (dom/tr nil
+                                                                     (dom/td nil (dom/i #js {:className "fa fa-barcode"}))
+                                                                     (dom/td nil "Bestellnummer:")
+                                                                     (dom/td nil (order-no color1 color2 current)))))))))))
 (def view (om/factory Calculator))
