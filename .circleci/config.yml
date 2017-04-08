@@ -18,4 +18,4 @@ jobs:
           key: << checksum "project.clj" >>
       - run: |
           lein test
-          lein cljsbuild once min
+          lein do clean, cljsbuild once min
