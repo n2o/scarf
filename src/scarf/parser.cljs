@@ -50,7 +50,7 @@
       {:value :not-found})))
 
 (defmethod read :color/items
-  [{:keys [query state]} key _]
+  [{:keys [query state]} k _]
   (let [st @state]
     {:value (om/db->tree query (get st k) st)}))
 
@@ -60,7 +60,7 @@
         color (for [item (get st :color/items) :when (= id (:id item))] item)]
     (when (seq color)
       {:value color})))
-;; (read {:state (om/app-state scarf.core/reconciler)} :color/by-id {:id 200})
+;; (read {:state (om/app-state scarf.core/reconciler)} :color/by-id {:id 1})
 
 (defmulti mutate om/dispatch)
 (defmethod mutate 'color/temp
@@ -69,8 +69,7 @@
 
 (defmethod mutate 'scarf/colorize
   [{:keys [state]} _ {:keys [field]}]
-  (let [st @state
-        color (:color/selected st)]
+  (let [color (:color/selected @state)]
     {:action (fn [] (swap! state update-in [field] (fn [] color)))}))
 
 (defmethod mutate 'scarf/current

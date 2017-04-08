@@ -1,8 +1,10 @@
 (defproject scarf "0.2"
   :description "Create clickable SVG objects, which can be colorized"
-  :dependencies [[org.clojure/clojure "1.9.0-alpha15"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
                  [org.clojure/clojurescript "1.9.495"]
-                 [org.omcljs/om "1.0.0-alpha47"]]
+                 [org.clojure/test.check "0.9.0"]
+                 [org.omcljs/om "1.0.0-alpha48"]]
+
   :plugins [[lein-figwheel "0.5.9"]
             [lein-cljsbuild "1.1.5" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.10.3"]
@@ -14,7 +16,7 @@
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src"]
                         :figwheel {:on-jsload "scarf.core/on-js-reload"
-                                   :open-urls ["http://localhost:3449/index.html"]}
+                                   :open-urls ["http://localhost:3449/"]}
                         :compiler {:main scarf.core
                                    :asset-path "js/compiled/out"
                                    :output-to "resources/public/js/compiled/scarf.js"
