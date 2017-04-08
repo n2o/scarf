@@ -5,11 +5,12 @@
                  [org.clojure/test.check "0.9.0"]
                  [org.omcljs/om "1.0.0-alpha48"]]
 
-  :plugins [[lein-figwheel "0.5.9"]
+  :plugins [[lein-ancient "0.6.10"]
             [lein-cljsbuild "1.1.5" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.10.3"]
-            [lein-ancient "0.6.10"]
-            [lein-kibit "0.1.3"]]
+            [lein-figwheel "0.5.9"]
+            [lein-kibit "0.1.3"]
+            [lein-set-version "0.4.1"]]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
