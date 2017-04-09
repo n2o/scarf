@@ -14,14 +14,14 @@
    ID: 1"
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 1
-                {:keys [scarf/color1 scarf/color2 scarf/current scale]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 scarf/current scale]} (om/props this)
                 scale (or scale 1)
-                c1 (:rgb color1)
-                c2 (:rgb color2)
+                c1 (:rgb mid1)
+                c2 (:rgb stripe1)
                 swidth (utils/scale-dimensions scale width)
                 sheight (utils/scale-dimensions scale height)]
             (dom/svg #js {:className (utils/gray-thumb scale)
@@ -30,10 +30,10 @@
                           :width swidth
                           :style #js {:cursor (utils/change-cursor scale)}}
                      (dom/g #js {:transform (str "scale(" scale ")")}
-                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/color2)
+                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/stripe1)
                                               :fill c2
                                               :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
-                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/color1)
+                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/mid1)
                                               :fill c1
                                               :points  "247,0 29,0 138,109"}))))))
 (def stripe (om/factory Stripe))
@@ -43,14 +43,14 @@
    ID: 0"
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 0
-                {:keys [scarf/color1 scarf/color2 scarf/current scale]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 scarf/current scale]} (om/props this)
                 scale (or scale 1)
-                c1 (:rgb color1)
-                c2 (:rgb color2)
+                c1 (:rgb mid1)
+                c2 (:rgb stripe1)
                 swidth (utils/scale-dimensions scale width)
                 sheight (utils/scale-dimensions scale height)]
             (dom/svg #js {:className (utils/gray-thumb scale)
@@ -59,13 +59,13 @@
                           :width swidth
                           :style #js {:cursor (utils/change-cursor scale)}}
                      (dom/g #js {:transform (str "scale(" scale ")")}
-                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/color1)
+                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/mid1)
                                               :fill c1
                                               :points  "266,0 138,127 10,0 0,0 138,138 276,0"})
-                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/color2)
+                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/stripe1)
                                               :fill c2
                                               :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
-                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/color1)
+                            (dom/polygon #js {:onClick #(utils/colorize this scale :scarf/mid1)
                                               :fill c1
                                               :points  "247,0 29,0 138,109"}))))))
 (def stripe-edge (om/factory StripeEdge))

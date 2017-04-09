@@ -2,7 +2,8 @@
 
 (defn num->currency
   [value]
-  (.toLocaleString value "de-DE" #js {:style "currency" :currency "EUR"}))
+  (when value
+    (.toLocaleString value "de-DE" #js {:style "currency" :currency "EUR"})))
 
 (defn str->float
   "Convert String to Float."

@@ -2,5 +2,5 @@
 
 (def project {:name "scarf"})
 
-(def scarf {:thumbnail/width 280
-            :thumbnail/height 140})
+(def scarf {:thumbnail/width 900
+            :thumbnail/height 450})

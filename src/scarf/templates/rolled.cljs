@@ -20,16 +20,16 @@
    ID: 2"
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :scarf/color3 :scarf/color4 :scarf/color5
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/stripe3
           :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 2
-                {:keys [scarf/color1 scarf/color2 scarf/color3 scarf/color4 scarf/color5
+                {:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2 scarf/stripe3
                         scarf/current scale]} (om/props this)
                 scale (or scale 1)
-                c1 (:rgb color1) c2 (:rgb color2) c3 (:rgb color3)
-                c4 (:rgb color4) c5 (:rgb color5)
+                cmid1 (:rgb mid1) cmid2 (:rgb mid2) cstripe1 (:rgb stripe1)
+                cstripe2 (:rgb stripe2) cstripe3 (:rgb stripe3)
                 swidth (utils/scale-dimensions scale width)
                 sheight (utils/scale-dimensions scale height)]
             (dom/svg #js {:className (utils/gray-thumb scale)

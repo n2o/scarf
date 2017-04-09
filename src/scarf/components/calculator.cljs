@@ -13,11 +13,12 @@
 (defui Calculator
   static om/IQuery
   (query [this]
-         [:scarf/color1 :scarf/color2 :scarf/current])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/stripe3 :scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf/color1 scarf/color2 scarf/current]} (om/props this)]
-            (dom/div nil
+          (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2 scarf/stripe3
+                        scarf/current]} (om/props this)]
+            #_(dom/div nil
                      (dom/h6 nil "Berechnungen")
                      (dom/p nil
                             (str "Du hast die Farben " (:name color1) " und " (:name color2) " ausgewählt."))

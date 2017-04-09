@@ -6,8 +6,11 @@
   (lib/str->float (.toFixed (rand r) 2)))
 
 (def init-data
-  {:scarf/color1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
-   :scarf/color2 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
+  {:scarf/mid1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
+   :scarf/mid2 {:id 11 :rgb "#1a6a30", :name "Smaragdgrün", :price (random-price 5)}
+   :scarf/stripe1 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
+   :scarf/stripe2 {:id 18 :rgb "#7e7f84", :name "Grau", :price (random-price 5)}
+   :scarf/stripe3 {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
    :scarf/current 0
    :color/selected nil
    :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (random-price 5)}
