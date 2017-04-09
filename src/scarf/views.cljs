@@ -3,15 +3,18 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.components.calculator :as calc]
-            [scarf.components.scarfs :as scarfs]
+            [scarf.templates.triangle :as triangle]
+            [scarf.templates.rolled :as rolled]
+            [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
     (cond
-      (zero? current) (scarfs/triangle-stripe-edge (om/props this))
-      (= 1 current) (scarfs/triangle-stripe (om/props this)))))
+      (zero? current) (triangle/stripe-edge (om/props this))
+      (= 1 current) (triangle/stripe (om/props this))
+      (= 2 current) (rolled/triangle-three-stripes-rolled-halved (om/props this)))))
 
 ;; -----------------------------------------------------------------------------
 
@@ -22,7 +25,6 @@
   static om/Ident
   (ident [this {:keys [id]}]
          [:color/by-id id])
-
   Object
   (render [this]
           (let [{:keys [rgb name price id selected] :as color-complete} (om/props this)
@@ -63,12 +65,13 @@
   (render [this]
           (dom/div nil
                    (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-6 text-center"}
-                                     (dispatch-current-scarf this))
-                            (dom/div #js {:className "col-md-offset-1 col-md-4 text-center"}
-                                     (colors (om/props this))
-                                     (selection (om/props this))))
+                            (dom/div #js {:className "col-md-12"}
+                                     (dispatch-current-scarf this)))
                    (scarfs/list-scarfs (om/props this))
+                   (dom/div #js {:className "row"}
+                            (dom/div #js {:className "col-md-12"}
+                                     (selection (om/props this))
+                                     (colors (om/props this))))
                    (dom/hr nil)
                    (calc/view (om/props this)))))
 
