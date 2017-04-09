@@ -13,7 +13,7 @@
             (dom/div nil
                      (triangle/stripe-edge (merge (om/props this) {:scale scale}))
                      (triangle/stripe (merge (om/props this) {:scale scale}))
-                     #_(triangle-three-stripes-rolled-halved (merge (om/props this) {:scale scale}))))))
+                     (rolled/three-stripes-mid-halved (merge (om/props this) {:scale scale}))))))
 (def list-scarfs (om/factory ListScarfs))
 
 ;; (set! (.. (first (js/document.getElementsByTagName "g")) -style -transform) "scale(0.1)")

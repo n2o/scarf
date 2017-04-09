@@ -1,8 +1,15 @@
 (ns scarf.templates.rolled
   (:require [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]))
+            [om.dom :as dom]
+            [scarf.templates.utils :as utils]
+            [scarf.config :as config]))
 
-(defui TriangleThreeStripesRolledHalved
+(def width (:thumbnail/width config/scarf))
+(def height (:thumbnail/height config/scarf))
+
+;; -----------------------------------------------------------------------------
+
+(defui ThreeStripesMidHalved
   "Rolled triangle, three outer stripes and a vertical line in the middle.
    ID: 2"
   static om/IQuery
@@ -17,13 +24,13 @@
                 scale (or scale 1)
                 c1 (:rgb color1) c2 (:rgb color2) c3 (:rgb color3)
                 c4 (:rgb color4) c5 (:rgb color5)
-                swidth (scale-dimensions scale width)
-                sheight (scale-dimensions scale height)]
-            (dom/svg #js {:className (gray-thumb scale)
-                          :onClick #(switch-chosen-one this id scale)
+                swidth (utils/scale-dimensions scale width)
+                sheight (utils/scale-dimensions scale height)]
+            (dom/svg #js {:className (utils/gray-thumb scale)
+                          :onClick #(utils/switch-chosen-one this id scale)
                           :height sheight
                           :width swidth
-                          :style #js {:cursor (change-cursor scale)}}
+                          :style #js {:cursor (utils/change-cursor scale)}}
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             ;; Background
                             (dom/path #js {:onClick nil
@@ -111,4 +118,4 @@
                                               :fill "white"
                                               :points "627.3,42.2 454.7,213.8 282.8,41.8 300.8,44 455.4,196.4 610.3,43.5"})
                             )))))
-(def triangle-three-stripes-rolled-halved (om/factory TriangleThreeStripesRolledHalved))
+(def three-stripes-mid-halved (om/factory ThreeStripesMidHalved))
