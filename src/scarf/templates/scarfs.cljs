@@ -11,9 +11,9 @@
   (render [this]
           (let [scale 0.4]
             (dom/div nil
-                     (triangle/stripe-edge (merge (om/props this) {:scale scale}))
-                     (triangle/stripe (merge (om/props this) {:scale scale}))
-                     (rolled/three-stripes-mid-halved (merge (om/props this) {:scale scale}))))))
+                     (triangle/stripe-edge (merge (om/props this) {:thumbnail? true}))
+                     (triangle/stripe (merge (om/props this) {:thumbnail? true}))
+                     (rolled/three-stripes-mid-halved (merge (om/props this) {:thumbnail? true}))))))
 (def list-scarfs (om/factory ListScarfs))
 
 ;; (set! (.. (first (js/document.getElementsByTagName "g")) -style -transform) "scale(0.1)")

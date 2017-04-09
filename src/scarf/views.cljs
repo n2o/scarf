@@ -14,8 +14,7 @@
     (cond
       (zero? current) (triangle/stripe-edge (om/props this))
       (= 1 current) (triangle/stripe (om/props this))
-      (= 2 current) (rolled/three-stripes-mid-halved (om/props this))
-      )))
+      (= 2 current) (rolled/three-stripes-mid-halved (om/props this)))))
 
 ;; -----------------------------------------------------------------------------
 
