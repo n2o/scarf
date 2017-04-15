@@ -6,7 +6,8 @@
   (lib/str->float (.toFixed (rand r) 2)))
 
 (def init-data
-  {:scarf/mid1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
+  {:nav/category :dreieckig-einfarbig-einfach
+   :scarf/mid1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
    :scarf/mid2 {:id 11 :rgb "#1a6a30", :name "Smaragdgrün", :price (random-price 5)}
    :scarf/stripe1 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
    :scarf/stripe2 {:id 18 :rgb "#7e7f84", :name "Grau", :price (random-price 5)}
@@ -82,6 +83,10 @@
 (defmethod mutate 'color/selected
   [{:keys [state]} _ color]
   {:action (fn [] (swap! state update-in [:color/selected] (fn [] color)))})
+
+(defmethod mutate 'nav/change-category
+  [{:keys [state]} _ {:keys [category]}]
+  {:action (fn [] (swap! state update-in [:nav/category] (fn [] category)))})
 
 
 ;; -----------------------------------------------------------------------------

@@ -3,6 +3,7 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.components.calculator :as calc]
+            [scarf.components.nav :as nav]
             [scarf.templates.triangle :as triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.scarfs :as scarfs]
@@ -64,6 +65,8 @@
   Object
   (render [this]
           (dom/div nil
+                   (nav/categories (om/props this))
+                   (dom/hr nil)
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col-md-12"}
                                      (dispatch-current-scarf this)))
