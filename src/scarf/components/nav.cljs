@@ -17,9 +17,8 @@
   Object
   (render [this]
           (let [{:keys [whoami title body nav/category]} (om/props this)]
-            (dom/div #js {:className (str "card"
-                                          (when (= category whoami) " card-outline-primary")
-                                          " pointer")
+            (dom/div #js {:className (str "card pointer"
+                                          (when (= category whoami) " card-outline-highlight"))
                           :onClick #(change-category this whoami)}
                      (dom/div #js {:className "card-block"}
                               (dom/h5 #js {:className "card-title"} title)
@@ -34,12 +33,12 @@
   Object
   (render [this]
           (dom/div nil
-                   (dom/h4 nil "Kategorien")
+                   (dom/h3 nil "Kategorien")
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-einfarbig-einfach
                                                                        :title "dreieckig, einfarbig"
-                                                                       :body "Mit und ohne einfachen Rand / Borte"})))
+                                                                       :body "Mit und ohne einfachem Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-einfarbig-doppelt
                                                                        :title "dreieckig, einfarbig"
@@ -53,3 +52,26 @@
                                                                        :title "viereckig, zweifarbig"
                                                                        :body "3/4 zu 1/4 horizontal, mit und ohne Rand"})))))))
 (def categories (om/factory Categories))
+
+(defui SubCategories
+  static om/IQuery
+  (query [this]
+         [:nav/category])
+  Object
+  (render [this]
+          (let [{:keys [nav/category]} (om/props this)]
+            (dom/div nil
+                     (dom/h4 nil "Wähle ein Schnittmuster aus")
+                     (cond
+                       (= :dreieckig-einfarbig-einfach category) (scarfs/dreieckig-einfarbig-einfach (om/props this)))))))
+(def sub-categories (om/factory SubCategories))
+
+
+(defui Products
+  Object
+  (render [this]
+          (dom/div nil
+                   (categories (om/props this))
+                   (dom/br nil)
+                   (sub-categories (om/props this)))))
+(def products (om/factory Products))

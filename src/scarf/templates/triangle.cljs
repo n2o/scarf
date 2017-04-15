@@ -16,7 +16,7 @@
          [:scarf/mid1 :scarf/current :color/selected])
   Object
   (render [this]
-          (let [id -1
+          (let [id 5000
                 {:keys [scarf/mid1 scarf/current thumbnail?]} (om/props this)
                 c1 (:rgb mid1)
                 width 266
