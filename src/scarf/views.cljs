@@ -16,7 +16,8 @@
       (zero? current) (triangle/einfarbig-borte (om/props this))
       (= 1 current) (triangle/einfarbig-rand (om/props this))
       (= 2 current) (rolled/drei-streifen-mitte-halbiert (om/props this))
-      (= 5000 current) (rolled/ohne-dekor (om/props this)))))
+      (= 5000 current) (rolled/ohne-dekor (om/props this))
+      (= 5001 current) (rolled/einfache-borte (om/props this)))))
 
 ;; -----------------------------------------------------------------------------
 
