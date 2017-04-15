@@ -31,11 +31,7 @@
                 height 273
                 width 903
                 scale (utils/scale-to-width thumbnail? 903)]
-            (dom/svg #js {:className (utils/gray-thumb thumbnail?)
-                          :onClick #(utils/switch-chosen-one this id thumbnail?)
-                          :width (utils/scale-dimension scale width)
-                          :height (utils/scale-dimension scale height)
-                          :style #js {:cursor (utils/change-cursor thumbnail?)}}
+            (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             ;; Background
                             (dom/path #js {:fill "#333"
@@ -84,6 +80,5 @@
                                               :points "652,38.2 454.8,235.9 258.2,37.9 276.8,40.1 454.8,215.9 632.1,40.6"})
                             (dom/polygon #js {:onClick #(utils/colorize this thumbnail? :scarf/stripe3)
                                               :fill cstripe3
-                                              :points "627.3,42.2 454.7,213.8 282.8,41.8 300.8,44 455.4,196.4 610.3,43.5"})
-                            )))))
+                                              :points "627.3,42.2 454.7,213.8 282.8,41.8 300.8,44 455.4,196.4 610.3,43.5"}))))))
 (def three-stripes-mid-halved (om/factory ThreeStripesMidHalved))
