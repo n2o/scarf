@@ -7,16 +7,23 @@
             [scarf.templates.utils :as utils]))
 
 (defui ScarfCard
+  static om/IQuery
+  (query [this]
+         [:scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf title body]} (om/props this)]
-            (dom/div #js {:className (str "card pointer text-center")}
+          (let [{:keys [scarf id title body scarf/current]} (om/props this)]
+            (dom/div #js {:className (str "card pointer text-center"
+                                          (when (= id current) " card-outline-highlight"))
+                          :onClick #(utils/switch-chosen-one this id)}
                      (dom/div #js {:className "card-img-top"
                                    :style #js {:padding "1rem"}}
                               (scarf (merge (om/props this) {:thumbnail? true})))
                      (dom/div #js {:className "card-block"}
                               (dom/h5 #js {:className "card-title"} title)
-                              (dom/p #js {:className "card-text"} body))))))
+                              (dom/p #js {:className "card-text"}
+                                     (dom/small #js {:className "text-muted"}
+                                                (str "Artikelnummer: " id))))))))
 (def scarf-card (om/factory ScarfCard))
 
 (defui DreieckigEinfarbigEinfach
@@ -26,15 +33,18 @@
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
                                                {:scarf triangle/einfarbig-ohne-dekor
+                                                :id 5000
                                                 :title "Ohne Rand und Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-rand
-                                                :title "Mit einfachem Rand"})))
+                                               {:scarf triangle/einfarbig-borte
+                                                :id 5001
+                                                :title "Mit einfacher Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-borte
-                                                :title "Mit einfacher Borte"}))))))
+                                               {:scarf triangle/einfarbig-rand
+                                                :id 5002
+                                                :title "Mit einfachem Rand"}))))))
 (def dreieckig-einfarbig-einfach (om/factory DreieckigEinfarbigEinfach))
 
 (defui ListScarfs

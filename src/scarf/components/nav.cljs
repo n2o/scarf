@@ -16,10 +16,12 @@
          [:nav/category])
   Object
   (render [this]
-          (let [{:keys [whoami title body nav/category]} (om/props this)]
+          (let [{:keys [whoami title body nav/category disabled?]} (om/props this)]
             (dom/div #js {:className (str "card pointer"
-                                          (when (= category whoami) " card-outline-highlight"))
-                          :onClick #(change-category this whoami)}
+                                          (when (= category whoami) " card-outline-highlight")
+                                          (when disabled? " not-allowed text-muted"))
+                          :title "Mehr Kategorien folgen bald!"
+                          :onClick (when-not disabled? #(change-category this whoami))}
                      (dom/div #js {:className "card-block"}
                               (dom/h5 #js {:className "card-title"} title)
                               (dom/p #js {:className "card-text"} body))))))
@@ -42,15 +44,18 @@
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-einfarbig-doppelt
                                                                        :title "dreieckig, einfarbig"
-                                                                       :body "Mit doppeltem Rand / Borte"})))
+                                                                       :body "Mit doppeltem Rand / Borte"
+                                                                       :disabled? true})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-zweifarbig
                                                                        :title "dreieckig, zweifarbig"
-                                                                       :body "halb / halb senkrecht, mit und ohne Rand"})))
+                                                                       :body "halb / halb senkrecht, mit und ohne Rand"
+                                                                       :disabled? true})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :viereckig-zweifarbig
                                                                        :title "viereckig, zweifarbig"
-                                                                       :body "3/4 zu 1/4 horizontal, mit und ohne Rand"})))))))
+                                                                       :body "3/4 zu 1/4 horizontal, mit und ohne Rand"
+                                                                       :disabled? true})))))))
 (def categories (om/factory Categories))
 
 (defui SubCategories

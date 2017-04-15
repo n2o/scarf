@@ -23,9 +23,8 @@
 
 (defn switch-chosen-one
   "If current scarf is not active but it has been clicked, make it the new chosen one."
-  [this id thumbnail?]
-  (when thumbnail?
-    (om/transact! this `[(scarf/current {:id ~id})])))
+  [this id]
+  (om/transact! this `[(scarf/current {:id ~id})]))
 
 (defn change-cursor [thumbnail?]
   (if thumbnail? "pointer" "crosshair"))
@@ -39,7 +38,7 @@
 
 (defn svg-options [this id scale width height thumbnail?]
   #js {:className (gray-thumb thumbnail?)
-       :onClick #(switch-chosen-one this id thumbnail?)
+       ;; :onClick #(switch-chosen-one this id thumbnail?)
        :width (scale-dimension scale width)
        :height (scale-dimension scale height)
        :style #js {:cursor (change-cursor thumbnail?)}})

@@ -13,10 +13,6 @@
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
     (cond
-      (zero? current) (triangle/einfarbig-borte (om/props this))
-      (= -1 current) (triangle/einfarbig-ohne-dekor (om/props this))
-      (= 1 current) (triangle/einfarbig-rand (om/props this))
-      (= 2 current) (rolled/drei-streifen-mitte-halbiert (om/props this))
       (= 5000 current) (rolled/ohne-dekor (om/props this))
       (= 5001 current) (rolled/einfache-borte (om/props this))
       (= 5002 current) (rolled/einfacher-rand (om/props this)))))
@@ -60,7 +56,7 @@
   Object
   (render [this]
           (let [{:keys [color/selected]} (om/props this)]
-            (dom/div #js {:className "smooth"}
+            (dom/div #js {:className "smooth text-center"}
                      (when-not selected
                        (dom/p nil "Bitte wähle zunächst eine Farbe aus"))))))
 (def selection (om/factory Selection))
@@ -71,12 +67,11 @@
           (dom/div nil
                    (nav/products (om/props this))
                    (dom/hr nil)
+                   (selection (om/props this))
                    (dom/div #js {:className "text-center"
                                  :style #js {:padding "5rem"}}
                             (dispatch-current-scarf this))
-                   (dom/div nil
-                            (selection (om/props this))
-                            (colors (om/props this)))
+                   (colors (om/props this))
                    (dom/hr nil)
                    (calc/view (om/props this)))))
 
