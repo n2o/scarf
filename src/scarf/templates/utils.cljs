@@ -32,3 +32,14 @@
 
 (defn gray-thumb [thumbnail?]
   (when thumbnail? "grayscale smooth"))
+
+
+;; -----------------------------------------------------------------------------
+;; View components
+
+(defn svg-options [this id scale width height thumbnail?]
+  #js {:className (gray-thumb thumbnail?)
+       :onClick #(switch-chosen-one this id thumbnail?)
+       :width (scale-dimension scale width)
+       :height (scale-dimension scale height)
+       :style #js {:cursor (change-cursor thumbnail?)}})
