@@ -69,16 +69,14 @@
   Object
   (render [this]
           (dom/div nil
-                   (nav/categories (om/props this))
+                   (nav/products (om/props this))
                    (dom/hr nil)
-                   (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-12"}
-                                     (dispatch-current-scarf this)))
-                   (scarfs/list-scarfs (om/props this))
-                   (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-12"}
-                                     (selection (om/props this))
-                                     (colors (om/props this))))
+                   (dom/div #js {:className "text-center"
+                                 :style #js {:padding "5rem"}}
+                            (dispatch-current-scarf this))
+                   (dom/div nil
+                            (selection (om/props this))
+                            (colors (om/props this)))
                    (dom/hr nil)
                    (calc/view (om/props this)))))
 
