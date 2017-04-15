@@ -1,14 +1,14 @@
 (defproject scarf "0.2.106"
   :description "Create clickable SVG objects, which can be colorized"
   :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
-                 [org.clojure/clojurescript "1.9.495"]
+                 [org.clojure/clojurescript "1.9.521"]
                  [org.clojure/test.check "0.9.0"]
                  [org.omcljs/om "1.0.0-alpha48"]]
 
   :plugins [[lein-ancient "0.6.10"]
             [lein-cljsbuild "1.1.5" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.10.3"]
-            [lein-figwheel "0.5.9"]
+            [lein-figwheel "0.5.10"]
             [lein-kibit "0.1.3"]
             [lein-set-version "0.4.1"]]
 
@@ -32,8 +32,8 @@
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
-  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.2"]
-                                  [figwheel-sidecar "0.5.9"]
+  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.3"]
+                                  [figwheel-sidecar "0.5.10"]
                                   [com.cemerick/piggieback "0.2.1"]]
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src" "dev"]
