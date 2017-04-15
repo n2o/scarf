@@ -12,8 +12,8 @@
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
     (cond
-      (zero? current) (triangle/stripe-edge (om/props this))
-      (= 1 current) (triangle/stripe (om/props this))
+      (zero? current) (triangle/einfarbig-borte (om/props this))
+      (= 1 current) (triangle/einfarbig-rand (om/props this))
       (= 2 current) (rolled/three-stripes-mid-halved (om/props this)))))
 
 ;; -----------------------------------------------------------------------------

@@ -11,8 +11,8 @@
   (render [this]
           (let [scale 0.4]
             (dom/div nil
-                     (triangle/stripe-edge (merge (om/props this) {:thumbnail? true}))
-                     (triangle/stripe (merge (om/props this) {:thumbnail? true}))
+                     (triangle/einfarbig-rand (merge (om/props this) {:thumbnail? true}))
+                     (triangle/einfarbig-borte (merge (om/props this) {:thumbnail? true}))
                      (rolled/three-stripes-mid-halved (merge (om/props this) {:thumbnail? true}))))))
 (def list-scarfs (om/factory ListScarfs))
 
