@@ -11,6 +11,7 @@
   (render [this]
           (let [scale 0.4]
             (dom/div nil
+                     (triangle/einfarbig-ohne-dekor (merge (om/props this) {:thumbnail? true}))
                      (triangle/einfarbig-rand (merge (om/props this) {:thumbnail? true}))
                      (triangle/einfarbig-borte (merge (om/props this) {:thumbnail? true}))
                      (rolled/drei-streifen-mitte-halbiert (merge (om/props this) {:thumbnail? true}))
