@@ -10,7 +10,7 @@
 ;; -----------------------------------------------------------------------------
 
 (defui EinfarbigOhneDekor
-  "Dreieck mit Randstreifen."
+  "Dreieck ohne Dekor."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/current :color/selected])
@@ -51,11 +51,11 @@
                                               :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points  "247,0 29,0 138,109"}))))))
+                                              :points  "258,0 18,0 138,118"}))))))
 (def einfarbig-rand (om/factory EinfarbigRand))
 
 (defui EinfarbigBorte
-  "Dreieck mit dünnem Streifen und Randstück."
+  "Dreieck mit Borte."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
@@ -78,5 +78,5 @@
                                               :points  "266,0 247,0 138,109 29,0 10,0 138,127"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points  "247,0 29,0 138,109"}))))))
+                                              :points  "258,0 18,0 138,118"}))))))
 (def einfarbig-borte (om/factory EinfarbigBorte))
