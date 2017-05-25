@@ -14,13 +14,13 @@ lein do clean, cljsbuild once min
 
 echo "Add application"
 git add -f resources/public/index.html \
-    resources/public/bower_components/fontawesome/css/font-awesome.min.css \
-    resources/public/bower_components/bootstrap/dist/css/bootstrap.min.css \
+    resources/public/bower_components/fontawesome/css/font-awesome.css \
+    resources/public/bower_components/bootstrap/dist/css/bootstrap.css \
     resources/public/css/scarf.css \
     resources/public/img/ \
-    resources/public/bower_components/jquery/dist/jquery.min.js \
-    resources/public/bower_components/tether/dist/js/tether.min.js \
-    resources/public/bower_components/bootstrap/dist/js/bootstrap.min.js \
+    resources/public/bower_components/jquery/dist/jquery.js \
+    resources/public/bower_components/tether/dist/js/tether.js \
+    resources/public/bower_components/bootstrap/dist/js/bootstrap.js \
     resources/public/js/compiled/scarf.js
 
 echo "Remove remote gh-pages branch"
