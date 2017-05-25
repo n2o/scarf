@@ -12,7 +12,7 @@
          [:scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf id title body scarf/current]} (om/props this)]
+          (let [{:keys [scarf id title subtitle art-no body scarf/current]} (om/props this)]
             (dom/div #js {:className (str "card pointer text-center"
                                           (when (= id current) " card-outline-highlight"))
                           :onClick #(utils/switch-chosen-one this id)}
@@ -20,10 +20,11 @@
                                    :style #js {:padding "1rem"}}
                               (scarf (merge (om/props this) {:thumbnail? true})))
                      (dom/div #js {:className "card-block"}
-                              (dom/h5 #js {:className "card-title"} title)
+                              (dom/h5 #js {:className "card-title"}
+                                      (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
                               (dom/p #js {:className "card-text"}
                                      (dom/small #js {:className "text-muted"}
-                                                (str "Artikelnummer: " id))))))))
+                                                (str "Artikelnummer: " (if art-no art-no id)))))))))
 (def scarf-card (om/factory ScarfCard))
 
 (defui DreieckigEinfarbigEinfach
@@ -44,7 +45,9 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf triangle/einfarbig-rand
                                                 :id 5002
-                                                :title "Mit einfachem Rand"}))))))
+                                                :art-no "5002 / 5003"
+                                                :title "Mit einfachem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def dreieckig-einfarbig-einfach (om/factory DreieckigEinfarbigEinfach))
 
 (defui ListScarfs
