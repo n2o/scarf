@@ -17,7 +17,9 @@
         5000 (rolled/ohne-dekor (om/props this))
         5001 (rolled/einfache-borte (om/props this))
         5002 (rolled/einfacher-rand (om/props this))
-        5004 (rolled/einfarbig-doppelrand (om/props this))))))
+        5004 (rolled/einfarbig-doppelrand (om/props this))
+        5006 (rolled/einfarbig-doppelborte (om/props this))
+        nil))))
 
 ;; -----------------------------------------------------------------------------
 
