@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Delete local gh-pages branch"
-git branch -d gh-pages
+git branch -D gh-pages
 
 echo "Create fresh branch"
 git checkout -b gh-pages
