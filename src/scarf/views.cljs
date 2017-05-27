@@ -12,10 +12,11 @@
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
-    (cond
-      (= 5000 current) (rolled/ohne-dekor (om/props this))
-      (= 5001 current) (rolled/einfache-borte (om/props this))
-      (= 5002 current) (rolled/einfacher-rand (om/props this)))))
+    (case current
+      5000 (rolled/ohne-dekor (om/props this))
+      5001 (rolled/einfache-borte (om/props this))
+      5002 (rolled/einfacher-rand (om/props this))
+      5004 (rolled/einfarbig-doppelrand (om/props this)))))
 
 ;; -----------------------------------------------------------------------------
 
