@@ -29,3 +29,6 @@ git push origin --delete gh-pages
 echo "Publish application"
 git commit -m "Release to gh-pages"
 git subtree push --prefix resources/public origin gh-pages
+
+echo "Finished. Switching back to develop"
+git checkout develop
