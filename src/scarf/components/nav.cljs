@@ -46,8 +46,7 @@
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-einfarbig-doppelt
                                                                        :title "dreieckig, einfarbig"
-                                                                       :body "Mit doppeltem Rand / Borte"
-                                                                       :disabled? true})))
+                                                                       :body "Mit doppeltem Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :dreieckig-zweifarbig
                                                                        :title "dreieckig, zweifarbig"
@@ -68,9 +67,10 @@
   (render [this]
           (let [{:keys [nav/category]} (om/props this)]
             (dom/div nil
-                     (dom/h4 nil "Wähle ein Schnittmuster aus")
-                     (cond
-                       (= :dreieckig-einfarbig-einfach category) (scarfs/dreieckig-einfarbig-einfach (om/props this)))))))
+                     (dom/h4 nil "Wähle eine Variante aus")
+                     (case category
+                       :dreieckig-einfarbig-einfach (scarfs/dreieckig-einfarbig-einfach (om/props this))
+                       :dreieckig-einfarbig-doppelt (scarfs/dreieckig-einfarbig-doppelt (om/props this)))))))
 (def sub-categories (om/factory SubCategories))
 
 
