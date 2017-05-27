@@ -1,6 +1,6 @@
 (defproject scarf "0.2.129"
   :description "Create clickable SVG objects, which can be colorized"
-  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.521"]
                  [org.clojure/test.check "0.9.0"]
                  [org.omcljs/om "1.0.0-alpha48"]]
