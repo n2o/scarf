@@ -60,5 +60,10 @@
                                                 :id 5004
                                                 :art-no "5004 / 5005"
                                                 :title "Mit doppeltem Rand"
-                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+                                                :subtitle "umgeschlagen oder aufgesetzt"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf triangle/einfarbig-doppelborte
+                                                :id 5006
+                                                :title "Mit doppelter Borte"}))))))
 (def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
