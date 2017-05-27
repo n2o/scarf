@@ -50,17 +50,16 @@
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def dreieckig-einfarbig-einfach (om/factory DreieckigEinfarbigEinfach))
 
-(defui ListScarfs
+(defui DreieckigEinfarbigDoppelt
   Object
   (render [this]
-          (dom/div nil
-                   (triangle/einfarbig-ohne-dekor (merge (om/props this) {:thumbnail? true}))
-                   (triangle/einfarbig-rand (merge (om/props this) {:thumbnail? true}))
-                   (triangle/einfarbig-borte (merge (om/props this) {:thumbnail? true}))
-                   (rolled/drei-streifen-mitte-halbiert (merge (om/props this) {:thumbnail? true}))
-                   (rolled/ohne-dekor (merge (om/props this) {:thumbnail? true}))
-                   (rolled/einfache-borte (merge (om/props this) {:thumbnail? true}))
-                   (rolled/einfacher-rand (merge (om/props this) {:thumbnail? true})))))
-(def list-scarfs (om/factory ListScarfs))
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf triangle/einfarbig-doppelrand
+                                                :id 5004
+                                                :art-no "5004 / 5005"
+                                                :title "Mit doppeltem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+(def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
 
-;; (set! (.. (first (js/document.getElementsByTagName "g")) -style -transform) "scale(0.1)")

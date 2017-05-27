@@ -10,7 +10,7 @@
    :scarf/mid1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
    :scarf/mid2 {:id 11 :rgb "#1a6a30", :name "Smaragdgrün", :price (random-price 5)}
    :scarf/stripe1 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
-   :scarf/stripe2 {:id 18 :rgb "#7e7f84", :name "Grau", :price (random-price 5)}
+   :scarf/stripe2 {:id 17 :rgb "#f9f9f9", :name "Weiß", :price (random-price 5)}
    :scarf/stripe3 {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
    :scarf/current 5001
    :color/selected nil
