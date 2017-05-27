@@ -45,12 +45,13 @@
   static om/IQuery
   (query [this]
          `[{:color/items ~(om/get-query ColorBlock)}
-           :color/selected])
+           :color/selected :scarf/current :nav/category])
   Object
   (render [this]
-          (let [{:keys [color/items color/selected]} (om/props this)]
+          (let [{:keys [color/items color/selected scarf/current nav/category]} (om/props this)]
             (dom/div nil
-                     (map #(color-block (merge % {:selected selected})) items)))))
+                     (when (and current category)
+                       (map #(color-block (merge % {:selected selected})) items))))))
 (def colors (om/factory Colors))
 
 (defui Selection
