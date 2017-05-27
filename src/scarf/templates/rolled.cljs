@@ -168,6 +168,7 @@
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
                                               :fill s2
                                               :points "677.3,34.9 454.8,256.9 232.3,34.8 252.3,37.4 454.8,237.9 657.3,37.4"}))))))
+
 (def einfarbig-doppelrand (om/factory DreieckigEinfarbigDoppelrand))
 
 

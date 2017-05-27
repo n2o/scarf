@@ -19,7 +19,6 @@
         5002 (rolled/einfacher-rand (om/props this))
         5004 (rolled/einfarbig-doppelrand (om/props this))))))
 
-
 ;; -----------------------------------------------------------------------------
 
 (defui ColorBlock
