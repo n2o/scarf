@@ -1,6 +1,6 @@
 (ns scarf.specs
-  (:require [cljs.spec :as s]
-            [clojure.spec.test :as stest]))
+  (:require [cljs.spec.alpha :as s]
+            [clojure.spec.test.alpha :as stest]))
 
 (s/def ::id int?)
 (s/def ::rgb (s/and string?
@@ -13,3 +13,4 @@
 ;; (def colors (:color/items scarf.parser/init-data))
 ;; (map #(s/explain ::color %) colors)
 ;; (s/explain ::color (first colors))
+ 
