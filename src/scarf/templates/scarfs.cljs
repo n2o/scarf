@@ -24,7 +24,7 @@
                                       (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
                               (dom/p #js {:className "card-text"}
                                      (dom/small #js {:className "text-muted"}
-                                                (str "Artikelnummer: " (if art-no art-no id)))))))))
+                                                (str "Artikelnummer: " (or art-no id)))))))))
 (def scarf-card (om/factory ScarfCard))
 
 (defui DreieckigEinfarbigEinfach

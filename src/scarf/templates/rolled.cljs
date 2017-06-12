@@ -211,10 +211,10 @@
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
                                               :points "627.3,42.2 454.7,213.8 282.8,41.8 300.8,44 455.4,196.4 610.3,43.5"})
-                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
                                               :fill s2
                                               :points "652,38.2 454.8,235.9 258.2,37.9 276.8,40.1 454.8,215.9 632.1,40.6"})
-                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill cmid1
                                               :points "677.3,34.9 454.8,256.9 232.3,34.8 252.3,37.4 454.8,237.9 657.3,37.4"}))))))
 (def einfarbig-doppelborte (om/factory DreieckigEinfarbigDoppelborte))
