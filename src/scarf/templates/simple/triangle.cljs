@@ -4,9 +4,6 @@
             [scarf.templates.utils :as utils]
             [scarf.config :as config]))
 
-(def width (:thumbnail/width config/scarf))
-(def height (:thumbnail/height config/scarf))
-
 (defui OhneDekor
   "Dreieck ohne Dekor."
   static om/IQuery

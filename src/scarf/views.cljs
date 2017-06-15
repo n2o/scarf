@@ -7,6 +7,7 @@
             [scarf.templates.triangle :as triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.simple.rolled :as simple-rolled]
+            [scarf.templates.double.rolled :as double-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -18,8 +19,8 @@
         5000 (simple-rolled/ohne-dekor (om/props this))
         5001 (simple-rolled/borte (om/props this))
         5002 (simple-rolled/randstreifen (om/props this))
-        5004 (rolled/einfarbig-doppelrand (om/props this))
-        5006 (rolled/einfarbig-doppelborte (om/props this))
+        5004 (double-rolled/randstreifen (om/props this))
+        5006 (double-rolled/borte (om/props this))
         5007 (rolled/einfarbig-borte-gekreuzt (om/props this))
         5008 (rolled/einfarbig-borte-doppelt-gekreuzt (om/props this))
         nil))))
