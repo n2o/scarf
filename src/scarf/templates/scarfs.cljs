@@ -3,6 +3,7 @@
             [om.dom :as dom]
             [scarf.config :as config]
             [scarf.templates.triangle :as triangle]
+            [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -33,17 +34,17 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-ohne-dekor
+                                               {:scarf simple-triangle/einfarbig-ohne-dekor
                                                 :id 5000
                                                 :title "Ohne Rand und Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-borte
+                                               {:scarf simple-triangle/einfarbig-borte
                                                 :id 5001
                                                 :title "Mit einfacher Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-rand
+                                               {:scarf simple-triangle/einfarbig-rand
                                                 :id 5002
                                                 :art-no "5002 / 5003"
                                                 :title "Mit einfachem Rand"
