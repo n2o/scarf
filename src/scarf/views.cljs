@@ -4,19 +4,27 @@
             [om.dom :as dom]
             [scarf.components.calculator :as calc]
             [scarf.components.nav :as nav]
-            [scarf.templates.triangle :as triangle]
-            [scarf.templates.rolled :as rolled]
+            [scarf.templates.simple.rolled :as simple-rolled]
+            [scarf.templates.twice.rolled :as twice-rolled]
+            [scarf.templates.crossed.rolled :as crossed-rolled]
+            [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
-    (case current
-      5000 (rolled/ohne-dekor (om/props this))
-      5001 (rolled/einfache-borte (om/props this))
-      5002 (rolled/einfacher-rand (om/props this))
-      5004 (rolled/einfarbig-doppelrand (om/props this)))))
+    (when current
+      (case current
+        5000 (simple-rolled/ohne-dekor (om/props this))
+        5001 (simple-rolled/borte (om/props this))
+        5002 (simple-rolled/randstreifen (om/props this))
+        5004 (twice-rolled/randstreifen (om/props this))
+        5006 (twice-rolled/borte (om/props this))
+        5007 (crossed-rolled/einfache-borte (om/props this))
+        5008 (crossed-rolled/doppelte-borte (om/props this))
+        5009 (halved-rolled/ohne-dekor (om/props this))
+        nil))))
 
 ;; -----------------------------------------------------------------------------
 
@@ -42,12 +50,13 @@
   static om/IQuery
   (query [this]
          `[{:color/items ~(om/get-query ColorBlock)}
-           :color/selected])
+           :color/selected :scarf/current :nav/category])
   Object
   (render [this]
-          (let [{:keys [color/items color/selected]} (om/props this)]
+          (let [{:keys [color/items color/selected scarf/current nav/category]} (om/props this)]
             (dom/div nil
-                     (map #(color-block (merge % {:selected selected})) items)))))
+                     (when (and current category)
+                       (map #(color-block (merge % {:selected selected})) items))))))
 (def colors (om/factory Colors))
 
 (defui Selection
@@ -69,11 +78,11 @@
                    (nav/products (om/props this))
                    (dom/hr nil)
                    (selection (om/props this))
+                   (dom/div #js {:className "text-center"}
+                            (colors (om/props this)))
                    (dom/div #js {:className "text-center"
                                  :style #js {:padding "5rem"}}
                             (dispatch-current-scarf this))
-                   (dom/div #js {:className "text-center"}
-                            (colors (om/props this)))
                    (dom/hr nil)
                    (calc/view (om/props this)))))
 

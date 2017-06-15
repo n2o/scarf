@@ -2,10 +2,12 @@
   (:require [om.dom :as dom]
             [om.next :as om :refer-macros [defui]]
             [scarf.templates.scarfs :as scarfs]
+            [scarf.templates.utils :as utils]
             [scarf.parser :as parser]))
 
 (defn- change-category [this category]
-  (om/transact! this `[(nav/change-category {:category ~category})]))
+  (om/transact! this `[(nav/change-category {:category ~category})])
+  (utils/switch-chosen-one this nil))
 
 
 ;; -----------------------------------------------------------------------------
@@ -38,23 +40,21 @@
                    (dom/h3 nil "Kategorien")
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :dreieckig-einfarbig-einfach
-                                                                       :title "dreieckig, einfarbig"
+                                     (category (merge (om/props this) {:whoami :einfach
+                                                                       :title "einfarbig, einfach"
                                                                        :body "Mit und ohne einfachem Rand / Borte"})))
                             (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :dreieckig-einfarbig-doppelt
-                                                                       :title "dreieckig, einfarbig"
+                                     (category (merge (om/props this) {:whoami :doppelt
+                                                                       :title "einfarbig, doppelt"
                                                                        :body "Mit doppeltem Rand / Borte"})))
                             (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :dreieckig-zweifarbig
-                                                                       :title "dreieckig, zweifarbig"
-                                                                       :body "halb / halb senkrecht, mit und ohne Rand"
-                                                                       :disabled? true})))
+                                     (category (merge (om/props this) {:whoami :gekreuzt
+                                                                       :title "einfarbig, gekreuzt"
+                                                                       :body "Mit gekreuzten Borten"})))
                             (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :viereckig-zweifarbig
-                                                                       :title "viereckig, zweifarbig"
-                                                                       :body "3/4 zu 1/4 horizontal, mit und ohne Rand"
-                                                                       :disabled? true})))))))
+                                     (category (merge (om/props this) {:whoami :halbiert
+                                                                       :title "zweifarbig, einfach"
+                                                                       :body "Mit und ohne einfachem Rand / Borte"})))))))
 (def categories (om/factory Categories))
 
 (defui SubCategories
@@ -65,10 +65,13 @@
   (render [this]
           (let [{:keys [nav/category]} (om/props this)]
             (dom/div nil
-                     (dom/h4 nil "Wähle ein Schnittmuster aus")
+                     (dom/h4 nil "Wähle eine Variante aus")
                      (case category
-                       :dreieckig-einfarbig-einfach (scarfs/dreieckig-einfarbig-einfach (om/props this))
-                       :dreieckig-einfarbig-doppelt (scarfs/dreieckig-einfarbig-doppelt (om/props this)))))))
+                       :einfach (scarfs/einfach (om/props this))
+                       :doppelt (scarfs/doppelt (om/props this))
+                       :gekreuzt (scarfs/gekreuzt (om/props this))
+                       :halbiert (scarfs/halbiert (om/props this))
+                       nil)))))
 (def sub-categories (om/factory SubCategories))
 
 

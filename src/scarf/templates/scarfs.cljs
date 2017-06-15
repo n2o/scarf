@@ -2,7 +2,10 @@
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.config :as config]
-            [scarf.templates.triangle :as triangle]
+            [scarf.templates.simple.triangle :as simple-triangle]
+            [scarf.templates.twice.triangle :as twice-triangle]
+            [scarf.templates.crossed.triangle :as crossed-triangle]
+            [scarf.templates.halved.triangle :as halved-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -24,42 +27,75 @@
                                       (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
                               (dom/p #js {:className "card-text"}
                                      (dom/small #js {:className "text-muted"}
-                                                (str "Artikelnummer: " (if art-no art-no id)))))))))
+                                                (str "Artikelnummer: " (or art-no id)))))))))
 (def scarf-card (om/factory ScarfCard))
 
-(defui DreieckigEinfarbigEinfach
+(defui Einfach
   Object
   (render [this]
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-ohne-dekor
+                                               {:scarf simple-triangle/ohne-dekor
                                                 :id 5000
                                                 :title "Ohne Rand und Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-borte
+                                               {:scarf simple-triangle/borte
                                                 :id 5001
                                                 :title "Mit einfacher Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-rand
+                                               {:scarf simple-triangle/randstreifen
                                                 :id 5002
                                                 :art-no "5002 / 5003"
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
-(def dreieckig-einfarbig-einfach (om/factory DreieckigEinfarbigEinfach))
+(def einfach (om/factory Einfach))
 
-(defui DreieckigEinfarbigDoppelt
+(defui Doppelt
   Object
   (render [this]
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-doppelrand
+                                               {:scarf twice-triangle/randstreifen
                                                 :id 5004
                                                 :art-no "5004 / 5005"
                                                 :title "Mit doppeltem Rand"
-                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
-(def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
+                                                :subtitle "umgeschlagen oder aufgesetzt"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf twice-triangle/borte
+                                                :id 5006
+                                                :title "Mit doppelter Borte"}))))))
+(def doppelt (om/factory Doppelt))
 
+
+;; Gekreuzte Borten
+(defui Gekreuzt
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf crossed-triangle/einfache-borte
+                                                :id 5007
+                                                :title "Mit gekreuzter Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf crossed-triangle/doppelte-borte
+                                                :id 5008
+                                                :title "Mit gekreuzter Doppelborte"}))))))
+(def gekreuzt (om/factory Gekreuzt))
+
+(defui Halbiert
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/ohne-dekor
+                                                :id 5009
+                                                :title "Ohne Rand und Borte"}))))))
+(def halbiert (om/factory Halbiert))
