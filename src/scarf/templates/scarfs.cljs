@@ -2,9 +2,9 @@
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.config :as config]
-            [scarf.templates.triangle :as triangle]
             [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.twice.triangle :as twice-triangle]
+            [scarf.templates.crossed.triangle :as crossed-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -78,12 +78,12 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-borte-gekreuzt
+                                               {:scarf crossed-triangle/einfache-borte
                                                 :id 5007
                                                 :title "Mit gekreuzter Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-borte-doppelt-gekreuzt
+                                               {:scarf crossed-triangle/doppelte-borte
                                                 :id 5008
                                                 :title "Mit gekreuzter Doppelborte"}))))))
 (def einfarbig-gekreuzt (om/factory EinfarbigGekreuzt))

@@ -4,10 +4,9 @@
             [om.dom :as dom]
             [scarf.components.calculator :as calc]
             [scarf.components.nav :as nav]
-            [scarf.templates.triangle :as triangle]
-            [scarf.templates.rolled :as rolled]
             [scarf.templates.simple.rolled :as simple-rolled]
             [scarf.templates.twice.rolled :as twice-rolled]
+            [scarf.templates.crossed.rolled :as crossed-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -21,8 +20,8 @@
         5002 (simple-rolled/randstreifen (om/props this))
         5004 (twice-rolled/randstreifen (om/props this))
         5006 (twice-rolled/borte (om/props this))
-        5007 (rolled/einfarbig-borte-gekreuzt (om/props this))
-        5008 (rolled/einfarbig-borte-doppelt-gekreuzt (om/props this))
+        5007 (crossed-rolled/einfache-borte (om/props this))
+        5008 (crossed-rolled/doppelte-borte (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------
