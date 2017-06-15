@@ -20,7 +20,7 @@
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             ;; Background
-                            scarf-background 
+                            scarf-background
                             ;; Far left to mid
                             (create-path this "mid1" cmid1 "M121.3,55.8c0,0-19.9-1.9-46.4-16.3C64.5,34,34.6,15.3,34.6,15.3S52,18,64.7,25.8  C80.5,35.6,121.3,55.8,121.3,55.8z")
                             (create-path this "stripe1" borte "M144.2,57.5c0,0-18.9-1.8-45.5-16.1c-10.3-5.6-37.7-21.7-37.7-21.7s15.6,0.2,28.3,8  C105.2,37.5,144.2,57.5,144.2,57.5z")
