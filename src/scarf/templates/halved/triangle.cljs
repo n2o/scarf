@@ -7,12 +7,12 @@
   "Dreieck ohne Dekor."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid1 :scarf/current :color/selected])
   Object
   (render [this]
-          (let [id 5000
-                {:keys [scarf/mid1 scarf/current thumbnail?]} (om/props this)
-                c1 (:rgb mid1)
+          (let [id 5009
+                {:keys [scarf/mid1 scarf/mid2 scarf/current thumbnail?]} (om/props this)
+                c1 (:rgb mid1) c2 (:rgb mid2)
                 width 266
                 height 130
                 scale (utils/scale-to-width thumbnail? width)
@@ -21,5 +21,8 @@
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "266,0 0,0 133,127"}))))))
+                                              :points "0,0 133,127 133,0"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid2)
+                                              :fill c2
+                                              :points "133,127 266,0 133,0"}))))))
 (def ohne-dekor (om/factory OhneDekor))

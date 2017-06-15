@@ -7,6 +7,7 @@
             [scarf.templates.simple.rolled :as simple-rolled]
             [scarf.templates.twice.rolled :as twice-rolled]
             [scarf.templates.crossed.rolled :as crossed-rolled]
+            [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -22,6 +23,7 @@
         5006 (twice-rolled/borte (om/props this))
         5007 (crossed-rolled/einfache-borte (om/props this))
         5008 (crossed-rolled/doppelte-borte (om/props this))
+        5009 (halved-rolled/ohne-dekor (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------

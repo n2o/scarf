@@ -69,7 +69,9 @@
                      (case category
                        :einfach (scarfs/einfach (om/props this))
                        :doppelt (scarfs/doppelt (om/props this))
-                       :gekreuzt (scarfs/gekreuzt (om/props this)))))))
+                       :gekreuzt (scarfs/gekreuzt (om/props this))
+                       :halbiert (scarfs/halbiert (om/props this))
+                       nil)))))
 (def sub-categories (om/factory SubCategories))
 
 
