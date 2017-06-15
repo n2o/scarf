@@ -141,3 +141,67 @@
                                               :fill c1
                                               :points  "250,0 26,0 138,110"}))))))
 (def einfarbig-doppelborte (om/factory EinfarbigDoppelborte))
+
+
+;; -----------------------------------------------------------------------------
+;; Kategorie: Gekreuzte Borten
+
+(defui EinfarbigBorteGekreuzt
+  "Dreieck mit gekreuzter Borte."
+  static om/IQuery
+  (query [this]
+         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+  Object
+  (render [this]
+          (let [id 5007
+                {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
+                c1 (:rgb mid1) c2 (:rgb stripe1)
+                width 276
+                height 140
+                scale (utils/scale-to-width thumbnail? width)
+                colorize #(utils/colorize this thumbnail? %)]
+            (dom/svg (utils/svg-options this id scale width height thumbnail?)
+                     (dom/g #js {:transform (str "scale(" scale ")")}
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid1)
+                                              :fill c1
+                                              :points "266,0 138,127 10,0 3,0 138,135 273,0"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid1)
+                                              :fill c1
+                                              :points "258,0 18,0 138,118"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill c2
+                                              :points "266,0 258,0 129,126 134,131"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill c2
+                                              :points  "10,0 18,0 147,126 142,131"}))))))
+(def einfarbig-borte-gekreuzt (om/factory EinfarbigBorteGekreuzt))
+
+(defui EinfarbigBorteDoppeltGekreuzt
+  "Dreieck mit gekreuzter Doppelborte."
+  static om/IQuery
+  (query [this]
+         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+  Object
+  (render [this]
+          (let [id 5008
+                {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
+                c1 (:rgb mid1) c2 (:rgb stripe1)
+                width 276
+                height 140
+                scale (utils/scale-to-width thumbnail? width)
+                colorize #(utils/colorize this thumbnail? %)]
+            (dom/svg (utils/svg-options this id scale width height thumbnail?)
+                     (dom/g #js {:transform (str "scale(" scale ")")}
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid1)
+                                              :fill c1
+                                              :points "266,0 138,127 10,0 3,0 138,135 273,0"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/mid1)
+                                              :fill c1
+                                              :points "258,0 18,0 138,118"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill c2
+                                              :points "266,0 258,0 129,126 134,131"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill c2
+                                              :points  "10,0 18,0 147,126 142,131"}))))))
+(def einfarbig-borte-doppelt-gekreuzt (om/factory EinfarbigBorteDoppeltGekreuzt))

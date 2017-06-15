@@ -67,3 +67,21 @@
                                                 :id 5006
                                                 :title "Mit doppelter Borte"}))))))
 (def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
+
+
+;; Gekreuzte Borten
+(defui EinfarbigGekreuzt
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf triangle/einfarbig-borte-gekreuzt
+                                                :id 5007
+                                                :title "Mit gekreuzter Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf triangle/einfarbig-borte-doppelt-gekreuzt
+                                                :id 5008
+                                                :title "Mit gekreuzter Doppelborte"}))))))
+(def einfarbig-gekreuzt (om/factory EinfarbigGekreuzt))

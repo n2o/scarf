@@ -48,10 +48,9 @@
                                                                        :title "dreieckig, einfarbig"
                                                                        :body "Mit doppeltem Rand / Borte"})))
                             (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :dreieckig-zweifarbig
-                                                                       :title "dreieckig, zweifarbig"
-                                                                       :body "halb / halb senkrecht, mit und ohne Rand"
-                                                                       :disabled? true})))
+                                     (category (merge (om/props this) {:whoami :einfarbig-gekreuzt
+                                                                       :title "einfarbig, gekreuzt"
+                                                                       :body "Mit gekreuzten Borten"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :viereckig-zweifarbig
                                                                        :title "viereckig, zweifarbig"
@@ -70,7 +69,8 @@
                      (dom/h4 nil "Wähle eine Variante aus")
                      (case category
                        :dreieckig-einfarbig-einfach (scarfs/dreieckig-einfarbig-einfach (om/props this))
-                       :dreieckig-einfarbig-doppelt (scarfs/dreieckig-einfarbig-doppelt (om/props this)))))))
+                       :dreieckig-einfarbig-doppelt (scarfs/dreieckig-einfarbig-doppelt (om/props this))
+                       :einfarbig-gekreuzt (scarfs/einfarbig-gekreuzt (om/props this)))))))
 (def sub-categories (om/factory SubCategories))
 
 
