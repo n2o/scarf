@@ -19,6 +19,7 @@
         5002 (rolled/einfacher-rand (om/props this))
         5004 (rolled/einfarbig-doppelrand (om/props this))
         5006 (rolled/einfarbig-doppelborte (om/props this))
+        5007 (rolled/einfarbig-borte-gekreuzt (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------
