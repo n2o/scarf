@@ -4,7 +4,7 @@
             [scarf.config :as config]
             [scarf.templates.triangle :as triangle]
             [scarf.templates.simple.triangle :as simple-triangle]
-            [scarf.templates.double.triangle :as double-triangle]
+            [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -58,14 +58,14 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf double-triangle/randstreifen
+                                               {:scarf twice-triangle/randstreifen
                                                 :id 5004
                                                 :art-no "5004 / 5005"
                                                 :title "Mit doppeltem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf double-triangle/borte
+                                               {:scarf twice-triangle/borte
                                                 :id 5006
                                                 :title "Mit doppelter Borte"}))))))
 (def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
