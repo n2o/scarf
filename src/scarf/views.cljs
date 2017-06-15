@@ -6,6 +6,7 @@
             [scarf.components.nav :as nav]
             [scarf.templates.triangle :as triangle]
             [scarf.templates.rolled :as rolled]
+            [scarf.templates.simple.rolled :as simple-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -14,9 +15,9 @@
   (let [{:keys [scarf/current]} (om/props this)]
     (when current
       (case current
-        5000 (rolled/ohne-dekor (om/props this))
-        5001 (rolled/einfache-borte (om/props this))
-        5002 (rolled/einfacher-rand (om/props this))
+        5000 (simple-rolled/ohne-dekor (om/props this))
+        5001 (simple-rolled/borte (om/props this))
+        5002 (simple-rolled/randstreifen (om/props this))
         5004 (rolled/einfarbig-doppelrand (om/props this))
         5006 (rolled/einfarbig-doppelborte (om/props this))
         5007 (rolled/einfarbig-borte-gekreuzt (om/props this))

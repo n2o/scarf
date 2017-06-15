@@ -34,17 +34,17 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf simple-triangle/einfarbig-ohne-dekor
+                                               {:scarf simple-triangle/ohne-dekor
                                                 :id 5000
                                                 :title "Ohne Rand und Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf simple-triangle/einfarbig-borte
+                                               {:scarf simple-triangle/borte
                                                 :id 5001
                                                 :title "Mit einfacher Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf simple-triangle/einfarbig-rand
+                                               {:scarf simple-triangle/rand
                                                 :id 5002
                                                 :art-no "5002 / 5003"
                                                 :title "Mit einfachem Rand"
