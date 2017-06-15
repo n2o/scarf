@@ -55,7 +55,7 @@
                                               :points "258,0 18,0 138,118"}))))))
 (def borte (om/factory Borte))
 
-(defui EinfarbigRand
+(defui Rand
   "Dreieck mit Randstreifen."
   static om/IQuery
   (query [this]
@@ -77,5 +77,4 @@
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
                                               :points "258,0 18,0 138,118"}))))))
-(def einfarbig-rand (om/factory EinfarbigRand))
-
+(def randstreifen (om/factory Rand))

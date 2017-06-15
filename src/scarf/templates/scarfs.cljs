@@ -4,6 +4,7 @@
             [scarf.config :as config]
             [scarf.templates.triangle :as triangle]
             [scarf.templates.simple.triangle :as simple-triangle]
+            [scarf.templates.double.triangle :as double-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -44,7 +45,7 @@
                                                 :title "Mit einfacher Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf simple-triangle/rand
+                                               {:scarf simple-triangle/randstreifen
                                                 :id 5002
                                                 :art-no "5002 / 5003"
                                                 :title "Mit einfachem Rand"
@@ -57,14 +58,14 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-doppelrand
+                                               {:scarf double-triangle/randstreifen
                                                 :id 5004
                                                 :art-no "5004 / 5005"
                                                 :title "Mit doppeltem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf triangle/einfarbig-doppelborte
+                                               {:scarf double-triangle/borte
                                                 :id 5006
                                                 :title "Mit doppelter Borte"}))))))
 (def dreieckig-einfarbig-doppelt (om/factory DreieckigEinfarbigDoppelt))
