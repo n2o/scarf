@@ -1,8 +1,7 @@
 (ns scarf.templates.simple.triangle
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.templates.utils :as utils]
-            [scarf.config :as config]))
+            [scarf.templates.utils :as utils]))
 
 (defui OhneDekor
   "Dreieck ohne Dekor."

@@ -1,7 +1,6 @@
 (ns scarf.templates.simple.rolled
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.templates.utils :as utils]
             [scarf.templates.utils :refer [create-path scarf-background] :as utils]))
 
 (defui OhneDekor

@@ -1,4 +1,4 @@
-(ns scarf.templates.double.triangle
+(ns scarf.templates.twice.triangle
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.templates.utils :as utils]
