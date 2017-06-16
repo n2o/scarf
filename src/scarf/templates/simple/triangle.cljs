@@ -33,7 +33,7 @@
   (render [this]
           (let [id 5001
                 {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
-                c1 (:rgb mid1) c2 (:rgb stripe1)
+                c1 (:rgb mid1) s1 (:rgb stripe1)
                 width 276
                 height 140
                 scale (utils/scale-to-width thumbnail? width)
@@ -44,7 +44,7 @@
                                               :fill c1
                                               :points "266,0 138,127 10,0 3,0 138,135 273,0"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
-                                              :fill c2
+                                              :fill s1
                                               :points "266,0 258,0 138,117 18,0 10,0 138,127"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1

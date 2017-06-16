@@ -97,5 +97,10 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf halved-triangle/ohne-dekor
                                                 :id 5009
-                                                :title "Ohne Rand und Borte"}))))))
+                                                :title "Ohne Rand und Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/borte
+                                                :id 5010
+                                                :title "Mit einfacher Borte"}))))))
 (def halbiert (om/factory Halbiert))
