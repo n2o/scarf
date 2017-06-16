@@ -25,6 +25,7 @@
         5008 (crossed-rolled/doppelte-borte (om/props this))
         5009 (halved-rolled/ohne-dekor (om/props this))
         5010 (halved-rolled/borte (om/props this))
+        5011 (halved-rolled/randstreifen (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------
