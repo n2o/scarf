@@ -102,5 +102,12 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf halved-triangle/borte
                                                 :id 5010
-                                                :title "Mit einfacher Borte"}))))))
+                                                :title "Mit einfacher Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/randstreifen
+                                                :id 5011
+                                                :art-no "5011 / 5012"
+                                                :title "Mit einfachem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def halbiert (om/factory Halbiert))
