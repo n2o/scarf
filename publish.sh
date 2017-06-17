@@ -24,6 +24,7 @@ git add -f resources/public/index.html \
     resources/public/bower_components/tether/dist/js/tether.min.js \
     resources/public/bower_components/bootstrap/dist/js/bootstrap.min.js \
     resources/public/bower_components/lightbox2/dist/js/lightbox.min.js \
+    resources/public/bower_components/lightbox2/dist/images/ \
     resources/public/js/compiled/scarf.js
 
 echo "Remove remote gh-pages branch"
