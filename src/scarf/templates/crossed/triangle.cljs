@@ -30,7 +30,7 @@
                                               :points "266,0 258,0 129,126 134,131"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill c2
-                                              :points  "10,0 18,0 147,126 142,131"}))))))
+                                              :points "10,0 18,0 147,126 142,131"}))))))
 (def einfache-borte (om/factory EinfacheBorte))
 
 (defui DoppelteBorte

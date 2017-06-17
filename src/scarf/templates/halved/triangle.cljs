@@ -7,7 +7,7 @@
   "Dreieck, halbiert ohne Dekor."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid2 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 5009
@@ -31,7 +31,7 @@
   "Dreieck, halbiert mit Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 5010
@@ -58,7 +58,7 @@
   "Dreieck, halbiert mit Randstreifen."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 5011

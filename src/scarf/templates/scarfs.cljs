@@ -90,6 +90,28 @@
                                                 :title "Mit gekreuzter Doppelborte"}))))))
 (def gekreuzt (om/factory Gekreuzt))
 
+
+;; Zweifarbige Schenkel
+(defui ZweifarbigeSchenkel
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf crossed-triangle/einfache-borte
+                                                :id 5016
+                                                :title "Mit zweifarbiger Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf twice-triangle/randstreifen
+                                                :id 5017
+                                                :art-no "5017 / 5018"
+                                                :title "Mit zweifarbigem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+(def zweifarbige-schenkel (om/factory ZweifarbigeSchenkel))
+
+
+;; Zweifarbige Mitte
 (defui Halbiert
   Object
   (render [this]

@@ -31,7 +31,7 @@
   "Dreieck, geviertelt mit Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 5014
@@ -58,7 +58,7 @@
   "Dreieck, geviertelt mit Rand."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
           (let [id 5015
