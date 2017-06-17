@@ -8,7 +8,6 @@
             [scarf.templates.halved.triangle :as halved-triangle]
             [scarf.templates.quartered.triangle :as quartered-triangle]
             [scarf.templates.twolegs.triangle :as twolegs-triangle]
-            [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
 (defui ScarfCard
