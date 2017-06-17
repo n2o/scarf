@@ -46,7 +46,7 @@
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :einfach
                                                                        :title "einfach"
-                                                                       :body "Mit und ohne einfachem Rand / Borte"})))
+                                                                       :body "Mit und ohne Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :doppelt
                                                                        :title "doppelt"
@@ -54,18 +54,22 @@
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :gekreuzt
                                                                        :title "gekreuzt"
-                                                                       :body "Mit gekreuzten Borten"}))))
+                                                                       :body "Mit gekreuzten Borten"})))
+                            (dom/div #js {:className "col"}
+                                     (category (merge (om/props this) {:whoami :zweifarbige-schenkel
+                                                                       :title "einfach"
+                                                                       :body "Mit zweifarbigem Rand / Borte"}))))
                    (dom/br nil)
                    (dom/h6 nil "Zweifarbig")
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :halbiert
                                                                        :title "vertikal geteilt, 1/2 zu 1/2"
-                                                                       :body "Mit und ohne einfachem Rand / Borte"})))
+                                                                       :body "Mit und ohne Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :geviertelt
                                                                        :title "horizontal geteilt, 3/4 zu 1/4"
-                                                                       :body "Mit und ohne einfachem Rand / Borte"})))))))
+                                                                       :body "Mit und ohne Rand / Borte"})))))))
 (def categories (om/factory Categories))
 
 (defui SubCategories
@@ -83,6 +87,7 @@
                        :gekreuzt (scarfs/gekreuzt (om/props this))
                        :halbiert (scarfs/halbiert (om/props this))
                        :geviertelt (scarfs/geviertelt (om/props this))
+                       :zweifarbige-schenkel (scarfs/zweifarbige-schenkel (om/props this))
                        nil)))))
 (def sub-categories (om/factory SubCategories))
 
