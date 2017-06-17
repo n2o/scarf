@@ -3,9 +3,6 @@
             [om.dom :as dom]
             [scarf.config :as config]))
 
-(def config-width (:thumbnail/width config/scarf))
-(def config-height (:thumbnail/height config/scarf))
-
 (defn scale-dimension [scale dimension]
   (str (* scale dimension) "px"))
 

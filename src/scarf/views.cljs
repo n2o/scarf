@@ -86,7 +86,7 @@
                    (dom/hr nil)
                    (selection (om/props this))
                    (dom/div #js {:className "text-center"
-                                 :style #js {:padding "5rem"}}
+                                 :style #js {:padding "3rem 0"}}
                             (dispatch-current-scarf this))
                    (dom/div #js {:className "text-center"}
                             (colors (om/props this)))
