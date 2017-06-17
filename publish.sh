@@ -32,3 +32,7 @@ git subtree push --prefix resources/public origin gh-pages
 
 echo "Finished. Switching back to develop"
 git checkout develop
+
+rm -r resources/public/bower_components
+bower install
+sass resources/public/css/scarf.sass resources/public/css/scarf.css --style compressed
