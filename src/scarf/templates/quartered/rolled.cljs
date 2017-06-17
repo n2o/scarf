@@ -69,9 +69,43 @@
                             (create-path this "mid2" c2 "m 390.34813,192.74338 19.15362,0 45.49937,44.89917 45.11346,-44.89917 19.11276,0 -64.22622,65.26159 c 0.1,0 -64.65299,-65.26159 -64.65299,-65.26159 z")
                             (create-path this "mid2" c2 "m 433.94259,192.74338 42.40431,0 -21.54466,21.58885 c 0.1,0 -20.85965,-21.58885 -20.85965,-21.58885 z")
                             (create-path this "mid1" c1 "m 501.61492,191.25 h 19.10293 c 0,0 146.76179,-146.04859 156.58215,-156.35 l -20,2.5 c -4.49089,3.02478 -155.68508,153.85 -155.68508,153.85 z")
-                            (create-path this "mid1" c1 "")
-                            (create-path this "mid1" c1 "")
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill borte
                                               :points "652,38.2 454.8,235.9 258.2,37.9 276.8,40.1 454.8,215.9 632.1,40.6"}))))))
 (def borte (om/factory Borte))
+
+(defui Rand
+  "Gerolltes Halstuch, zweifarbig, halbiert mit einfachem Rand."
+  static om/IQuery
+  (query [this]
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
+  Object
+  (render [this]
+          (let [id 5011
+                {:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/current width thumbnail?]} (om/props this)
+                c1 (:rgb mid1) c2 (:rgb mid2) stripe (:rgb stripe1)
+                height 273
+                width 903
+                scale (utils/scale-to-width thumbnail? width)
+                colorize #(utils/colorize this thumbnail? %)]
+            (dom/svg (utils/svg-options this id scale width height thumbnail?)
+                     (dom/g #js {:transform (str "scale(" scale ")")}
+                            ;; Background
+                            scarf-background
+                            ;; Far left to mid
+                            (create-path this "stripe1" stripe "M121.3,55.8c0,0-19.9-1.9-46.4-16.3C64.5,34,34.6,15.3,34.6,15.3S52,18,64.7,25.8  C80.5,35.6,121.3,55.8,121.3,55.8z")
+                            (create-path this "mid1" c1 "m 182.3967,63.472237 c 0,0 -1.60801,0.697152 -12.90852,-1.166977 -14.5476,-2.399768 -18.39909,1.021214 -42.24973,-6.618874 C 115.66479,51.324572 61,19.7 61,19.7 c 0,0 65.34951,9.252226 75.31393,11.499477 3.99973,3.059652 15.63504,11.922692 27.55681,20.24189 12.41108,8.660649 18.52596,12.03087 18.52596,12.03087 z")
+                            (create-path this "stripe1" stripe "M212.3,68.8c0,0-16.3,1.1-46.1-18.8c-9.8-6.5-34.3-26.7-34.3-26.7s14.2-0.1,23,7.3  C170.4,43.5,212.3,68.8,212.3,68.8z")
+                            (create-path this "mid1" c1 "m 271.61451,78.578186 c 0,0 -47.4793,-6.447328 -64.50486,-16.342036 C 197.30965,55.73615 157.8,28.5 157.8,28.5 l 77.03112,13.763332 c 15.3,14.5 36.78339,36.314854 36.78339,36.314854 z")
+                            ;; Far right to mid
+                            (create-path this "stripe1" stripe "M788.2,55.8c0,0,19.9-1.9,46.4-16.3c10.3-5.6,40.2-24.3,40.2-24.3s-17.4,2.7-30,10.5  C829,35.6,788.2,55.8,788.2,55.8z")
+                            (create-path this "mid1" c1 "m 726.53722,63.074477 c 0,0 27.69462,-4.352646 54.38026,-6.235126 C 793.39747,51.602683 848.4,19.7 848.4,19.7 l -43.67213,6.6103 -31.38745,3.720558 c -13.5165,14.598933 -46.8032,33.043619 -46.8032,33.043619 z")
+                            (create-path this "stripe1" stripe "M697.2,68.8c0,0,16.3,1.1,46.1-18.8c9.8-6.5,34.3-26.7,34.3-26.7s-14.2-0.1-23,7.3  C739.1,43.5,697.2,68.8,697.2,68.8z")
+                            (create-path this "mid1" c1 "m 639.18884,78.010627 c 0,0 20.91272,-5.023388 53.2675,-9.951088 C 702.25634,61.559539 751.7,28.5 751.7,28.5 l -78,13.4 c -15.3,14.5 -34.51116,36.110627 -34.51116,36.110627 z")
+                            ;; Mid
+                            (create-path this "mid1" c1 "m 255.83834,37.657779 c 3.51941,1.18966 89.61679,14.614637 199.03554,14.347196 111.32071,-0.27209 199.32181,-13.874906 199.32181,-13.874906 l -153.40567,152.143561 -91.01186,0 c 0.1,0 -161.5143,-159.91265 -153.93982,-152.615851 z")
+                            (create-path this "mid2" c2 "m 410.99219,191.68665 h 88.61718 l -44.8125,43.93835 z")
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill stripe
+                                              :points "677.3,34.9 454.8,256.9 232.3,34.8 252.3,37.4 454.8,237.9 657.3,37.4"}))))))
+(def randstreifen (om/factory Rand))

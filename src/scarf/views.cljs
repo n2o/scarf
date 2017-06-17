@@ -29,6 +29,7 @@
         5011 (halved-rolled/randstreifen (om/props this))
         5013 (quartered-rolled/ohne-dekor (om/props this))
         5014 (quartered-rolled/borte (om/props this))
+        5015 (quartered-rolled/randstreifen (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------

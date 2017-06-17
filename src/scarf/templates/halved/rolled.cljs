@@ -74,7 +74,7 @@
 (def borte (om/factory Borte))
 
 (defui Rand
-  "Gerolltes Halstuch, einfarbig, halbiert mit einfachem Rand."
+  "Gerolltes Halstuch, zweifarbig, halbiert mit einfachem Rand."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
