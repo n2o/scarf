@@ -121,5 +121,17 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf quartered-triangle/ohne-dekor
                                                 :id 5013
-                                                :title "Ohne Rand und Borte"}))))))
+                                                :title "Ohne Rand und Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf quartered-triangle/borte
+                                                :id 5014
+                                                :title "Mit einfacher Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf quartered-triangle/randstreifen
+                                                :id 5015
+                                                :art-no "5015 / 5016"
+                                                :title "Mit einfachem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def geviertelt (om/factory Viertel))
