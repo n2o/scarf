@@ -6,6 +6,7 @@
             [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.crossed.triangle :as crossed-triangle]
             [scarf.templates.halved.triangle :as halved-triangle]
+            [scarf.templates.quartered.triangle :as quartered-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -118,7 +119,7 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf halved-triangle/ohne-dekor
+                                               {:scarf quartered-triangle/ohne-dekor
                                                 :id 5013
                                                 :title "Ohne Rand und Borte"}))))))
 (def geviertelt (om/factory Viertel))
