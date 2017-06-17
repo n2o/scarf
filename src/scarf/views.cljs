@@ -38,7 +38,7 @@
 (defui ColorBlock
   static om/IQuery
   (query [this]
-         [:rgb :name :price])
+         [:id :rgb :name :price])
   static om/Ident
   (ident [this {:keys [id]}]
          [:color/by-id id])
@@ -50,7 +50,8 @@
                           :onClick #(om/transact! this `[(color/selected ~color)])
                           :style #js {:backgroundColor rgb}}
                      (dom/div #js {:className "color-block"})
-                     (dom/span #js {:className "tooltiptext"} name)))))
+                     (dom/span #js {:className "tooltiptext"}
+                               (dom/span nil name) (dom/br nil) (dom/span nil id))))))
 (def color-block (om/factory ColorBlock {:keyfn :id}))
 
 (defui Colors
