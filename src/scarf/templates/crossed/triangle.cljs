@@ -55,16 +55,16 @@
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
                                               :points "258,0 18,0 138,118"})
-                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
-                                              :fill s1
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
+                                              :fill s2
                                               :points "266,0 258,0 129,126 134,131"})
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
+                                              :fill s2
+                                              :points "10,0 18,0 147,126 142,131"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
-                                              :points "10,0 18,0 147,126 142,131"})
-                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
-                                              :fill s2
                                               :points "258,0 250,0 124,121 129,126"})
-                            (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
-                                              :fill s2
+                            (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
+                                              :fill s1
                                               :points "18,0 26,0 152,121 147,126"}))))))
 (def doppelte-borte (om/factory DoppelteBorte))
