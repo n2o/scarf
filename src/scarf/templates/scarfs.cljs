@@ -7,6 +7,7 @@
             [scarf.templates.crossed.triangle :as crossed-triangle]
             [scarf.templates.halved.triangle :as halved-triangle]
             [scarf.templates.quartered.triangle :as quartered-triangle]
+            [scarf.templates.twolegs.triangle :as twolegs-triangle]
             [scarf.templates.rolled :as rolled]
             [scarf.templates.utils :as utils]))
 
@@ -98,12 +99,12 @@
           (dom/div #js {:className "row"}
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf crossed-triangle/einfache-borte
+                                               {:scarf twolegs-triangle/borte
                                                 :id 5016
                                                 :title "Mit zweifarbiger Borte"})))
                    (dom/div #js {:className "col"}
                             (scarf-card (merge (om/props this)
-                                               {:scarf twice-triangle/randstreifen
+                                               {:scarf twolegs-triangle/randstreifen
                                                 :id 5017
                                                 :art-no "5017 / 5018"
                                                 :title "Mit zweifarbigem Rand"
