@@ -8,6 +8,7 @@
             [scarf.templates.twice.rolled :as twice-rolled]
             [scarf.templates.crossed.rolled :as crossed-rolled]
             [scarf.templates.halved.rolled :as halved-rolled]
+            [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -26,6 +27,7 @@
         5009 (halved-rolled/ohne-dekor (om/props this))
         5010 (halved-rolled/borte (om/props this))
         5011 (halved-rolled/randstreifen (om/props this))
+        5013 (quartered-rolled/ohne-dekor (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------
