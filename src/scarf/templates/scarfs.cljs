@@ -111,3 +111,14 @@
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def halbiert (om/factory Halbiert))
+
+(defui Viertel
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/ohne-dekor
+                                                :id 5013
+                                                :title "Ohne Rand und Borte"}))))))
+(def geviertelt (om/factory Viertel))
