@@ -9,6 +9,7 @@
             [scarf.templates.crossed.rolled :as crossed-rolled]
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
+            [scarf.templates.twolegs.rolled :as twolegs-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 (enable-console-print!)
@@ -30,6 +31,8 @@
         5013 (quartered-rolled/ohne-dekor (om/props this))
         5014 (quartered-rolled/borte (om/props this))
         5015 (quartered-rolled/randstreifen (om/props this))
+        5016 (twolegs-rolled/borte (om/props this))
+        5017 (twolegs-rolled/randstreifen (om/props this))
         nil))))
 
 ;; -----------------------------------------------------------------------------
