@@ -4,7 +4,6 @@
             [scarf.lib :as lib]
             [scarf.parser :as p]
             [scarf.views :as views]))
-
 (enable-console-print!)
 
 (defonce reconciler

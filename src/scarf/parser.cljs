@@ -13,7 +13,7 @@
    :scarf/stripe2 {:id 24 :rgb "#c2bcec", :name "Fliederfarben", :price (random-price 5)}
    :scarf/stripe3 {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
    :scarf/current 5001
-   :color/selected nil
+   :color/selected {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
    :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (random-price 5)}
                  {:id 1 :rgb "#f3e747", :name "Zitrone", :price (random-price 5)}
                  {:id 2 :rgb "#c98200", :name "Orange", :price (random-price 5)}
