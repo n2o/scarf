@@ -7,7 +7,7 @@
 
 (defn- change-category [this category]
   (om/transact! this `[(nav/change-category {:category ~category})])
-  (utils/switch-chosen-one this nil))
+  #_(utils/switch-chosen-one this nil))
 
 
 ;; -----------------------------------------------------------------------------
