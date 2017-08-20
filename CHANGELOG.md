@@ -1,3 +1,8 @@
+## 0.2.226
+
+* production-ready build
+* Apply custom colors from customers
+
 ## 0.2
 
 * Convert app to om-next application
