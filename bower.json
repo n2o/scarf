@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "fontawesome": "~4",
-    "bootstrap": "~4"
+    "bootstrap": "~4",
+    "lightbox2": "~2"
   }
 }

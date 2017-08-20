@@ -8,30 +8,37 @@
             [scarf.templates.twice.rolled :as twice-rolled]
             [scarf.templates.crossed.rolled :as crossed-rolled]
             [scarf.templates.halved.rolled :as halved-rolled]
+            [scarf.templates.quartered.rolled :as quartered-rolled]
+            [scarf.templates.twolegs.rolled :as twolegs-rolled]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
-(enable-console-print!)
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
-    (when current
-      (case current
-        5000 (simple-rolled/ohne-dekor (om/props this))
-        5001 (simple-rolled/borte (om/props this))
-        5002 (simple-rolled/randstreifen (om/props this))
-        5004 (twice-rolled/randstreifen (om/props this))
-        5006 (twice-rolled/borte (om/props this))
-        5007 (crossed-rolled/einfache-borte (om/props this))
-        5008 (crossed-rolled/doppelte-borte (om/props this))
-        5009 (halved-rolled/ohne-dekor (om/props this))
-        nil))))
+    (case current
+      5000 (simple-rolled/ohne-dekor (om/props this))
+      5001 (simple-rolled/borte (om/props this))
+      5002 (simple-rolled/randstreifen (om/props this))
+      5004 (twice-rolled/randstreifen (om/props this))
+      5006 (twice-rolled/borte (om/props this))
+      5007 (crossed-rolled/einfache-borte (om/props this))
+      5008 (crossed-rolled/doppelte-borte (om/props this))
+      5009 (halved-rolled/ohne-dekor (om/props this))
+      5010 (halved-rolled/borte (om/props this))
+      5011 (halved-rolled/randstreifen (om/props this))
+      5013 (quartered-rolled/ohne-dekor (om/props this))
+      5014 (quartered-rolled/borte (om/props this))
+      5015 (quartered-rolled/randstreifen (om/props this))
+      5016 (twolegs-rolled/borte (om/props this))
+      5017 (twolegs-rolled/randstreifen (om/props this))
+      nil)))
 
 ;; -----------------------------------------------------------------------------
 
 (defui ColorBlock
   static om/IQuery
   (query [this]
-         [:rgb :name :price])
+         [:id :rgb :name :price])
   static om/Ident
   (ident [this {:keys [id]}]
          [:color/by-id id])
@@ -43,7 +50,8 @@
                           :onClick #(om/transact! this `[(color/selected ~color)])
                           :style #js {:backgroundColor rgb}}
                      (dom/div #js {:className "color-block"})
-                     (dom/span #js {:className "tooltiptext"} name)))))
+                     (dom/span #js {:className "tooltiptext"}
+                               (dom/span nil name) (dom/br nil) (dom/span nil id))))))
 (def color-block (om/factory ColorBlock {:keyfn :id}))
 
 (defui Colors
@@ -78,14 +86,10 @@
                    (nav/products (om/props this))
                    (dom/hr nil)
                    (selection (om/props this))
+                   (dom/div #js {:className "text-center"
+                                 :style #js {:padding "3rem 0"}}
+                            (dispatch-current-scarf this))
                    (dom/div #js {:className "text-center"}
                             (colors (om/props this)))
-                   (dom/div #js {:className "text-center"
-                                 :style #js {:padding "5rem"}}
-                            (dispatch-current-scarf this))
-                   (dom/hr nil)
-                   (calc/view (om/props this)))))
-
-
-;; (def norm-data (om/tree->db Scarf scarf.parser/init-data true))
-;; norm-data
+                   #_(dom/hr nil)
+                   #_(calc/view (om/props this)))))

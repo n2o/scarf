@@ -1,17 +1,29 @@
 (ns scarf.templates.utils
   (:require [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]
-            [scarf.config :as config]))
+            [om.dom :as dom]))
 
-(def config-width (:thumbnail/width config/scarf))
-(def config-height (:thumbnail/height config/scarf))
-
-(defn scale-dimension [scale dimension]
+(defn- scale-dimension [scale dimension]
   (str (* scale dimension) "px"))
 
-(defn scale-to-width [thumbnail? actual]
-  (let [target (if thumbnail? (:thumbnail/width config/scarf) (:width config/scarf))]
-    (/ target actual)))
+(defn- calc-size-of-rolled-scarf
+  "Calculate aimed size of rolled scarfs depending on current screen size. Slots
+   are the same as in bootstrap's grid system. Unit: px."
+  []
+  (let [width (.-width js/screen)]
+    (cond
+      (> width 1200) 800
+      (> width 992) 750
+      (> width 768) 650
+      (> width 576) 450
+      :default 350)))
+
+(defn- scale-to-width
+  "Calculate factor to scale SVG graphics to desired width."
+  [thumbnail? actual]
+  (let [thumbnail-width 200  ;; px
+        regular-width (calc-size-of-rolled-scarf)
+        target-size (if thumbnail? thumbnail-width regular-width)]
+    (/ target-size actual)))
 
 (defn colorize
   "Verify that a color has been selected before transacting a nil-value."
@@ -26,10 +38,10 @@
   [this id]
   (om/transact! this `[(scarf/current {:id ~id})]))
 
-(defn change-cursor [thumbnail?]
+(defn- change-cursor [thumbnail?]
   (if thumbnail? "pointer" "crosshair"))
 
-(defn gray-thumb [thumbnail?]
+(defn- gray-thumb [thumbnail?]
   (when thumbnail? "grayscale smooth"))
 
 (defn create-path [this field fill d]
@@ -46,11 +58,8 @@
 	c0,0-7.5,7.7-5.2,7.5c50.3-3.7,109.4-18.5,109.4-18.5s-54.3,51.3-134.9,54.7c-38.9,1.6-122,20.3-122,20.3L455,259.5L276.8,82.9
 	c0,0-100.8-19.3-116.5-19.5C76,62.3,19.7,8.2,19.7,8.2s42.2,11.7,112.2,18.6C134.5,27.1,124,19.3,124,19.3z"}))
 
-;; -----------------------------------------------------------------------------
-;; View components
-
 (defn svg-options [this id scale width height thumbnail?]
-  #js {:className (gray-thumb thumbnail?)
+  #js {;; :className (gray-thumb thumbnail?)
        ;; :onClick #(switch-chosen-one this id thumbnail?)
        :width (scale-dimension scale width)
        :height (scale-dimension scale height)

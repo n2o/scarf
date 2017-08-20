@@ -7,40 +7,56 @@
 
 (def init-data
   {:nav/category :einfach
-   :scarf/mid1 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
-   :scarf/mid2 {:id 11 :rgb "#1a6a30", :name "Smaragdgrün", :price (random-price 5)}
-   :scarf/stripe1 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
-   :scarf/stripe2 {:id 24 :rgb "#c2bcec", :name "Fliederfarben", :price (random-price 5)}
-   :scarf/stripe3 {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
    :scarf/current 5001
-   :color/selected nil
-   :color/items [{:id 0 :rgb "#efe406", :name "Hellgelb", :price (random-price 5)}
-                 {:id 1 :rgb "#f3e747", :name "Zitrone", :price (random-price 5)}
-                 {:id 2 :rgb "#c98200", :name "Orange", :price (random-price 5)}
-                 {:id 3 :rgb "#b92f1f", :name "Scharlachrot", :price (random-price 5)}
-                 {:id 4 :rgb "#b92f1f", :name "Dunkelrot", :price (random-price 5)}
-                 {:id 5 :rgb "#480d2c", :name "Kastanienbraun", :price (random-price 5)}
-                 {:id 6 :rgb "#5c068c", :name "Lila", :price (random-price 5)}
-                 {:id 7 :rgb "#c98f47", :name "Gold", :price (random-price 5)}
-                 {:id 8 :rgb "#826e57", :name "Kaki", :price (random-price 5)}
-                 {:id 9 :rgb "#422310", :name "Schokolade", :price (random-price 5)}
-                 {:id 10 :rgb "#7b0065", :name "Traube", :price (random-price 5)}
-                 {:id 11 :rgb "#1a6a30", :name "Smaragdgrün", :price (random-price 5)}
-                 {:id 12 :rgb "#1a6a30", :name "Piniengrün", :price (random-price 5)}
-                 {:id 13 :rgb "#143422", :name "Scoutgrün", :price (random-price 5)}
-                 {:id 14 :rgb "#afc3d5", :name "Himmelfarben", :price (random-price 5)}
-                 {:id 15 :rgb "#21145c", :name "Königsblau", :price (random-price 5)}
-                 {:id 16 :rgb "#152442", :name "Marineblau", :price (random-price 5)}
-                 {:id 17 :rgb "#f9f9f9", :name "Weiß", :price (random-price 5)}
-                 {:id 18 :rgb "#7e7f84", :name "Grau", :price (random-price 5)}
-                 {:id 19 :rgb "#000000", :name "Schwarz", :price (random-price 5)}
-                 {:id 20 :rgb "#cd6888", :name "Pink", :price (random-price 5)}
-                 {:id 21 :rgb "#b9cfe4", :name "Blaugrau", :price (random-price 5)}
-                 {:id 22 :rgb "#44bce3", :name "Türkis", :price (random-price 5)}
-                 {:id 23 :rgb "#ff5e00", :name "Orangerot", :price (random-price 5)}
-                 {:id 24 :rgb "#c2bcec", :name "Fliederfarben", :price (random-price 5)}
-                 {:id 25 :rgb "#e6ff15", :name "Tageslicht Gelb", :price (random-price 5)}]})
-
+   :scarf/mid1 {:id "SW21" :rgb "#D0D6E0" :name "silbergrau" :price (random-price 5)}
+   :scarf/mid2 {:id "SW33" :rgb "#B1D3F9" :name "hellblau" :price (random-price 5)}
+   :scarf/stripe1 {:id "SW50" :rgb "#D14541" :name "hochrot" :price (random-price 5)}
+   :scarf/stripe2 {:id "SW47" :rgb "#48AE99" :name "smaragd" :price (random-price 5)}
+   :scarf/stripe3 {:id "SW30" :rgb "#659BCE" :name "marine" :price (random-price 5)}
+   :color/selected {:id "SW42" :rgb "#B0DE7C" :name "lemon" :price (random-price 5)}
+   :color/items [{:id "SW01" :rgb "#E2E2E2" :name "weiß" :price (random-price 5)}
+                 {:id "SW02" :rgb "#D1C6B7" :name "natur" :price (random-price 5)}
+                 {:id "SW10" :rgb "#F1D5B0" :name "beige" :price (random-price 5)}
+                 {:id "SW12" :rgb "#D7BC9F" :name "sand" :price (random-price 5)}
+                 {:id "SW14" :rgb "#D19B92" :name "hellbraun" :price (random-price 5)}
+                 {:id "SW15" :rgb "#968381" :name "dunkelbraun" :price (random-price 5)}
+                 {:id "SW20" :rgb "#4B4E51" :name "schwarz" :price (random-price 5)}
+                 {:id "SW21" :rgb "#D0D6E0" :name "silbergrau" :price (random-price 5)}
+                 {:id "SW22" :rgb "#BACFE4" :name "mittelgrau" :price (random-price 5)}
+                 {:id "SW23" :rgb "#9E9CA0" :name "dunkelgrau" :price (random-price 5)}
+                 {:id "SW30" :rgb "#659BCE" :name "marine" :price (random-price 5)}
+                 {:id "SW31" :rgb "#3F98EA" :name "royal" :price (random-price 5)}
+                 {:id "SW32" :rgb "#65D0FF" :name "türkis" :price (random-price 5)}
+                 {:id "SW33" :rgb "#B1D3F9" :name "hellblau" :price (random-price 5)}
+                 {:id "SW34" :rgb "#4894A7" :name "petrol" :price (random-price 5)}
+                 {:id "SW35" :rgb "#82A6E8" :name "flieder" :price (random-price 5)}
+                 {:id "SW36" :rgb "#8FA2E2" :name "lila" :price (random-price 5)}
+                 {:id "SW38" :rgb "#7ABBF5" :name "jeansblau" :price (random-price 5)}
+                 {:id "SW39" :rgb "#609DCA" :name "rauchblau" :price (random-price 5)}
+                 {:id "SW40" :rgb "#4EA57C" :name "gras" :price (random-price 5)}
+                 {:id "SW41" :rgb "#B7DAD6" :name "mint" :price (random-price 5)}
+                 {:id "SW42" :rgb "#B0DE7C" :name "lemon" :price (random-price 5)}
+                 {:id "SW43" :rgb "#90AF5A" :name "helloliv" :price (random-price 5)}
+                 {:id "SW44" :rgb "#81A68B" :name "kaki" :price (random-price 5)}
+                 {:id "SW45" :rgb "#7B7A65" :name "dunkeloliv" :price (random-price 5)}
+                 {:id "SW46" :rgb "#628E85" :name "tanne" :price (random-price 5)}
+                 {:id "SW47" :rgb "#48AE99" :name "smaragd" :price (random-price 5)}
+                 {:id "SW49" :rgb "#6AD07C" :name "giftgrün" :price (random-price 5)}
+                 {:id "SW50" :rgb "#D14541" :name "hochrot" :price (random-price 5)}
+                 {:id "SW52" :rgb "#D25756" :name "weinrot" :price (random-price 5)}
+                 {:id "SW53" :rgb "#9D4343" :name "bordeaux" :price (random-price 5)}
+                 {:id "SW55" :rgb "#DE8B99" :name "rosa" :price (random-price 5)}
+                 {:id "SWXX" :rgb "#E0C9D7" :name "hellrosa" :price (random-price 5)}
+                 {:id "SW56" :rgb "#D67E81" :name "altrosa" :price (random-price 5)}
+                 {:id "SW57" :rgb "#D95E7B" :name "pink" :price (random-price 5)}
+                 {:id "SW58" :rgb "#824455" :name "erika" :price (random-price 5)}
+                 {:id "SW60" :rgb "#DA6A42" :name "orange" :price (random-price 5)}
+                 {:id "SW62" :rgb "#DCA583" :name "lachs" :price (random-price 5)}
+                 {:id "SW63" :rgb "#DB7361" :name "hellterra" :price (random-price 5)}
+                 {:id "SW64" :rgb "#934240" :name "dunkelterra" :price (random-price 5)}
+                 {:id "SW70" :rgb "#DB9343" :name "dunkelgelb" :price (random-price 5)}
+                 {:id "SW71" :rgb "#DCC469" :name "sonnengelb" :price (random-price 5)}
+                 {:id "SW72" :rgb "#D0AF5F" :name "hellgelb" :price (random-price 5)}]})
 
 ;; -----------------------------------------------------------------------------
 ;; Parsing

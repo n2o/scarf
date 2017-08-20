@@ -7,7 +7,7 @@
 
 (defn- change-category [this category]
   (om/transact! this `[(nav/change-category {:category ~category})])
-  (utils/switch-chosen-one this nil))
+  #_(utils/switch-chosen-one this nil))
 
 
 ;; -----------------------------------------------------------------------------
@@ -25,8 +25,10 @@
                           :title "Mehr Kategorien folgen bald!"
                           :onClick (when-not disabled? #(change-category this whoami))}
                      (dom/div #js {:className "card-block"}
-                              (dom/h5 #js {:className "card-title"} title)
-                              (dom/p #js {:className "card-text"} body))))))
+                              (when title
+                                (dom/h5 #js {:className "card-title"} title))
+                              (when body
+                                (dom/p #js {:className "card-text"} body)))))))
 (def category (om/factory Category))
 
 
@@ -38,23 +40,36 @@
   (render [this]
           (dom/div nil
                    (dom/h3 nil "Kategorien")
+                   (dom/br nil)
+                   (dom/h6 nil "Einfarbig")
                    (dom/div #js {:className "row"}
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :einfach
-                                                                       :title "einfarbig, einfach"
-                                                                       :body "Mit und ohne einfachem Rand / Borte"})))
+                                                                       :title "einfach"
+                                                                       :body "Mit und ohne Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :doppelt
-                                                                       :title "einfarbig, doppelt"
+                                                                       :title "doppelt"
                                                                        :body "Mit doppeltem Rand / Borte"})))
                             (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :gekreuzt
-                                                                       :title "einfarbig, gekreuzt"
+                                                                       :title "gekreuzt"
                                                                        :body "Mit gekreuzten Borten"})))
                             (dom/div #js {:className "col"}
+                                     (category (merge (om/props this) {:whoami :zweifarbige-schenkel
+                                                                       :title "einfach"
+                                                                       :body "Mit zweifarbigem Rand / Borte"}))))
+                   (dom/br nil)
+                   (dom/h6 nil "Zweifarbig")
+                   (dom/div #js {:className "row"}
+                            (dom/div #js {:className "col"}
                                      (category (merge (om/props this) {:whoami :halbiert
-                                                                       :title "zweifarbig, einfach"
-                                                                       :body "Mit und ohne einfachem Rand / Borte"})))))))
+                                                                       :title "vertikal geteilt, 1/2 zu 1/2"
+                                                                       :body "Mit und ohne Rand / Borte"})))
+                            (dom/div #js {:className "col"}
+                                     (category (merge (om/props this) {:whoami :geviertelt
+                                                                       :title "horizontal geteilt, 3/4 zu 1/4"
+                                                                       :body "Mit und ohne Rand / Borte"})))))))
 (def categories (om/factory Categories))
 
 (defui SubCategories
@@ -71,6 +86,8 @@
                        :doppelt (scarfs/doppelt (om/props this))
                        :gekreuzt (scarfs/gekreuzt (om/props this))
                        :halbiert (scarfs/halbiert (om/props this))
+                       :geviertelt (scarfs/geviertelt (om/props this))
+                       :zweifarbige-schenkel (scarfs/zweifarbige-schenkel (om/props this))
                        nil)))))
 (def sub-categories (om/factory SubCategories))
 

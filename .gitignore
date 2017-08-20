@@ -37,3 +37,4 @@ compiled
 resources/public/js
 .#*
 .sass-cache
+.directory

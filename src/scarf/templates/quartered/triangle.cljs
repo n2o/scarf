@@ -1,16 +1,16 @@
-(ns scarf.templates.halved.triangle
+(ns scarf.templates.quartered.triangle
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.templates.utils :as utils]))
 
 (defui OhneDekor
-  "Dreieck, halbiert ohne Dekor."
+  "Dreieck ohne Dekor, zweifarbig 3/4 zu 1/4."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/current :color/selected])
   Object
   (render [this]
-          (let [id 5009
+          (let [id 5013
                 {:keys [scarf/mid1 scarf/mid2 scarf/current thumbnail?]} (om/props this)
                 c1 (:rgb mid1) c2 (:rgb mid2)
                 width 266
@@ -21,20 +21,20 @@
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "0,0 133,127 133,0"})
+                                              :points "0,0 100,95 166,95 266,0"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid2)
                                               :fill c2
-                                              :points "133,127 266,0 133,0"}))))))
+                                              :points "100,95 166,95 133,127"}))))))
 (def ohne-dekor (om/factory OhneDekor))
 
 (defui Borte
-  "Dreieck, halbiert mit Borte."
+  "Dreieck, geviertelt mit Borte."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
-          (let [id 5010
+          (let [id 5014
                 {:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
                 c1 (:rgb mid1) c2 (:rgb mid2) s1 (:rgb stripe1)
                 width 276
@@ -45,23 +45,23 @@
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "0,0 138,136 138,0"})
+                                              :points "0,0 105,103 171,103 274,0"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid2)
                                               :fill c2
-                                              :points "138,136 274,0 138,0"})
+                                              :points "105,103 171,103 138,136"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
                                               :points "266,0 258,0 138,117 18,0 10,0 138,127"}))))))
 (def borte (om/factory Borte))
 
 (defui Rand
-  "Dreieck, halbiert mit Randstreifen."
+  "Dreieck, geviertelt mit Rand."
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/current :color/selected])
   Object
   (render [this]
-          (let [id 5011
+          (let [id 5015
                 {:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
                 c1 (:rgb mid1) c2 (:rgb mid2) s1 (:rgb stripe1)
                 width 276
@@ -72,11 +72,11 @@
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "18,0 138,117 138,0"})
+                                              :points "10,0 115,103 161,103 266,0"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid2)
                                               :fill c2
-                                              :points "138,117 258,0 138,0"})
+                                              :points "115,103 161,103 138,126"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
-                                              :points "266,0 258,0 138,117 18,0 10,0 138,127"}))))))
+                                              :points "274,0 266,0 138,126 10,0 0,0 138,136"}))))))
 (def randstreifen (om/factory Rand))

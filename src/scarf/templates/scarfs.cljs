@@ -1,12 +1,12 @@
 (ns scarf.templates.scarfs
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.config :as config]
             [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.crossed.triangle :as crossed-triangle]
             [scarf.templates.halved.triangle :as halved-triangle]
-            [scarf.templates.rolled :as rolled]
+            [scarf.templates.quartered.triangle :as quartered-triangle]
+            [scarf.templates.twolegs.triangle :as twolegs-triangle]
             [scarf.templates.utils :as utils]))
 
 (defui ScarfCard
@@ -89,6 +89,28 @@
                                                 :title "Mit gekreuzter Doppelborte"}))))))
 (def gekreuzt (om/factory Gekreuzt))
 
+
+;; Zweifarbige Schenkel
+(defui ZweifarbigeSchenkel
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf twolegs-triangle/borte
+                                                :id 5016
+                                                :title "Mit zweifarbiger Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf twolegs-triangle/randstreifen
+                                                :id 5017
+                                                :art-no "5017 / 5018"
+                                                :title "Mit zweifarbigem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+(def zweifarbige-schenkel (om/factory ZweifarbigeSchenkel))
+
+
+;; Zweifarbige Mitte
 (defui Halbiert
   Object
   (render [this]
@@ -97,5 +119,40 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf halved-triangle/ohne-dekor
                                                 :id 5009
-                                                :title "Ohne Rand und Borte"}))))))
+                                                :title "Ohne Rand und Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/borte
+                                                :id 5010
+                                                :title "Mit einfacher Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf halved-triangle/randstreifen
+                                                :id 5011
+                                                :art-no "5011 / 5012"
+                                                :title "Mit einfachem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def halbiert (om/factory Halbiert))
+
+(defui Viertel
+  Object
+  (render [this]
+          (dom/div #js {:className "row"}
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf quartered-triangle/ohne-dekor
+                                                :id 5013
+                                                :title "Ohne Rand und Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf quartered-triangle/borte
+                                                :id 5014
+                                                :title "Mit einfacher Borte"})))
+                   (dom/div #js {:className "col"}
+                            (scarf-card (merge (om/props this)
+                                               {:scarf quartered-triangle/randstreifen
+                                                :id 5015
+                                                :art-no "5015 / 5016"
+                                                :title "Mit einfachem Rand"
+                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+(def geviertelt (om/factory Viertel))
