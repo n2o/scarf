@@ -79,6 +79,13 @@
                        (dom/p nil "Bitte wähle zunächst eine Farbe aus"))))))
 (def selection (om/factory Selection))
 
+(defn red-heading [heading]
+  (dom/div nil
+           (dom/hr nil)
+           (dom/a #js {:name (lib/simple-slug heading)})
+           (dom/h2 nil heading)
+           (dom/div #js {:className "underline"})))
+
 (defui Main
   Object
   (render [this]
@@ -91,5 +98,5 @@
                             (dispatch-current-scarf this))
                    (dom/div #js {:className "text-center"}
                             (colors (om/props this)))
-                   #_(dom/hr nil)
-                   #_(calc/view (om/props this)))))
+                   (red-heading "Übersicht und Artikelnummer")
+                   (calc/view (om/props this)))))

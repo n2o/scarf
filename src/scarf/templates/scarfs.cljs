@@ -9,6 +9,31 @@
             [scarf.templates.twolegs.triangle :as twolegs-triangle]
             [scarf.templates.utils :as utils]))
 
+(defn id->component [id]
+  (get {5000 simple-triangle/OhneDekor
+        5001 simple-triangle/Borte
+        5002 simple-triangle/Rand
+        5003 simple-triangle/Rand
+        5004 twice-triangle/Rand
+        5005 twice-triangle/Rand
+        5006 twice-triangle/Borte
+        5007 crossed-triangle/EinfacheBorte
+        5008 crossed-triangle/DoppelteBorte
+        5009 halved-triangle/OhneDekor
+        5010 halved-triangle/Borte
+        5011 halved-triangle/Rand
+        5012 halved-triangle/Rand
+        5013 quartered-triangle/OhneDekor
+        5014 quartered-triangle/Borte
+        5015 quartered-triangle/Rand
+        5016 twolegs-triangle/Borte
+        5017 twolegs-triangle/Rand
+        5018 twolegs-triangle/Rand}
+       id))
+
+(defn id->query [id]
+  (into #{} (om/get-query (id->component id))))
+
 (defui ScarfCard
   static om/IQuery
   (query [this]

@@ -1,4 +1,5 @@
-(ns scarf.lib)
+(ns scarf.lib
+  (:require [clojure.string :as str]))
 
 (defn num->currency
   [value]
@@ -18,3 +19,8 @@
   (let [converted (js/parseInt s)]
     (when-not (js/isNaN converted)
       converted)))
+
+(defn simple-slug [string]
+  (-> string
+      str/lower-case
+      (str/replace #" " "-")))
