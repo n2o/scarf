@@ -22,7 +22,7 @@
                      (dom/div #js {:className "card-img-top"
                                    :style #js {:padding "1rem"}}
                               (scarf (merge (om/props this) {:thumbnail? true})))
-                     (dom/div #js {:className "card-block"}
+                     (dom/div #js {:className "card-body"}
                               (dom/h5 #js {:className "card-title"}
                                       (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
                               (dom/p #js {:className "card-text"}

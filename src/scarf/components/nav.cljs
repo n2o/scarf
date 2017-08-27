@@ -24,7 +24,7 @@
                                           (when disabled? " not-allowed text-muted"))
                           :title "Mehr Kategorien folgen bald!"
                           :onClick (when-not disabled? #(change-category this whoami))}
-                     (dom/div #js {:className "card-block"}
+                     (dom/div #js {:className "card-body"}
                               (when title
                                 (dom/h5 #js {:className "card-title"} title))
                               (when body
