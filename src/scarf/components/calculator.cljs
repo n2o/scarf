@@ -7,8 +7,8 @@
             [scarf.components.colors :as colors]
             [scarf.templates.scarfs :as scarfs]))
 
-(defn- order-no [color1 color2 current]
-  (str "ht-s" current "_" (subs (lower-case (:name color1)) 0 5) "-" (subs (lower-case (:name color2)) 0 5)))
+(defn- order-no [current color1 color2 stripe1 stripe2]
+  (str current))
 
 (defui Calculator
   static om/IQuery
@@ -50,7 +50,6 @@
                                                                        (dom/td nil (:name stripe2))
                                                                        (dom/td nil (:id stripe2))))
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
-                                                                     (dom/td nil (dom/i #js {:className "fa fa-barcode"}))
-                                                                     (dom/td nil "Bestellnummer:")
-                                                                     (dom/td nil (order-no mid1 mid2 current)))))))))))
+                                                                     (dom/td nil "Artikelnummer:")
+                                                                     (dom/td #js {:colSpan 2} (order-no current mid1 mid2 stripe1 stripe2)))))))))))
 (def view (om/factory Calculator))
