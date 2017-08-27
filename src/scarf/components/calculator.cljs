@@ -4,6 +4,7 @@
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.lib :as lib]
+            [scarf.components.colors :as colors]
             [scarf.templates.scarfs :as scarfs]))
 
 (defn- order-no [color1 color2 current]
@@ -19,36 +20,35 @@
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
-                     (println query)
                      (dom/div #js {:className "row"}
                               (dom/div #js {:className "col-6"}
                                        (dom/table #js {:className "table table-hover table-striped table-condensed"}
                                                   (dom/thead nil
                                                              (dom/tr nil
-                                                                     (dom/th #js {:width "10%"})
-                                                                     (dom/th #js {:width "50%"} "Bereich")
-                                                                     (dom/th #js {:width "40%"} "Farbe")))
+                                                                     (dom/th nil"Bereich")
+                                                                     (dom/th nil "Farbe")
+                                                                     (dom/th nil "Farbcode")))
                                                   (dom/tbody nil
                                                              (when (contains? query :scarf/mid1)
                                                                (dom/tr nil
-                                                                       (dom/td nil)
                                                                        (dom/td nil "Mitte 1")
-                                                                       (dom/td nil (:name mid1))))
+                                                                       (dom/td nil (:name mid1))
+                                                                       (dom/td nil (:id mid1))))
                                                              (when (contains? query :scarf/mid2)
                                                                (dom/tr nil
-                                                                       (dom/td nil)
                                                                        (dom/td nil "Mitte 2")
-                                                                       (dom/td nil (:name mid2))))
+                                                                       (dom/td nil (:name mid2))
+                                                                       (dom/td nil (:id mid2))))
                                                              (when (contains? query :scarf/stripe1)
                                                                (dom/tr nil
-                                                                       (dom/td nil)
                                                                        (dom/td nil "Borte / Rand 1")
-                                                                       (dom/td nil (:name stripe1))))
+                                                                       (dom/td nil (:name stripe1))
+                                                                       (dom/td nil (:id stripe1))))
                                                              (when (contains? query :scarf/stripe2)
                                                                (dom/tr nil
-                                                                       (dom/td nil)
                                                                        (dom/td nil "Borte / Rand 2")
-                                                                       (dom/td nil (:name stripe2))))
+                                                                       (dom/td nil (:name stripe2))
+                                                                       (dom/td nil (:id stripe2))))
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
                                                                      (dom/td nil (dom/i #js {:className "fa fa-barcode"}))
                                                                      (dom/td nil "Bestellnummer:")
