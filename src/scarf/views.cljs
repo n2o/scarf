@@ -11,7 +11,7 @@
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.twolegs.rolled :as twolegs-rolled]
-            [scarf.lib :as lib]))
+            [scarf.views.lib :as vlib]))
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
@@ -47,13 +47,6 @@
                        (dom/p nil "Bitte wähle zunächst eine Farbe aus"))))))
 (def selection (om/factory Selection))
 
-(defn red-heading [heading]
-  (dom/div nil
-           (dom/hr nil)
-           (dom/a #js {:name (lib/simple-slug heading)})
-           (dom/h2 nil heading)
-           (dom/div #js {:className "underline"})))
-
 (defui Main
   Object
   (render [this]
@@ -67,5 +60,5 @@
                    (dom/div #js {:className "text-center"}
                             (colors/colors (om/props this)))
                    (options/options (om/props this))
-                   (red-heading "Übersicht und Artikelnummer")
+                   (vlib/red-heading "Übersicht und Artikelnummer")
                    (calc/view (om/props this)))))
