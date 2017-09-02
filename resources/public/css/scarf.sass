@@ -1,9 +1,11 @@
 $ausruesterrot: #850001
+$ausruesterdunkelrot: #5e0000
 $green: #1abc9c
 
 @import navbar
 @import site
 @import scarfblocks
+@import backtotop
 
 body
   font-family: 'Fira Sans', sans-serif
@@ -40,7 +42,6 @@ path.highlight-stroke
 
 
 // Bootstrap extensions
-
 .card
   transition: all 0.2s ease-in-out
   &:hover
@@ -49,3 +50,20 @@ path.highlight-stroke
 .card-outline-highlight
   background-color: transparent
   border-color: $ausruesterrot
+
+// Bootstrap 4 Button override
+
+.btn-primary
+  color: #fff
+  background-color: $ausruesterrot
+  border-color: $ausruesterrot
+  &:hover
+    color: #fff
+    background-color: $ausruesterdunkelrot
+    // background-color: #0069d9
+    border-color: $ausruesterdunkelrot
+  &:focus, &.focus
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5)
+  &.disabled, &:disabled
+    background-color: $ausruesterrot
+    border-color: $ausruesterrot
