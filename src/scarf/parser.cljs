@@ -91,23 +91,23 @@
 (defmethod mutate 'scarf/colorize
   [{:keys [state]} _ {:keys [field]}]
   (let [color (:color/selected @state)]
-    {:action (fn [] (swap! state update-in [field] (fn [] color)))}))
+    {:action (fn [] (swap! state assoc field color))}))
 
 (defmethod mutate 'scarf/current
   [{:keys [state]} _ {:keys [id]}]
-  {:action (fn [] (swap! state update-in [:scarf/current] (fn [] id)))})
+  {:action (fn [] (swap! state assoc :scarf/current id))})
 
 (defmethod mutate 'option/stripe
   [{:keys [state]} _ {:keys [option]}]
-  {:action (fn [] (swap! state update-in [:option/stripe] (fn [] (keyword option))))})
+  {:action (fn [] (swap! state assoc :option/stripe (keyword option)))})
 
 (defmethod mutate 'color/selected
   [{:keys [state]} _ color]
-  {:action (fn [] (swap! state update-in [:color/selected] (fn [] color)))})
+  {:action (fn [] (swap! state assoc :color/selected color))})
 
 (defmethod mutate 'nav/change-category
   [{:keys [state]} _ {:keys [category]}]
-  {:action (fn [] (swap! state update-in [:nav/category] (fn [] category)))})
+  {:action (fn [] (swap! state assoc :nav/category category))})
 
 
 ;; -----------------------------------------------------------------------------
