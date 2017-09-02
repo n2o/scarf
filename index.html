@@ -74,8 +74,8 @@
 
           <p>
             Hier hast du die Möglichkeit dein individuelles Halstuch
-            zusammenzustellen. Dafür haben wir mehere Schnittmuster vorbereitet
-            und du kannst selbst die Farben bestimmen.
+            zusammenzustellen. Dafür haben wir mehrere Schnittmuster vorbereitet
+            die du nach deinen Wünschen anpassen kannst.
           </p>
 
           <p>
@@ -216,9 +216,9 @@
      $(document).ready(function(){
        $(window).scroll(function () {
          if ($(this).scrollTop() > 50) {
-           $('#back-to-top').fadeIn();
+           $('#back-to-top').show();
          } else {
-           $('#back-to-top').fadeOut();
+           $('#back-to-top').hide();
          }
        });
        // scroll body to 0px on click
@@ -231,7 +231,7 @@
      });
     </script>
 
-    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top"
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top smooth"
       role="button" title="Springe nach oben" style="display:none;">
       <i class="fa fa-angle-up" aria-hidden="true"></i>
     </a>
