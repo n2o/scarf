@@ -1,17 +1,16 @@
 (ns scarf.views
-  (:require [goog.dom :as gdom]
-            [om.next :as om :refer-macros [defui]]
+  (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.components.calculator :as calc]
             [scarf.components.colors :as colors]
             [scarf.components.nav :as nav]
+            [scarf.components.options :as options]
             [scarf.templates.simple.rolled :as simple-rolled]
             [scarf.templates.twice.rolled :as twice-rolled]
             [scarf.templates.crossed.rolled :as crossed-rolled]
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.twolegs.rolled :as twolegs-rolled]
-            [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 
 (defn dispatch-current-scarf [this]
@@ -67,5 +66,6 @@
                             (dispatch-current-scarf this))
                    (dom/div #js {:className "text-center"}
                             (colors/colors (om/props this)))
+                   (options/options (om/props this))
                    (red-heading "Übersicht und Artikelnummer")
                    (calc/view (om/props this)))))
