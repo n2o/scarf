@@ -1,10 +1,6 @@
 (ns scarf.components.calculator
-  (:require [goog.string :as gstring]
-            [clojure.string :refer [lower-case]]
-            [om.next :as om :refer-macros [defui]]
+  (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [scarf.lib :as lib]
-            [scarf.components.colors :as colors]
             [scarf.templates.scarfs :as scarfs]))
 
 (defn- order-no [current color1 color2 stripe1 stripe2]
@@ -13,10 +9,10 @@
 (defui Calculator
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/stripe3 :scarf/current])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2 scarf/stripe3
+          (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
@@ -25,7 +21,7 @@
                                        (dom/table #js {:className "table table-hover table-striped table-condensed"}
                                                   (dom/thead nil
                                                              (dom/tr nil
-                                                                     (dom/th nil"Bereich")
+                                                                     (dom/th nil "Option")
                                                                      (dom/th nil "Farbe")
                                                                      (dom/th nil "Farbcode")))
                                                   (dom/tbody nil
