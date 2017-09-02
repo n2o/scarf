@@ -161,16 +161,11 @@
         <footer class="footer">
           &copy; 2017 <u>Der</u> Ausrüster
           <span class="pull-right">
-            mit <i class="fa fa-heart" aria-hidden="true"></i> entwickelt von Christian Meter
+            mit <i class="fa fa-heart-o" aria-hidden="true"></i> entwickelt von Christian Meter
           </span>
         </footer>
       </div>
     </div>
-
-    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top"
-      role="button" title="Springe nach oben">
-      <i class="fa fa-angle-up" aria-hidden="true"></i>
-    </a>
 
     <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="bower_components/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
@@ -228,15 +223,18 @@
        });
        // scroll body to 0px on click
        $('#back-to-top').click(function () {
-         $('#back-to-top').tooltip('hide');
          $('body,html').animate({
            scrollTop: 0
          }, 800);
          return false;
        });
-       $('#back-to-top').tooltip('show');
      });
     </script>
+
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top"
+      role="button" title="Springe nach oben" style="display:none;">
+      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </a>
 
     <script src="js/compiled/scarf.js"></script>
   </body>
