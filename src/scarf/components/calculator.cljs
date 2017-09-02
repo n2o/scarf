@@ -9,10 +9,12 @@
 (defui Calculator
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current])
+         [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current
+          :option/stripe])
   Object
   (render [this]
           (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
+                        option/stripe
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
@@ -45,6 +47,10 @@
                                                                        (dom/td nil "Borte / Rand 2")
                                                                        (dom/td nil (:name stripe2))
                                                                        (dom/td nil (:id stripe2))))
+                                                             (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
+                                                                     (dom/td #js {:colSpan 3}
+                                                                             (dom/span nil "Der Rand wird "
+                                                                                       (dom/strong nil (name stripe)))))
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
                                                                      (dom/td nil "Artikelnummer:")
                                                                      (dom/td #js {:colSpan 2} (order-no current mid1 mid2 stripe1 stripe2)))))))))))
