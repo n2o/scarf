@@ -1,5 +1,6 @@
 (ns scarf.templates.utils
-  (:require [om.next :as om :refer-macros [defui]]
+  (:require [clojure.string :as str]
+            [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.lib :as lib]))
 
@@ -67,3 +68,21 @@
            (dom/a #js {:name (lib/simple-slug heading)})
            (dom/h2 nil heading)
            (dom/div #js {:className "underline"})))
+
+(defn stripe-dispatch
+  "When there are two options for the stripe, display more options."
+  [id]
+  (get {5002 5003
+        5004 5005
+        5011 5012
+        5015 5016
+        5017 5028} id))
+
+(defn convert-number
+  "Convert number to use comma as a decimal point and remove comma or dot at the
+  last position."
+  [num]
+  (let [nnum (str/replace num "." ",")]
+    (if (str/ends-with? nnum ",")
+      (.substring nnum 0 (dec (count nnum)))
+      nnum)))

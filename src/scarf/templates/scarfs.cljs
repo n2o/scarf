@@ -1,6 +1,7 @@
 (ns scarf.templates.scarfs
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
+            [clojure.string :refer [ends-with? replace]]
             [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.crossed.triangle :as crossed-triangle]
@@ -34,13 +35,21 @@
 (defn id->query [id]
   (into #{} (om/get-query (id->component id))))
 
+(defn- build-article-no
+  "When there are two options for the scarf, show both numbers in the view."
+  [id]
+  (let [second-id (utils/stripe-dispatch id)]
+    (if second-id
+      (str id " / " second-id)
+      id)))
+
 (defui ScarfCard
   static om/IQuery
   (query [this]
          [:scarf/current])
   Object
   (render [this]
-          (let [{:keys [scarf id title subtitle art-no body scarf/current]} (om/props this)]
+          (let [{:keys [scarf id title subtitle scarf/current]} (om/props this)]
             (dom/div #js {:className (str "card pointer text-center"
                                           (when (= id current) " card-outline-highlight"))
                           :onClick #(utils/switch-chosen-one this id)}
@@ -52,7 +61,7 @@
                                       (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
                               (dom/p #js {:className "card-text"}
                                      (dom/small #js {:className "text-muted"}
-                                                (str "Artikelnummer: " (or art-no id)))))))))
+                                                (str "Artikelnummer: " (build-article-no id)))))))))
 (def scarf-card (om/factory ScarfCard))
 
 (defui Einfach
@@ -73,7 +82,6 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf simple-triangle/randstreifen
                                                 :id 5002
-                                                :art-no "5002 / 5003"
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def einfach (om/factory Einfach))
@@ -86,7 +94,6 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf twice-triangle/randstreifen
                                                 :id 5004
-                                                :art-no "5004 / 5005"
                                                 :title "Mit doppeltem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"})))
                    (dom/div #js {:className "col"}
@@ -129,7 +136,6 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf twolegs-triangle/randstreifen
                                                 :id 5017
-                                                :art-no "5017 / 5018"
                                                 :title "Mit zweifarbigem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def zweifarbige-schenkel (om/factory ZweifarbigeSchenkel))
@@ -154,10 +160,11 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf halved-triangle/randstreifen
                                                 :id 5011
-                                                :art-no "5011 / 5012"
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def halbiert (om/factory Halbiert))
+
+
 
 (defui Viertel
   Object
@@ -177,7 +184,6 @@
                             (scarf-card (merge (om/props this)
                                                {:scarf quartered-triangle/randstreifen
                                                 :id 5015
-                                                :art-no "5015 / 5016"
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen oder aufgesetzt"}))))))
 (def geviertelt (om/factory Viertel))

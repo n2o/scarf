@@ -14,36 +14,37 @@
                      (dom/div #js {:className "form-group"}
                               (dom/label nil (dom/span nil "Breite " (dom/strong nil "A")))
                               (dom/div #js {:className "input-group"}
-                                       (dom/input #js {:type "number"
+                                       (dom/input #js {:type "text"
                                                        :className "form-control"
                                                        :placeholder "Angaben in cm"
-                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-a :value ~(.. % -target -value)})])})
+                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-a :value ~(utils/convert-number (.. % -target -value))})])})
                                        (dom/div #js {:className "input-group-addon"} "cm")))
                      (dom/div #js {:className "form-group"}
                               (dom/label nil (dom/span nil "Höhe " (dom/strong nil "B")))
                               (dom/div #js {:className "input-group"}
-                                       (dom/input #js {:type "number"
+                                       (dom/input #js {:type "text"
                                                        :className "form-control"
                                                        :placeholder "Angaben in cm"
-                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-b :value ~(.. % -target -value)})])})
+                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-b :value ~(utils/convert-number (.. % -target -value))})])})
                                        (dom/div #js {:className "input-group-addon"} "cm")))))))
 (def sizes (om/factory Sizes))
 
 (defui StripeOptions
   static om/IQuery
   (query [this]
-         [:option/stripe])
+         [:option/stripe :scarf/current])
   Object
   (render [this]
-          (let [{:keys [option/stripe]} (om/props this)]
-            (dom/div #js {:className "form-group"}
-                     (dom/label nil "Rand umgeschlagen oder aufgesetzt?")
-                     (dom/select #js {:className "form-control"
-                                      :onChange #(om/transact! this `[(option/stripe {:option ~(.. % -target -value)})])}
-                                 (dom/option #js {:value "umgeschlagen"
-                                                  :defaultValue (= :umgeschlagen stripe)} "umgeschlagen")
-                                 (dom/option #js {:value "aufgesetzt"
-                                                  :defaultValue (= :aufgesetzt stripe)} "aufgesetzt"))))))
+          (let [{:keys [option/stripe scarf/current]} (om/props this)]
+            (when (utils/stripe-dispatch current)
+              (dom/div #js {:className "form-group"}
+                       (dom/label nil "Rand umgeschlagen oder aufgesetzt?")
+                       (dom/select #js {:className "form-control"
+                                        :onChange #(om/transact! this `[(option/stripe {:option ~(.. % -target -value)})])}
+                                   (dom/option #js {:value "umgeschlagen"
+                                                    :defaultValue (= :umgeschlagen stripe)} "umgeschlagen")
+                                   (dom/option #js {:value "aufgesetzt"
+                                                    :defaultValue (= :aufgesetzt stripe)} "aufgesetzt")))))))
 (def stripe-options (om/factory StripeOptions))
 
 (defui Options
