@@ -17,7 +17,7 @@
       (> width 576) 450
       :default 350)))
 
-(defn- scale-to-width
+(defn scale-to-width
   "Calculate factor to scale SVG graphics to desired width."
   [thumbnail? actual]
   (let [thumbnail-width 200  ;; px
