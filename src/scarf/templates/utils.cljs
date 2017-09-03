@@ -1,6 +1,7 @@
 (ns scarf.templates.utils
   (:require [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]))
+            [om.dom :as dom]
+            [scarf.lib :as lib]))
 
 (defn- scale-dimension [scale dimension]
   (str (* scale dimension) "px"))
@@ -41,9 +42,6 @@
 (defn- change-cursor [thumbnail?]
   (if thumbnail? "pointer" "crosshair"))
 
-(defn- gray-thumb [thumbnail?]
-  (when thumbnail? "grayscale smooth"))
-
 (defn create-path [this field fill d]
   (let [{:keys [thumbnail?]} (om/props this)
         field (keyword (str "scarf/" field))]
@@ -59,8 +57,13 @@
 	c0,0-100.8-19.3-116.5-19.5C76,62.3,19.7,8.2,19.7,8.2s42.2,11.7,112.2,18.6C134.5,27.1,124,19.3,124,19.3z"}))
 
 (defn svg-options [this id scale width height thumbnail?]
-  #js {;; :className (gray-thumb thumbnail?)
-       ;; :onClick #(switch-chosen-one this id thumbnail?)
-       :width (scale-dimension scale width)
+  #js {:width (scale-dimension scale width)
        :height (scale-dimension scale height)
        :style #js {:cursor (change-cursor thumbnail?)}})
+
+(defn red-heading [heading]
+  (dom/div nil
+           (dom/hr nil)
+           (dom/a #js {:name (lib/simple-slug heading)})
+           (dom/h2 nil heading)
+           (dom/div #js {:className "underline"})))

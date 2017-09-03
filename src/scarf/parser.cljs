@@ -8,6 +8,8 @@
 (def init-data
   {:nav/category :einfach
    :option/stripe :umgeschlagen
+   :option/size-a ""
+   :option/size-b ""
    :scarf/current 5001
    :scarf/mid1 {:id "SW21" :rgb "#D0D6E0" :name "silbergrau" :price (random-price 5)}
    :scarf/mid2 {:id "SW33" :rgb "#B1D3F9" :name "hellblau" :price (random-price 5)}
@@ -100,6 +102,10 @@
 (defmethod mutate 'option/stripe
   [{:keys [state]} _ {:keys [option]}]
   {:action (fn [] (swap! state assoc :option/stripe (keyword option)))})
+
+(defmethod mutate 'option/size
+  [{:keys [state]} _ {:keys [dimension value]}]
+  {:action (fn [] (swap! state assoc dimension value))})
 
 (defmethod mutate 'color/selected
   [{:keys [state]} _ color]

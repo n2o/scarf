@@ -51,12 +51,12 @@
                                                                      (dom/td nil
                                                                              (dom/span nil "Breite"))
                                                                      (dom/td #js {:colSpan 2}
-                                                                             (if size-a (str size-a " cm") "noch nicht festgelegt")))
+                                                                             (if (not= "" size-a) (str size-a " cm") "noch nicht festgelegt")))
                                                              (dom/tr nil
                                                                      (dom/td nil
                                                                              (dom/span nil "Höhe"))
                                                                      (dom/td #js {:colSpan 2}
-                                                                             (if size-b (str size-b " cm") "noch nicht festgelegt")))
+                                                                             (if (not= "" size-b) (str size-b " cm") "noch nicht festgelegt")))
                                                              (dom/tr nil
                                                                      (dom/td nil
                                                                              (dom/span nil "Der Rand wird"))

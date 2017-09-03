@@ -11,7 +11,7 @@
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.twolegs.rolled :as twolegs-rolled]
-            [scarf.views.lib :as vlib]))
+            [scarf.templates.utils :as utils]))
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
@@ -60,5 +60,5 @@
                    (dom/div #js {:className "text-center"}
                             (colors/colors (om/props this)))
                    (options/options (om/props this))
-                   (vlib/red-heading "Übersicht und Artikelnummer")
+                   (utils/red-heading "Übersicht und Artikelnummer")
                    (calc/view (om/props this)))))
