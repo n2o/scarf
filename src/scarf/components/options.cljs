@@ -9,24 +9,23 @@
          [:option/size-a :option/size-b])
   Object
   (render [this]
-          (let [{:keys [option/size-a option/size-b]} (om/props this)]
-            (dom/div nil
-                     (dom/div #js {:className "form-group"}
-                              (dom/label nil (dom/span nil "Breite " (dom/strong nil "A")))
-                              (dom/div #js {:className "input-group"}
-                                       (dom/input #js {:type "text"
-                                                       :className "form-control"
-                                                       :placeholder "Angaben in cm"
-                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-a :value ~(utils/convert-number (.. % -target -value))})])})
-                                       (dom/div #js {:className "input-group-addon"} "cm")))
-                     (dom/div #js {:className "form-group"}
-                              (dom/label nil (dom/span nil "Höhe " (dom/strong nil "B")))
-                              (dom/div #js {:className "input-group"}
-                                       (dom/input #js {:type "text"
-                                                       :className "form-control"
-                                                       :placeholder "Angaben in cm"
-                                                       :onInput #(om/transact! this `[(option/size {:dimension :option/size-b :value ~(utils/convert-number (.. % -target -value))})])})
-                                       (dom/div #js {:className "input-group-addon"} "cm")))))))
+          (dom/div nil
+                   (dom/div #js {:className "form-group"}
+                            (dom/label nil (dom/span nil "Breite " (dom/strong nil "A")))
+                            (dom/div #js {:className "input-group"}
+                                     (dom/input #js {:type "text"
+                                                     :className "form-control"
+                                                     :placeholder "Angaben in cm"
+                                                     :onInput #(om/transact! this `[(option/size {:dimension :option/size-a :value ~(utils/convert-number (.. % -target -value))})])})
+                                     (dom/div #js {:className "input-group-addon"} "cm")))
+                   (dom/div #js {:className "form-group"}
+                            (dom/label nil (dom/span nil "Höhe " (dom/strong nil "B")))
+                            (dom/div #js {:className "input-group"}
+                                     (dom/input #js {:type "text"
+                                                     :className "form-control"
+                                                     :placeholder "Angaben in cm"
+                                                     :onInput #(om/transact! this `[(option/size {:dimension :option/size-b :value ~(utils/convert-number (.. % -target -value))})])})
+                                     (dom/div #js {:className "input-group-addon"} "cm"))))))
 (def sizes (om/factory Sizes))
 
 (defui StripeOptions

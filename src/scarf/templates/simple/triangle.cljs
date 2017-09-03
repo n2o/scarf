@@ -7,11 +7,11 @@
   "Dreieck ohne Dekor."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/current :color/selected])
+         [:scarf/mid1 :color/selected])
   Object
   (render [this]
           (let [id 5000
-                {:keys [scarf/mid1 scarf/current thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1)
                 width 266
                 height 130
@@ -28,11 +28,11 @@
   "Dreieck mit Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :color/selected])
   Object
   (render [this]
           (let [id 5001
-                {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1)
                 width 276
                 height 140
@@ -55,11 +55,11 @@
   "Dreieck mit Randstreifen."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :color/selected])
   Object
   (render [this]
           (let [id 5002
-                {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) c2 (:rgb stripe1)
                 width 266
                 height 130

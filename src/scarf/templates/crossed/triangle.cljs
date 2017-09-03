@@ -7,11 +7,11 @@
   "Dreieck mit gekreuzter Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :color/selected])
   Object
   (render [this]
           (let [id 5007
-                {:keys [scarf/mid1 scarf/stripe1 scarf/current thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1)
                 width 276
                 height 140
@@ -37,11 +37,11 @@
   "Dreieck mit gekreuzter Doppelborte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :color/selected])
   Object
   (render [this]
           (let [id 5008
-                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 scarf/current thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1) s2 (:rgb stripe2)
                 width 276
                 height 140

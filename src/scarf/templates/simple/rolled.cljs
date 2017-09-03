@@ -7,11 +7,11 @@
   "Gerolltes Halstuch, einfarbig, ohne Deko."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/current :color/selected])
+         [:scarf/mid1 :color/selected])
   Object
   (render [this]
           (let [id 5000
-                {:keys [scarf/mid1 scarf/current width thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 width thumbnail?]} (om/props this)
                 cmid1 (:rgb mid1)
                 height 273
                 width 903
@@ -34,11 +34,11 @@
   "Gerolltes Halstuch, einfarbig, mit einfacher Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :color/selected])
   Object
   (render [this]
           (let [id 5001
-                {:keys [scarf/mid1 scarf/stripe1 scarf/current width thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 width thumbnail?]} (om/props this)
                 cmid1 (:rgb mid1) borte (:rgb stripe1)
                 height 273
                 width 903
@@ -80,7 +80,7 @@
   Object
   (render [this]
           (let [id 5002
-                {:keys [scarf/mid1 scarf/stripe1 scarf/current width thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 width thumbnail?]} (om/props this)
                 cmid1 (:rgb mid1) stripe (:rgb stripe1)
                 height 273
                 width 903

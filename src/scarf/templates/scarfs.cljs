@@ -1,7 +1,6 @@
 (ns scarf.templates.scarfs
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [clojure.string :refer [ends-with? replace]]
             [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.crossed.triangle :as crossed-triangle]

@@ -1,6 +1,5 @@
 (ns scarf.specs
-  (:require [cljs.spec.alpha :as s]
-            [clojure.spec.test.alpha :as stest]))
+  (:require [cljs.spec.alpha :as s]))
 
 (s/def ::id int?)
 (s/def ::rgb (s/and string?

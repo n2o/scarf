@@ -1,9 +1,7 @@
 (ns scarf.components.nav
   (:require [om.dom :as dom]
             [om.next :as om :refer-macros [defui]]
-            [scarf.templates.scarfs :as scarfs]
-            [scarf.templates.utils :as utils]
-            [scarf.parser :as parser]))
+            [scarf.templates.scarfs :as scarfs]))
 
 (defn- change-category [this category]
   (om/transact! this `[(nav/change-category {:category ~category})])

@@ -7,11 +7,11 @@
   "Gerolltes Halstuch, dreieckig, einfarbig, mit doppeltem Rand."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :color/selected])
   Object
   (render [this]
           (let [id 5004
-                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 scarf/current width thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 width thumbnail?]} (om/props this)
                 cmid1 (:rgb mid1) s1 (:rgb stripe1) s2 (:rgb stripe2)
                 height 273
                 width 903
@@ -49,11 +49,11 @@
   "Gerolltes Halstuch, dreieckig, einfarbig, mit doppelter Borte."
   static om/IQuery
   (query [this]
-         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :scarf/current :color/selected])
+         [:scarf/mid1 :scarf/stripe1 :scarf/stripe2 :color/selected])
   Object
   (render [this]
           (let [id 5006
-                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 scarf/current width thumbnail?]} (om/props this)
+                {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 width thumbnail?]} (om/props this)
                 cmid1 (:rgb mid1) s1 (:rgb stripe1) s2 (:rgb stripe2)
                 height 273
                 width 903
