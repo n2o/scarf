@@ -10,11 +10,11 @@
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current
-          :option/stripe])
+          :option/stripe :option/size-a :option/size-b])
   Object
   (render [this]
           (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
-                        option/stripe
+                        option/stripe option/size-a option/size-b
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
@@ -48,9 +48,21 @@
                                                                        (dom/td nil (:name stripe2))
                                                                        (dom/td nil (:id stripe2))))
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
-                                                                     (dom/td #js {:colSpan 3}
-                                                                             (dom/span nil "Der Rand wird "
-                                                                                       (dom/strong nil (name stripe)))))
+                                                                     (dom/td nil
+                                                                             (dom/span nil "Breite"))
+                                                                     (dom/td #js {:colSpan 2}
+                                                                             (if size-a (str size-a " cm") "noch nicht festgelegt")))
+                                                             (dom/tr nil
+                                                                     (dom/td nil
+                                                                             (dom/span nil "Höhe"))
+                                                                     (dom/td #js {:colSpan 2}
+                                                                             (if size-b (str size-b " cm") "noch nicht festgelegt")))
+                                                             (dom/tr nil
+                                                                     (dom/td nil
+                                                                             (dom/span nil "Der Rand wird"))
+                                                                     (dom/td #js {:colSpan 2}
+                                                                             (dom/strong nil (name stripe))))
+
                                                              (dom/tr #js {:style #js {:borderTop "4px double lightgrey"}}
                                                                      (dom/td nil "Artikelnummer:")
                                                                      (dom/td #js {:colSpan 2} (order-no current mid1 mid2 stripe1 stripe2)))))))))))

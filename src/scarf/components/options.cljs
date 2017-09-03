@@ -58,7 +58,7 @@
                                      (let [line #js {:stroke "rgb(100,100,100)"
                                                      :strokeWidth "1px"}]
                                        (dom/div #js {:className "svg-container"
-                                                     :style #js {:paddingBottom "250"}}
+                                                     :style #js {:paddingBottom "250px"}}
                                                 (dom/svg #js {:viewBox "0 0 400 220"
                                                               :preserveAspectRatio "xMinYMin meet"
                                                               :className "svg-content"}
@@ -93,6 +93,6 @@
                                                                 (dom/text #js {:x 310 :y 105 :fill "#212529"} "B"))))))
                             (dom/div #js {:className "col-md-6 col-12"}
                                      (dom/form nil
-                                               (stripe-options (om/props this))
-                                               (sizes (om/props this))))))))
+                                               (sizes (om/props this))
+                                               (stripe-options (om/props this))))))))
 (def options (om/factory Options))
