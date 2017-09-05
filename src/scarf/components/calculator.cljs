@@ -2,6 +2,7 @@
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
             [scarf.templates.scarfs :as scarfs]
+            [scarf.components.options :as options]
             [scarf.templates.utils :as utils]))
 
 (defn- order-no [current color1 color2 stripe1 stripe2]
@@ -11,15 +12,15 @@
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current
-          :option/stripe :option/size-a :option/size-b :option/size-c])
+          :option/size-a :option/size-b :option/size-c])
   Object
   (render [this]
           (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
-                        option/stripe option/size-a option/size-b option/size-c
+                        option/size-a option/size-b option/size-c
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
-                     (let [table-style #js {:className "table table-hover table-striped table-condensed"}]
+                     (let [table-style #js {:className "table table-striped table-condensed"}]
                        (dom/div #js {:className "row"}
                                 (dom/div #js {:className "col-6"}
                                          (dom/table table-style
@@ -48,7 +49,9 @@
                                                                  (dom/tr nil
                                                                          (dom/td nil "Borte / Rand 2")
                                                                          (dom/td nil (:name stripe2))
-                                                                         (dom/td nil (:id stripe2)))))))
+                                                                         (dom/td nil (:id stripe2))))))
+                                         (when (utils/stripe-dispatch current)
+                                           (options/stripe-options (om/props this))))
                                 (dom/div #js {:className "col-6"}
                                          (dom/table table-style
                                                     (dom/thead nil
@@ -70,9 +73,5 @@
                                                                (dom/tr nil
                                                                        (dom/td nil (dom/span nil "Höhe"))
                                                                        (dom/td nil
-                                                                               (if (not= "" size-c) (str "ca. " size-c " cm") "nicht festgelegt")))
-                                                               (when (utils/stripe-dispatch current)
-                                                                 (dom/tr nil
-                                                                         (dom/td nil (dom/span nil "Der Rand wird"))
-                                                                         (dom/td nil (dom/strong nil (name stripe))))))))))))))
+                                                                               (if (not= "" size-c) (str "ca. " size-c " cm") "nicht festgelegt"))))))))))))
 (def view (om/factory Calculator))

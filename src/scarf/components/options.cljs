@@ -36,14 +36,20 @@
   (render [this]
           (let [{:keys [option/stripe scarf/current]} (om/props this)]
             (when (utils/stripe-dispatch current)
-              (dom/div #js {:className "form-group"}
-                       (dom/label nil "Rand umgeschlagen oder aufgesetzt?")
-                       (dom/select #js {:className "form-control"
-                                        :onChange #(om/transact! this `[(option/stripe {:option ~(.. % -target -value)})])}
-                                   (dom/option #js {:value "umgeschlagen"
-                                                    :defaultValue (= :umgeschlagen stripe)} "umgeschlagen")
-                                   (dom/option #js {:value "aufgesetzt"
-                                                    :defaultValue (= :aufgesetzt stripe)} "aufgesetzt")))))))
+              (dom/div nil
+                       (dom/div #js {:className "form-group"}
+                                (dom/label nil "Rand umgeschlagen oder aufgesetzt?")
+                                (dom/select #js {:className "form-control"
+                                                 :onChange #(om/transact! this `[(option/stripe {:option ~(.. % -target -value)})])}
+                                            (dom/option #js {:value ""
+                                                             :defaultValue (nil? stripe)} "--- Option wählen ---")
+                                            (dom/option #js {:value "umgeschlagen"
+                                                             :defaultValue (= :umgeschlagen stripe)} "umgeschlagen")
+                                            (dom/option #js {:value "aufgesetzt"
+                                                             :defaultValue (= :aufgesetzt stripe)} "aufgesetzt")))
+                       (when (= "" stripe)
+                         (dom/p #js {:className "text-info"}
+                                "Bitte auswählen, ob der Rand umgeschlagen oder aufgesetzt sein soll!")))))))
 (def stripe-options (om/factory StripeOptions))
 
 (defui Options

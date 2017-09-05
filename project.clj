@@ -3,7 +3,7 @@
   :dependencies [[org.clojure/clojure "1.9.0-alpha19"]
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/test.check "0.9.0"]
-                 [org.omcljs/om "1.0.0-alpha48"]]
+                 [org.omcljs/om "1.0.0-beta1"]]
 
   :plugins [[lein-ancient "0.6.10"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]

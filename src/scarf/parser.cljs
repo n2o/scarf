@@ -7,7 +7,7 @@
 
 (def init-data
   {:nav/category :einfach
-   :option/stripe :umgeschlagen
+   :option/stripe ""
    :option/size-a "112"
    :option/size-b "80"
    :option/size-c "57"
