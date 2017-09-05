@@ -8,8 +8,9 @@
 (def init-data
   {:nav/category :einfach
    :option/stripe :umgeschlagen
-   :option/size-a ""
-   :option/size-b ""
+   :option/size-a "112"
+   :option/size-b "80"
+   :option/size-c "57"
    :scarf/current 5001
    :scarf/mid1 {:id "SW21" :rgb "#D0D6E0" :name "silbergrau" :price (random-price 5)}
    :scarf/mid2 {:id "SW33" :rgb "#B1D3F9" :name "hellblau" :price (random-price 5)}

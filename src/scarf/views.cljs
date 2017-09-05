@@ -60,5 +60,5 @@
                    (dom/div #js {:className "text-center"}
                             (colors/colors (om/props this)))
                    (options/options (om/props this))
-                   (utils/red-heading "Übersicht und Artikelnummer")
+                   (utils/red-heading "Übersicht")
                    (calc/view (om/props this)))))

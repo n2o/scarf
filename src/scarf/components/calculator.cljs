@@ -11,11 +11,11 @@
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current
-          :option/stripe :option/size-a :option/size-b])
+          :option/stripe :option/size-a :option/size-b :option/size-c])
   Object
   (render [this]
           (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
-                        option/stripe option/size-a option/size-b
+                        option/stripe option/size-a option/size-b option/size-c
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (dom/div nil
@@ -62,11 +62,15 @@
                                                                (dom/tr nil
                                                                        (dom/td nil (dom/span nil "Breite"))
                                                                        (dom/td nil
-                                                                               (if (not= "" size-a) (str size-a " cm") "nicht festgelegt")))
+                                                                               (if (not= "" size-a) (str "ca. " size-a " cm") "nicht festgelegt")))
+                                                               (dom/tr nil
+                                                                       (dom/td nil (dom/span nil "Breite"))
+                                                                       (dom/td nil
+                                                                               (if (not= "" size-b) (str "ca. " size-b " cm") "nicht festgelegt")))
                                                                (dom/tr nil
                                                                        (dom/td nil (dom/span nil "Höhe"))
                                                                        (dom/td nil
-                                                                               (if (not= "" size-b) (str size-b " cm") "nicht festgelegt")))
+                                                                               (if (not= "" size-c) (str "ca. " size-c " cm") "nicht festgelegt")))
                                                                (when (utils/stripe-dispatch current)
                                                                  (dom/tr nil
                                                                          (dom/td nil (dom/span nil "Der Rand wird"))

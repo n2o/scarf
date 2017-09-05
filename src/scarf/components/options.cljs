@@ -53,47 +53,59 @@
   Object
   (render [this]
           (dom/div nil
-                   (utils/red-heading "Optionen")
-                   (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col-md-6 col-12"}
-                                     (let [line #js {:stroke "rgb(100,100,100)"
-                                                     :strokeWidth "1px"}]
-                                       (dom/div #js {:className "svg-container"
-                                                     :style #js {:paddingBottom "250px"}}
-                                                (dom/svg #js {:viewBox "0 0 400 220"
-                                                              :preserveAspectRatio "xMinYMin meet"
-                                                              :className "svg-content"}
-                                                         (dom/g #js {:transform (str "scale(1.2)")}
-                                                                (dom/polygon #js {:fill "#e9ecef"
-                                                                                  :points "0,25 300,25 150,175"})
-                                                                (dom/line #js {:x1 1 :y1 10 ;; horizontal line left
-                                                                               :x2 140 :y2 10
-                                                                               :style line})
-                                                                (dom/line #js {:x1 160 :y1 10 ;; horizontal line right
-                                                                               :x2 300 :y2 10
-                                                                               :style line})
-                                                                (dom/line #js {:x1 1 :y1 10 ;; vertical line left
-                                                                               :x2 1 :y2 20
-                                                                               :style line})
-                                                                (dom/line #js {:x1 300 :y1 10 ;; vertical line right
-                                                                               :x2 300 :y2 20
-                                                                               :style line})
-                                                                (dom/line #js {:x1 305 :y1 25 ;; small horizontal line right
-                                                                               :x2 315 :y2 25
-                                                                               :style line})
-                                                                (dom/line #js {:x1 155 :y1 175 ;; line bottom
-                                                                               :x2 315 :y2 175
-                                                                               :style line})
-                                                                (dom/line #js {:x1 315 :y1 25 ;; long right v line top
-                                                                               :x2 315 :y2 90
-                                                                               :style line})
-                                                                (dom/line #js {:x1 315 :y1 110 ;; long right v line bottom
-                                                                               :x2 315 :y2 175
-                                                                               :style line})
-                                                                (dom/text #js {:x 145 :y 15 :fill "#212529"} "A")
-                                                                (dom/text #js {:x 310 :y 105 :fill "#212529"} "B"))))))
-                            (dom/div #js {:className "col-md-6 col-12"}
-                                     (dom/form nil
-                                               (sizes (om/props this))
-                                               (stripe-options (om/props this))))))))
+                   (utils/red-heading "Abmessungen")
+                   (dom/p #js {:className "text-center"}
+                          "Hier findest du die Standardabmessungen unserer
+                   Halstücher. Diese können produktionsbedingt ein wenig
+                   schwanken. Es ist auch möglich dein Halstuch in einer
+                   Sondergröße zu bestellen -- kontaktiere uns einfach und wir
+                   schicken dir ein Angebot zu!")
+                   (dom/br nil)
+                   (dom/div #js {:className "text-center"}
+                            (let [line #js {:stroke "rgb(100,100,100)"
+                                            :strokeWidth "1px"}]
+                              (dom/div #js {:className "svg-container"
+                                            :style #js {:maxWidth "600px"
+                                                        :paddingBottom "350px"}}
+                                       (dom/svg #js {:viewBox "0 0 400 320"
+                                                     :preserveAspectRatio "xMinYMin meet"
+                                                     :className "svg-content"}
+                                                (dom/g #js {:transform (str "scale(1.2)")}
+                                                       (dom/polygon #js {:fill "#e9ecef"
+                                                                         :points "0,25 300,25 150,175"})
+                                                       (dom/line #js {:x1 1 :y1 10 ;; horizontal line left
+                                                                      :x2 100 :y2 10
+                                                                      :style line})
+                                                       (dom/line #js {:x1 200 :y1 10 ;; horizontal line right
+                                                                      :x2 300 :y2 10
+                                                                      :style line})
+                                                       (dom/line #js {:x1 1 :y1 10 ;; vertical line left
+                                                                      :x2 1 :y2 20
+                                                                      :style line})
+                                                       (dom/line #js {:x1 300 :y1 10 ;; vertical line right
+                                                                      :x2 300 :y2 20
+                                                                      :style line})
+
+                                                       (dom/line #js {:x1 305 :y1 28 ;; top right
+                                                                      :x2 314 :y2 37
+                                                                      :style line})
+                                                       (dom/line #js {:x1 314 :y1 37 ;; long top right
+                                                                      :x2 269 :y2 84
+                                                                      :style line})
+                                                       (dom/line #js {:x1 154 :y1 179 ;; line bottom
+                                                                      :x2 164 :y2 189
+                                                                      :style line})
+                                                       (dom/line #js {:x1 164 :y1 189 ;; long right v line bottom
+                                                                      :x2 209 :y2 144
+                                                                      :style line})
+
+                                                       (dom/line #js {:x1 150 :y1 25 ;; long right v line bottom
+                                                                      :x2 150 :y2 175
+                                                                      :style line
+                                                                      :strokeDasharray "5, 5"})
+                                                       (dom/text #js {:x 115 :y 15 :fill "#212529"} "ca. 112 cm")
+                                                       (dom/text #js {:fill "#212529" :transform "translate(219,139)rotate(-45)"}
+                                                                 "ca. 80 cm")
+                                                       (dom/text #js {:fill "#212529" :transform "translate(147,115)rotate(-90)" :fontSize "12"}
+                                                                 "ca. 57 cm")))))))))
 (def options (om/factory Options))
