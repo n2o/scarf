@@ -1,11 +1,10 @@
 (ns scarf.components.nav
-  (:require [om.dom :as dom]
-            [om.next :as om :refer-macros [defui]]
+  (:require [om.next :as om :refer-macros [defui]]
+            [sablono.core :as html :refer-macros [html]]
             [scarf.templates.scarfs :as scarfs]))
 
 (defn- change-category [this category]
-  (om/transact! this `[(nav/change-category {:category ~category})])
-  #_(utils/switch-chosen-one this nil))
+  (om/transact! this `[(nav/change-category {:category ~category})]))
 
 
 ;; -----------------------------------------------------------------------------
@@ -17,16 +16,14 @@
   Object
   (render [this]
           (let [{:keys [whoami title body nav/category disabled?]} (om/props this)]
-            (dom/div #js {:className (str "card pointer"
-                                          (when (= category whoami) " card-outline-highlight")
-                                          (when disabled? " not-allowed text-muted"))
-                          :title "Mehr Kategorien folgen bald!"
-                          :onClick (when-not disabled? #(change-category this whoami))}
-                     (dom/div #js {:className "card-body"}
-                              (when title
-                                (dom/h5 #js {:className "card-title"} title))
-                              (when body
-                                (dom/p #js {:className "card-text"} body)))))))
+            (html [:div {:class (str "card pointer"
+                                     (when (= category whoami) " card-outline-highlight")
+                                     (when disabled? " not-allowed text-muted"))
+                         :title "Mehr Kategorien folgen bald!"
+                         :on-click (when-not disabled? #(change-category this whoami))}
+                   [:div.card-body
+                    (when title [:h5.card-title title])
+                    (when body [:p.card-text body])]]))))
 (def category (om/factory Category))
 
 
@@ -36,38 +33,37 @@
          [:nav/category])
   Object
   (render [this]
-          (dom/div nil
-                   (dom/h3 nil "Kategorien")
-                   (dom/br nil)
-                   (dom/h6 nil "Einfarbig")
-                   (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :einfach
-                                                                       :title "einfach"
-                                                                       :body "Mit und ohne Rand / Borte"})))
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :doppelt
-                                                                       :title "doppelt"
-                                                                       :body "Mit doppeltem Rand / Borte"})))
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :gekreuzt
-                                                                       :title "gekreuzt"
-                                                                       :body "Mit gekreuzten Borten"})))
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :zweifarbige-schenkel
-                                                                       :title "einfach"
-                                                                       :body "Mit zweifarbigem Rand / Borte"}))))
-                   (dom/br nil)
-                   (dom/h6 nil "Zweifarbig")
-                   (dom/div #js {:className "row"}
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :halbiert
-                                                                       :title "vertikal geteilt, 1/2 zu 1/2"
-                                                                       :body "Mit und ohne Rand / Borte"})))
-                            (dom/div #js {:className "col"}
-                                     (category (merge (om/props this) {:whoami :geviertelt
-                                                                       :title "horizontal geteilt, 3/4 zu 1/4"
-                                                                       :body "Mit und ohne Rand / Borte"})))))))
+          (html
+           [:div
+            [:h3 "Kategorien"] [:br] [:h6 "Einfarbig"]
+            [:div.row
+             [:div.col
+              (category (merge (om/props this) {:whoami :einfach
+                                                :title "einfach"
+                                                :body "Mit und ohne Rand / Borte"}))]
+             [:div.col
+              (category (merge (om/props this) {:whoami :doppelt
+                                                :title "doppelt"
+                                                :body "Mit doppeltem Rand / Borte"}))]
+             [:div.col
+              (category (merge (om/props this) {:whoami :gekreuzt
+                                                :title "gekreuzt"
+                                                :body "Mit gekreuzten Borten"}))]
+             [:div.col
+              (category (merge (om/props this) {:whoami :zweifarbige-schenkel
+                                                :title "einfach"
+                                                :body "Mit zweifarbigem Rand / Borte"}))]]
+            [:br]
+            [:h6 "Zweifarbig"]
+            [:div.row
+             [:div.col
+              (category (merge (om/props this) {:whoami :halbiert
+                                                :title "vertikal geteilt, 1/2 zu 1/2"
+                                                :body "Mit und ohne Rand / Borte"}))]
+             [:div.col
+              (category (merge (om/props this) {:whoami :geviertelt
+                                                :title "horizontal geteilt, 3/4 zu 1/4"
+                                                :body "Mit und ohne Rand / Borte"}))]]])))
 (def categories (om/factory Categories))
 
 (defui SubCategories
@@ -77,24 +73,24 @@
   Object
   (render [this]
           (let [{:keys [nav/category]} (om/props this)]
-            (dom/div nil
-                     (dom/h4 nil "Wähle eine Variante aus")
-                     (case category
-                       :einfach (scarfs/einfach (om/props this))
-                       :doppelt (scarfs/doppelt (om/props this))
-                       :gekreuzt (scarfs/gekreuzt (om/props this))
-                       :halbiert (scarfs/halbiert (om/props this))
-                       :geviertelt (scarfs/geviertelt (om/props this))
-                       :zweifarbige-schenkel (scarfs/zweifarbige-schenkel (om/props this))
-                       nil)))))
+            (html [:div
+                   [:h4 "Wähle eine Variante aus"]
+                   (case category
+                     :einfach (scarfs/einfach (om/props this))
+                     :doppelt (scarfs/doppelt (om/props this))
+                     :gekreuzt (scarfs/gekreuzt (om/props this))
+                     :halbiert (scarfs/halbiert (om/props this))
+                     :geviertelt (scarfs/geviertelt (om/props this))
+                     :zweifarbige-schenkel (scarfs/zweifarbige-schenkel (om/props this))
+                     nil)]))))
 (def sub-categories (om/factory SubCategories))
 
 
 (defui Products
   Object
   (render [this]
-          (dom/div nil
-                   (categories (om/props this))
-                   (dom/br nil)
-                   (sub-categories (om/props this)))))
+          (html [:div
+                 (categories (om/props this))
+                 [:br]
+                 (sub-categories (om/props this))])))
 (def products (om/factory Products))

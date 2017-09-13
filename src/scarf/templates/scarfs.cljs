@@ -32,7 +32,7 @@
        id))
 
 (defn id->query [id]
-  (into #{} (om/get-query (id->component id))))
+  (set (om/get-query (id->component id))))
 
 (defn- build-article-no
   "When there are two options for the scarf, show both numbers in the view."

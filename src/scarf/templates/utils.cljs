@@ -64,7 +64,7 @@
 
 (defn red-heading [heading]
   (dom/div nil
-           (dom/hr nil)
+           (dom/hr #js {:className "spacer"})
            (dom/a #js {:name (lib/simple-slug heading)})
            (dom/h2 nil heading)
            (dom/div #js {:className "underline"})))

@@ -1,6 +1,6 @@
 (ns scarf.views
   (:require [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]
+            [sablono.core :as html :refer-macros [html]]
             [scarf.components.calculator :as calc]
             [scarf.components.colors :as colors]
             [scarf.components.nav :as nav]
@@ -42,23 +42,23 @@
   Object
   (render [this]
           (let [{:keys [color/selected]} (om/props this)]
-            (dom/div #js {:className "smooth text-center"}
-                     (when-not selected
-                       (dom/p nil "Bitte wähle zunächst eine Farbe aus"))))))
+            (html [:div.smooth.text-center
+                   (when-not selected
+                     [:p "Bitte wähle zunächst eine Farbe aus"])]))))
 (def selection (om/factory Selection))
 
 (defui Main
   Object
   (render [this]
-          (dom/div nil
-                   (nav/products (om/props this))
-                   (dom/hr nil)
-                   (selection (om/props this))
-                   (dom/div #js {:className "text-center"
-                                 :style #js {:padding "3rem 0"}}
-                            (dispatch-current-scarf this))
-                   (dom/div #js {:className "text-center"}
-                            (colors/colors (om/props this)))
-                   (options/options (om/props this))
-                   (utils/red-heading "Übersicht")
-                   (calc/view (om/props this)))))
+          (html [:div
+                 (nav/products (om/props this))
+                 [:hr]
+                 (selection (om/props this))
+                 [:div {:class "text-center"
+                        :style {:padding "3rem 0"}}
+                  (dispatch-current-scarf this)]
+                 [:div.text-center
+                  (colors/colors (om/props this))]
+                 (options/options (om/props this))
+                 (utils/red-heading "Übersicht")
+                 (calc/view (om/props this))])))
