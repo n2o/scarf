@@ -1,13 +1,9 @@
 (ns scarf.components.options
   (:require [om.next :as om :refer-macros [defui]]
-            [om.dom :as dom]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.utils :as utils]))
 
 (defui Sizes
-  static om/IQuery
-  (query [this]
-         [:option/size-a :option/size-b])
   Object
   (render [this]
           (html [:div
