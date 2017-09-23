@@ -51,7 +51,7 @@
   Object
   (render [this]
           (let [{:keys [scarf id title subtitle scarf/current]} (om/props this)]
-            (dom/div #js {:className (str "card pointer text-center"
+            (dom/div #js {:className (str "card hover pointer text-center"
                                           (when (= id current) " card-outline-highlight"))
                           :onClick #(utils/switch-chosen-one this id)}
                      (dom/div #js {:className "card-img-top"
