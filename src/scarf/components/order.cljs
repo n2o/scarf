@@ -1,7 +1,9 @@
 (ns scarf.components.order
   (:require [om.next :as om :refer-macros [defui]]
             [sablono.core :as html :refer-macros [html]]
-            [scarf.templates.utils :as utils]))
+            [scarf.templates.utils :as utils]
+            [scarf.templates.simple.triangle :as simple-triangle]
+            [scarf.templates.scarfs :as scarfs]))
 
 (def urls
   {5000 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-A-einfarbig::32023.html"})
@@ -24,18 +26,18 @@
 
 (defmulti order-template (fn [current _] current))
 (defmethod order-template 5000 [current {:keys [mid1]}]
-  [:span
+  [:div
    (add-article-header current "Ohne Rand und ohne Borte")
    [:p "Grundfarbe: " (destructure-color mid1)]])
 
 (defmethod order-template 5001 [current {:keys [mid1 stripe1]}]
-  [:span
+  [:div
    (add-article-header current "Mit einfacher Borte")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5002 [current {:keys [mid1 stripe1 stripe-option] :as props}]
-  [:span
+  [:div
    (add-article-header current "Mit einfachem Rand" stripe-option)
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe Randstreifen: " (destructure-color stripe1)]
@@ -45,7 +47,7 @@
   (order-template 5002 props))
 
 (defmethod order-template 5004 [current {:keys [mid1 stripe1 stripe2 stripe-option]}]
-  [:span
+  [:div
    (add-article-header current "Mit doppeltem Rand" stripe-option)
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe innerer Randstreifen: " (destructure-color stripe1)]
@@ -56,40 +58,40 @@
   (order-template 5004 props))
 
 (defmethod order-template 5006 [current {:keys [mid1 stripe1 stripe2]}]
-  [:span
+  [:div
    (add-article-header current "Mit doppelter Borte")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe innere Borte: " (destructure-color stripe1)]
    [:p "Farbe äußere Borte: " (destructure-color stripe2)]])
 
 (defmethod order-template 5007 [current {:keys [mid1 stripe1]}]
-  [:span
+  [:div
    (add-article-header current "Mit gekreuzter Borte")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe gekreuzte Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5008 [current {:keys [mid1 stripe1 stripe2]}]
-  [:span
+  [:div
    (add-article-header current "Mit gekreuzter Doppelborte")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe innere Borte: " (destructure-color stripe1)]
    [:p "Farbe äußere Borte: " (destructure-color stripe2)]])
 
 (defmethod order-template 5009 [current {:keys [mid1 mid2]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, vertikal geteilt, 1/2 zu 1/2, ohne Rand und Borte")
    [:p "Farbe linke Hälfte: " (destructure-color mid1)]
    [:p "Farbe rechte Hälfte: " (destructure-color mid2)]])
 
 (defmethod order-template 5010 [current {:keys [mid1 mid2 stripe1]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, vertikal geteilt, 1/2 zu 1/2, mit einfacher Borte")
    [:p "Farbe linke Hälfte: " (destructure-color mid1)]
    [:p "Farbe rechte Hälfte: " (destructure-color mid2)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5011 [current {:keys [mid1 mid2 stripe1 stripe-option]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, vertikal geteilt, 1/2 zu 1/2, mit einfachem Rand" stripe-option)
    [:p "Farbe linke Hälfte: " (destructure-color mid1)]
    [:p "Farbe rechte Hälfte: " (destructure-color mid2)]
@@ -100,20 +102,20 @@
   (order-template 5011 props))
 
 (defmethod order-template 5013 [current {:keys [mid1 mid2]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, ohne Rand und Borte")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]])
 
 (defmethod order-template 5014 [current {:keys [mid1 mid2 stripe1]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, mit einfacher Borte")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5015 [current {:keys [mid1 mid2 stripe1]}]
-  [:span
+  [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, mit einfachem Rand")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
@@ -121,14 +123,14 @@
    (build-stripe-option :umgeschlagen)])
 
 (defmethod order-template 5016 [current {:keys [mid1 stripe1 stripe2]}]
-  [:span
+  [:div
    (add-article-header current "Mit zweifarbiger Borte")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe linke Borte: " (destructure-color stripe1)]
    [:p "Farbe rechte Borte: " (destructure-color stripe2)]])
 
 (defmethod order-template 5017 [current {:keys [mid1 stripe1 stripe2 stripe-option]}]
-  [:span
+  [:div
    (add-article-header current "Mit zweifarbigem Rand")
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe linker Randstreifen: " (destructure-color stripe1)]
@@ -159,7 +161,7 @@
                    [:div.card-body
                     [:div.card-text
                      [:div.row
-                      [:div.col-6
+                      [:div.col-9
                        [:div.card.bg-light
                         [:div.card-body
                          [:div.card-text
@@ -169,12 +171,18 @@
                             (order-template (utils/stripe-dispatch-with-option current stripe)
                                             {:mid1 mid1 :mid2 mid2
                                              :stripe1 stripe1 :stripe2 stripe2
-                                             :stripe-option stripe}))]]
-                        [:a {:class "btn btn-sm btn-primary"}
-                         "Artikel kopieren"]]]
-                      [:div.col-6
-                       ""]]]]]))))
+                                             :stripe-option stripe}))]]]]
+                      [:div.ml-auto.col-3
+                       [:div.card
+                        [:div.card-header "Vorschau"]
+                        [:div.card-body
+                         ((scarfs/id->scarf-factory current)
+                          (merge (om/props this) {:thumbnail? true}))]]]]
+                     [:a {:class "btn btn-sm btn-primary"
+                          :style {:margin-top "0.5rem"}}
+                      "Artikelbeschreibung kopieren"]]]]))))
 (def order-no (om/factory OrderNo))
+
 
 (defui Order
   static om/IQuery
