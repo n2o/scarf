@@ -1,7 +1,8 @@
 (ns scarf.components.calculator
   (:require [om.next :as om :refer-macros [defui]]
             [sablono.core :as html :refer-macros [html]]
-            [scarf.templates.scarfs :as scarfs]))
+            [scarf.templates.scarfs :as scarfs]
+            [scarf.components.options :as options]))
 
 (defn- order-no [current color1 color2 stripe1 stripe2]
   (str current))
@@ -21,7 +22,15 @@
                    [:div.row
                     [:div.col-6
                      [:table.table.table-striped.table-condensed
-                      [:thead [:tr [:th "Option"] [:th "Farbe"] [:th "Farbcode"]]]
+                      [:thead [:tr [:th "Eigenschaft"] [:th "Wert"]]]
+                      [:tbody
+                       [:tr [:td "Muster"] [:td (order-no current mid1 mid2 stripe1 stripe2)]]
+                       [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
+                       [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
+                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]
+                    [:div.col-6
+                     [:table.table.table-striped.table-condensed
+                      [:thead [:tr [:th "Farbbereich"] [:th "Farbe"] [:th "Farbcode"]]]
                       [:tbody
                        (when (contains? query :scarf/mid1)
                          [:tr [:td "Mitte 1"] [:td (:name mid1)] [:td (:id mid1)]])
@@ -30,15 +39,8 @@
                        (when (contains? query :scarf/stripe1)
                          [:tr [:td "Borte / Rand 1"] [:td (:name stripe1)] [:td (:id stripe1)]])
                        (when (contains? query :scarf/stripe2)
-                         [:tr [:td "Borte / Rand 2"] [:td (:name stripe2)] [:td (:id stripe2)]])]]]
-                    [:div.col-6
-                     [:table.table.table-striped.table-condensed
-                      [:thead [:tr [:th "Eigenschaft"] [:th "Wert"]]]
-                      [:tbody
-                       [:tr [:td "Muster"] [:td (order-no current mid1 mid2 stripe1 stripe2)]]
-                       [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
-                       [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
-                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]]
+                         [:tr [:td "Borte / Rand 2"] [:td (:name stripe2)] [:td (:id stripe2)]])]]
+                     (options/stripe-options (om/props this))]]
                    [:h4 "Fertig konfiguriert?"]
                    [:p "Dann lies bitte die Informationen zu unseren Farben und
                    lass' dir unten zeigen, wie du das Halstuch bestellen kannst."]]))))
