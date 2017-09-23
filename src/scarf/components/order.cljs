@@ -1,8 +1,8 @@
 (ns scarf.components.order
   (:require [om.next :as om :refer-macros [defui]]
+            [goog.dom :as gdom]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.utils :as utils]
-            [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.scarfs :as scarfs]))
 
 (def urls
@@ -162,7 +162,7 @@
                     [:div.card-text
                      [:div.row
                       [:div.col-9
-                       [:div.card.bg-light
+                       [:div.card.bg-light#article-description
                         [:div.card-body
                          [:div.card-text
                           (if (and (utils/stripe-dispatch current)
@@ -185,15 +185,10 @@
 
 
 (defui Order
-  static om/IQuery
-  (query [this] [:scarf/current :scarf/stripe1 :scarf/stripe2
-                 :scarf/mid1 :scarf/mid2])
   Object
   (render [this]
-          (let [{:keys [scarf/current scarf/mid1 scarf/mid2
-                        scarf/stripe1 scarf/stripe2]} (om/props this)]
-            (html [:div
-                   [:p "Hier bekommst du eine Beschreibung deines konfigurierten
+          (html [:div
+                 [:p "Hier bekommst du eine Beschreibung deines konfigurierten
                    Halstuchs. Kopiere die Beschreibung bitte in deine
                    Zwischenablage, indem du auf den entsprechenden Button unten
                    klickst. Anschließend kommst du über einen Link zu dem
@@ -202,12 +197,12 @@
                    kopierte Beschreibung in die Anmerkungen zu deiner Bestellung
                    ein. Schließe den Bestellvorgang ab und erhalte von uns"]
 
-                   (order-no (om/props this))
+                 (order-no (om/props this))
 
-                   [:ol
-                    [:li "ausruester-eschwege.de aufrufen und einloggen"]
-                    [:li "Artikel auswählen und in den Warenkorb hinzufügen"]
-                    [:li "Zur Kasse gehen"]
-                    [:li "Bei \"2. Bezahlart wählen\" im Anmerkungsfeld folgendes einfügen:"]
-                    [:li "Bestellung überprüfen und abschicken"]]]))))
+                 [:ol
+                  [:li "ausruester-eschwege.de aufrufen und einloggen"]
+                  [:li "Artikel auswählen und in den Warenkorb hinzufügen"]
+                  [:li "Zur Kasse gehen"]
+                  [:li "Bei \"2. Bezahlart wählen\" im Anmerkungsfeld folgendes einfügen:"]
+                  [:li "Bestellung überprüfen und abschicken"]]])))
 (def order (om/factory Order))

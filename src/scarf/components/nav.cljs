@@ -16,7 +16,7 @@
   Object
   (render [this]
           (let [{:keys [whoami title body nav/category disabled?]} (om/props this)]
-            (html [:div {:class (str "card pointer"
+            (html [:div {:class (str "card hover pointer"
                                      (when (= category whoami) " card-outline-highlight")
                                      (when disabled? " not-allowed text-muted"))
                          :title "Mehr Kategorien folgen bald!"
