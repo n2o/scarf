@@ -44,7 +44,7 @@
                                  :defaultValue (= :umgeschlagen stripe)} "umgeschlagen"]
                        [:option {:value "aufgesetzt"
                                  :defaultValue (= :aufgesetzt stripe)} "aufgesetzt"]]]
-                     (when (= "" stripe)
+                     (when (zero? (count (name stripe)))
                        [:p.text-info "Bitte auswählen, ob der Rand umgeschlagen oder aufgesetzt sein soll!"])])))))
 (def stripe-options (om/factory StripeOptions))
 
