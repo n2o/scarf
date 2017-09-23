@@ -75,8 +75,17 @@
   (get {5002 5003
         5004 5005
         5011 5012
-        5015 5016
-        5017 5028} id))
+        5017 5018} id))
+
+(defn stripe-dispatch-with-option
+  "Return article-no for article with put-on stripe, if current is in the map of
+  the scarfs with options and the user selected :aufgesetzt as her option."
+  [current stripe-options]
+  (let [ncurrent (stripe-dispatch current)]
+    (if (and ncurrent
+             (= :aufgesetzt stripe-options))
+      ncurrent
+      current)))
 
 (defn convert-number
   "Convert number to use comma as a decimal point and remove comma or dot at the

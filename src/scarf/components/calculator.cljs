@@ -2,20 +2,18 @@
   (:require [om.next :as om :refer-macros [defui]]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.scarfs :as scarfs]
-            [scarf.components.options :as options]))
-
-(defn- order-no [current color1 color2 stripe1 stripe2]
-  (str current))
+            [scarf.components.options :as options]
+            [scarf.templates.utils :as utils]))
 
 (defui Calculator
   static om/IQuery
   (query [this]
          [:scarf/mid1 :scarf/mid2 :scarf/stripe1 :scarf/stripe2 :scarf/current
-          :option/size-a :option/size-b :option/size-c])
+          :option/size-a :option/size-b :option/size-c :option/stripe])
   Object
   (render [this]
           (let [{:keys [scarf/mid1 scarf/mid2 scarf/stripe1 scarf/stripe2
-                        option/size-a option/size-b option/size-c
+                        option/size-a option/size-b option/size-c option/stripe
                         scarf/current]} (om/props this)
                 query (scarfs/id->query current)]
             (html [:div
@@ -24,7 +22,7 @@
                      [:table.table.table-striped.table-condensed
                       [:thead [:tr [:th "Eigenschaft"] [:th "Wert"]]]
                       [:tbody
-                       [:tr [:td "Muster"] [:td (order-no current mid1 mid2 stripe1 stripe2)]]
+                       [:tr [:td "Muster"] [:td (utils/stripe-dispatch-with-option current stripe)]]
                        [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
                        [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
                        [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]
