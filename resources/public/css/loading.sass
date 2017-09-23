@@ -1,0 +1,27 @@
+.circle-loader
+  margin-left: 48%
+  fill: transparent
+  stroke: $ausruesterrot
+  stroke-width: 4
+  animation: dash 2s ease infinite,rotate 2s linear infinite
+
+@keyframes dash
+  0%
+    stroke-dasharray: 1,95
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 85,95
+    stroke-dashoffset: -25
+
+  100%
+    stroke-dasharray: 85,95
+    stroke-dashoffset: -93
+
+
+@keyframes rotate
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
