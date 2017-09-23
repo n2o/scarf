@@ -28,11 +28,13 @@
         5015 quartered-triangle/Rand
         5016 twolegs-triangle/Borte
         5017 twolegs-triangle/Rand
-        5018 twolegs-triangle/Rand}
-       id))
+        5018 twolegs-triangle/Rand} id))
 
 (defn id->query [id]
   (set (om/get-query (id->component id))))
+
+(defn id->scarf-factory [id]
+  (om/factory (id->component id)))
 
 (defn- build-article-no
   "When there are two options for the scarf, show both numbers in the view."
