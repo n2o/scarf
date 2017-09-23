@@ -5,6 +5,7 @@
             [scarf.components.colors :as colors]
             [scarf.components.nav :as nav]
             [scarf.components.options :as options]
+            [scarf.components.order :as order]
             [scarf.templates.simple.rolled :as simple-rolled]
             [scarf.templates.twice.rolled :as twice-rolled]
             [scarf.templates.crossed.rolled :as crossed-rolled]
@@ -55,10 +56,12 @@
                  [:hr]
                  (selection (om/props this))
                  [:div {:class "text-center"
-                        :style {:padding "3rem 0"}}
+                        :style {:padding "3 rem 0"}}
                   (dispatch-current-scarf this)]
                  [:div.text-center
                   (colors/colors (om/props this))]
                  (options/options (om/props this))
                  (utils/red-heading "Übersicht")
-                 (calc/view (om/props this))])))
+                 (calc/view (om/props this))
+                 (utils/red-heading "Bestellung vorbereiten")
+                 (order/order (om/props this))])))

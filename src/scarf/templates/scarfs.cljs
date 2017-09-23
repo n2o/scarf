@@ -184,5 +184,5 @@
                                                {:scarf quartered-triangle/randstreifen
                                                 :id 5015
                                                 :title "Mit einfachem Rand"
-                                                :subtitle "umgeschlagen oder aufgesetzt"}))))))
+                                                :subtitle "umgeschlagen"}))))))
 (def geviertelt (om/factory Viertel))

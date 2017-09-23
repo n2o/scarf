@@ -4,7 +4,7 @@
 (def init-data
   {:nav/category :einfach
    :option/stripe ""
-   :option/size-a "112"
+   :option/size-a "112" ;; cm
    :option/size-b "80"
    :option/size-c "57"
    :scarf/current 5001
