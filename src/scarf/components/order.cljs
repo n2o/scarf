@@ -3,7 +3,8 @@
             [goog.dom :as gdom]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.utils :as utils]
-            [scarf.templates.scarfs :as scarfs]))
+            [scarf.templates.scarfs :as scarfs]
+            [scarf.lib :as lib]))
 
 (def urls
   {5000 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-A-einfarbig::32023.html"})
@@ -164,7 +165,7 @@
                       [:div.col-9
                        [:div.card.bg-light#article-description
                         [:div.card-body
-                         [:div.card-text
+                         [:div.card-text#article-no
                           (if (and (utils/stripe-dispatch current)
                                    (zero? (count (name stripe))))
                             [:p "Bitte oben den Randtyp auswählen!"]
@@ -178,11 +179,33 @@
                         [:div.card-body
                          ((scarfs/id->scarf-factory current)
                           (merge (om/props this) {:thumbnail? true}))]]]]
-                     [:a {:class "btn btn-sm btn-primary"
-                          :style {:margin-top "0.5rem"}}
+                     [:btn {:class "btn btn-sm btn-primary pointer"
+                            :id "copy-to-clipboard"
+                            :data-clipboard-target "#article-no"
+                            ;:data-placement "right"
+                            ;:data-toggle "tooltip"
+                            ;:title "Artikelnummer kopiert!"
+                            :onClick #(lib/timed-tooltip "#copy-to-clipboard")
+                            :style {:margin-top "0.5rem"}}
                       "Artikelbeschreibung kopieren"]]]]))))
 (def order-no (om/factory OrderNo))
 
+(comment
+
+  (def jquery (js* "$"))
+
+  (.tooltip ((js* "$") "#copy-to-clipboard") #js {:trigger "manual"
+                                                  :placement "right"
+                                                  :title "Artikelnummer kopiert!"})
+
+  (.tooltip (jquery "#copy-to-clipboard") "show")
+  (.tooltip (jquery "#copy-to-clipboard") "hide")
+
+  (set! (.-data-toggle (gdom/getElement "#copy-to-clipboard")) "tooltip")
+
+  (.log js/console (gdom/getElement "article-no"))
+  (.-innerText (gdom/getElement "article-no"))
+  )
 
 (defui Order
   Object
