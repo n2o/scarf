@@ -1,13 +1,41 @@
 (ns scarf.components.order
   (:require [om.next :as om :refer-macros [defui]]
-            [goog.dom :as gdom]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.utils :as utils]
             [scarf.templates.scarfs :as scarfs]
             [scarf.lib :as lib]))
 
+(comment
+  "
+Artikelnummerkonflikt:
+5010 (viereckig im Internet, im Konfigurator zweifarbig 1/2 mit einfacher Borte) http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-A-einfarbig-::32028.html
+5011 -''- http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-B-einfarbig-mit-Borte-::32135.html
+5012 -''- http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-C-einfarbig-mit-Rand-umlegt-::32029.html
+5013 Artikelbeschreibung in sich falsch http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-D-einf-mit-Rand-aufgesetzt-::32030.html
+5014 viereckig im Shop http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-E-einf-mit-2-Raendern-aufges-::32031.html
+5015 -''- http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-viereckig/Halstuch-F-Halstuch-nach-Mass::32136.html
+")
+
 (def urls
-  {5000 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-A-einfarbig::32023.html"})
+  {5000 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-A-einfarbig::32023.html"
+   5001 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-B-einfarbig-mit-Borte::32024.html"
+   5002 "http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-C-einfarbig-mit-Rand-umlegt-::32025.html"
+   5003 "http://ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-D-einfarbig-mit-Rand-aufgesetzt-::32026.html"
+   5004 "http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-E-einfarbig-mit-2-Borten-aufgesetzt-::32027.html"
+   5005 "http://ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-F-Halstuch-nach-Mass::32134.html"
+   5006 ""
+   5007 ""
+   5008 ""
+   5009 ""
+   5010 ""
+   5011 ""
+   5012 ""
+   5013 ""
+   5014 ""
+   5015 ""
+   5016 ""
+   5017 ""
+   5018 ""})
 
 (defn- destructure-color [color]
   (str (:name color) ", " (:id color)))
@@ -141,7 +169,7 @@
 (defmethod order-template 5018 [_ props]
   (order-template 5017 props))
 
-(defmethod order-template :default [_ {:keys [mid1 stripe1]}]
+(defmethod order-template :default [_ _]
   [:p "Bei der Generierung der Artikelbeschreibung ist ein Fehler aufgetreten.
   Bitte kontaktiere uns und berichte von dem Problem."])
 
@@ -207,25 +235,52 @@
   (.-innerText (gdom/getElement "article-no"))
   )
 
+(defui ShopLink
+  static om/IQuery
+  (query [this] [:scarf/current])
+  Object
+  (render [this]
+          (let [{:keys [scarf/current]} (om/props this)]
+            (html [:div
+                   [:div.card
+                    [:div.card-body
+                     [:div.card-text
+                      [:div.row
+                       [:div.col-6
+                        [:div.card.bg-light
+                         [:div.card-body
+                          [:div.card-text
+                           [:ol
+                            [:li [:a {:href (get urls current) :target :_blank} "Grundartikel"]
+                             " in den Warenkorb hinzufügen"]
+                            [:li "Zur Kasse gehen"]
+                            [:li "Bei \"2. Bezahlart wählen\" als \"Anmerkung\" die Artikelbeschreibung von oben einfügen (Rechtsklick --> Einfügen)"]
+                            [:li "Bestellung überprüfen und abschicken"]]]]]]]
+
+                      [:a {:class "btn btn-sm btn-primary pointer"
+                           :href (get urls current)
+                           :target :_blank
+                           :style {:margin-top "0.5rem"}}
+                       "Link zum Artikel"]]]]]))))
+(def shop-link (om/factory ShopLink))
+
 (defui Order
   Object
   (render [this]
           (html [:div
-                 [:p "Hier bekommst du eine Beschreibung deines konfigurierten
+                 [:p.lead
+                  "Hier bekommst du eine Beschreibung deines konfigurierten
                    Halstuchs. Kopiere die Beschreibung bitte in deine
                    Zwischenablage, indem du auf den entsprechenden Button unten
                    klickst. Anschließend kommst du über einen Link zu dem
-                   Artikel in unserem Shop, den du personalisieren möchtest.
-                   Füge diesen Artikel in deinen Warenkorb hinzu und die
-                   kopierte Beschreibung in die Anmerkungen zu deiner Bestellung
-                   ein. Schließe den Bestellvorgang ab und erhalte von uns"]
+                   Grundartikel in unserem Shop, den du personalisieren
+                   möchtest. Füge diesen Artikel in deinen Warenkorb hinzu und
+                   die kopierte Beschreibung in die Anmerkungen zu deiner
+                   Bestellung ein. Schließe den Bestellvorgang ab und erhalte
+                   von uns eine Bestellbestätigung wo du bitte noch einmal
+                   überprüfst, dass deine Bestellung auch korrekt angekommen
+                   ist."]
 
                  (order-no (om/props this))
-
-                 [:ol
-                  [:li "ausruester-eschwege.de aufrufen und einloggen"]
-                  [:li "Artikel auswählen und in den Warenkorb hinzufügen"]
-                  [:li "Zur Kasse gehen"]
-                  [:li "Bei \"2. Bezahlart wählen\" im Anmerkungsfeld folgendes einfügen:"]
-                  [:li "Bestellung überprüfen und abschicken"]]])))
+                 (shop-link (om/props this))])))
 (def order (om/factory Order))
