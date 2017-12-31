@@ -1,20 +1,26 @@
 (defproject scarf "0.2.256"
   :description "Create clickable SVG objects, which can be colorized"
-  :dependencies [[org.clojure/clojure "1.9.0-beta2"]
-                 [org.clojure/clojurescript "1.9.908"]
-                 [org.clojure/core.async "0.3.443"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/clojurescript "1.9.946"]
+                 [org.clojure/core.async "0.3.465"]
                  [org.clojure/test.check "0.9.0"]
                  [org.omcljs/om "1.0.0-beta1"]
-                 [sablono "0.8.0"]]
+                 [sablono "0.8.1"]]
 
-  :plugins [[lein-ancient "0.6.10"]
+  :plugins [[lein-ancient "0.6.15"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
             [lein-codox "0.10.3"]
-            [lein-figwheel "0.5.13"]
-            [lein-kibit "0.1.5"]
+            [lein-figwheel "0.5.14"]
+            [lein-kibit "0.1.6"]
             [lein-set-version "0.4.1"]]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+
+  :jvm-opts ~(let [version (System/getProperty "java.version")
+                     [major _ _] (clojure.string/split version #"\.")]
+                 (if (>= (Integer. major) 9)
+                   ["--add-modules" "java.xml.bind"]
+                   []))
 
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src"]
@@ -34,8 +40,8 @@
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
-  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.4"]
-                                  [figwheel-sidecar "0.5.13"]
+  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.8"]
+                                  [figwheel-sidecar "0.5.14"]
                                   [com.cemerick/piggieback "0.2.2"]]
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src" "dev"]
