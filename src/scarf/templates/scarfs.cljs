@@ -1,6 +1,7 @@
 (ns scarf.templates.scarfs
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
+            [sablono.core :as html :refer-macros [html]]
             [scarf.templates.simple.triangle :as simple-triangle]
             [scarf.templates.twice.triangle :as twice-triangle]
             [scarf.templates.crossed.triangle :as crossed-triangle]
@@ -51,18 +52,18 @@
   Object
   (render [this]
           (let [{:keys [scarf id title subtitle scarf/current]} (om/props this)]
-            (dom/div #js {:className (str "card hover pointer text-center"
-                                          (when (= id current) " card-outline-highlight"))
-                          :onClick #(utils/switch-chosen-one this id)}
-                     (dom/div #js {:className "card-img-top"
-                                   :style #js {:padding "1rem"}}
-                              (scarf (merge (om/props this) {:thumbnail? true})))
-                     (dom/div #js {:className "card-body"}
-                              (dom/h5 #js {:className "card-title"}
-                                      (dom/div nil title (dom/br nil) (dom/small nil subtitle)))
-                              (dom/p #js {:className "card-text"}
-                                     (dom/small #js {:className "text-muted"}
-                                                (str "Artikelnummer: " (build-article-no id)))))))))
+            (html
+             [:div {:className (str "card hover pointer text-center"
+                                    (when (= id current) " card-outline-highlight"))
+                    :onClick #(utils/switch-chosen-one this id)}
+              [:div.card-img-top {:style {:padding "1rem"}}
+               (scarf (merge (om/props this) {:thumbnail? true}))]
+              [:div.card-body
+               [:h5.card-title
+                [:div title [:br] [:small subtitle]]]
+               [:p.card-text
+                [:small.text-muted
+                 (str "Artikelnummer: " (build-article-no id))]]]]))))
 (def scarf-card (om/factory ScarfCard))
 
 (defui Einfach

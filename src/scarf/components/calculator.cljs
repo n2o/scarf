@@ -41,5 +41,5 @@
                      (options/stripe-options (om/props this))]]
                    [:h4 "Fertig konfiguriert?"]
                    [:p "Dann lies bitte die Informationen zu unseren Farben und
-                   lass' dir unten zeigen, wie du das Halstuch bestellen kannst."]]))))
+                   lass dir unten zeigen, wie du das Halstuch bestellen kannst."]]))))
 (def view (om/factory Calculator))
