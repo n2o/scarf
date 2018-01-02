@@ -182,58 +182,39 @@ Artikelnummerkonflikt:
                  :scarf/stripe1 :scarf/stripe2
                  :option/stripe])
   Object
-  (render [this]
-          (let [{:keys [scarf/current scarf/mid1 scarf/mid2
-                        scarf/stripe1 scarf/stripe2
-                        option/stripe]} (om/props this)]
-            (html [:div.card
-                   [:div.card-body
-                    [:div.card-text
-                     [:div.row
-                      [:div.col-9
-                       [:div.card.bg-light#article-description
-                        [:div.card-body
-                         [:div.card-text#article-no
-                          (if (and (utils/stripe-dispatch current)
-                                   (zero? (count (name stripe))))
-                            [:p "Bitte oben den Randtyp auswählen!"]
-                            (order-template (utils/stripe-dispatch-with-option current stripe)
-                                            {:mid1 mid1 :mid2 mid2
-                                             :stripe1 stripe1 :stripe2 stripe2
-                                             :stripe-option stripe}))]]]]
-                      [:div.ml-auto.col-3
-                       [:div.card
-                        [:div.card-header "Vorschau"]
-                        [:div.card-body
-                         ((scarfs/id->scarf-factory current)
-                          (merge (om/props this) {:thumbnail? true}))]]]]
-                     [:btn {:class "btn btn-sm btn-primary pointer"
-                            :id "copy-to-clipboard"
-                            :data-clipboard-target "#article-no"
-                            ;:data-placement "right"
-                            ;:data-toggle "tooltip"
-                            ;:title "Artikelnummer kopiert!"
-                            :onClick #(lib/timed-tooltip "#copy-to-clipboard")
-                            :style {:margin-top "0.5rem"}}
-                      "Artikelbeschreibung kopieren"]]]]))))
+  (render
+   [this]
+   (let [{:keys [scarf/current scarf/mid1 scarf/mid2
+                 scarf/stripe1 scarf/stripe2
+                 option/stripe]} (om/props this)]
+     (html [:div.card
+            [:div.card-body
+             [:div.card-text
+              [:div.row
+               [:div.col-9
+                [:div.card.bg-light#article-description
+                 [:div.card-body
+                  [:div.card-text#article-no
+                   (if (and (utils/stripe-dispatch current)
+                            (zero? (count (name stripe))))
+                     [:p "Bitte oben den Randtyp auswählen!"]
+                     (order-template (utils/stripe-dispatch-with-option current stripe)
+                                     {:mid1 mid1 :mid2 mid2
+                                      :stripe1 stripe1 :stripe2 stripe2
+                                      :stripe-option stripe}))]]]]
+               [:div.ml-auto.col-3
+                [:div.card
+                 [:div.card-header "Vorschau"]
+                 [:div.card-body
+                  ((scarfs/id->scarf-factory current)
+                   (merge (om/props this) {:thumbnail? true}))]]]]
+              [:btn {:class "btn btn-sm btn-primary pointer"
+                     :id "copy-to-clipboard"
+                     :data-clipboard-target "#article-no"
+                     :onClick #(lib/timed-tooltip "#copy-to-clipboard")
+                     :style {:margin-top "0.5rem"}}
+               "Artikelbeschreibung kopieren"]]]]))))
 (def order-no (om/factory OrderNo))
-
-(comment
-
-  (def jquery (js* "$"))
-
-  (.tooltip ((js* "$") "#copy-to-clipboard") #js {:trigger "manual"
-                                                  :placement "right"
-                                                  :title "Artikelnummer kopiert!"})
-
-  (.tooltip (jquery "#copy-to-clipboard") "show")
-  (.tooltip (jquery "#copy-to-clipboard") "hide")
-
-  (set! (.-data-toggle (gdom/getElement "#copy-to-clipboard")) "tooltip")
-
-  (.log js/console (gdom/getElement "article-no"))
-  (.-innerText (gdom/getElement "article-no"))
-  )
 
 (defui ShopLink
   static om/IQuery
@@ -241,46 +222,142 @@ Artikelnummerkonflikt:
   Object
   (render [this]
           (let [{:keys [scarf/current]} (om/props this)]
-            (html [:div
-                   [:div.card
-                    [:div.card-body
-                     [:div.card-text
-                      [:div.row
-                       [:div.col-6
-                        [:div.card.bg-light
-                         [:div.card-body
-                          [:div.card-text
-                           [:ol
-                            [:li [:a {:href (get urls current) :target :_blank} "Grundartikel"]
-                             " in den Warenkorb hinzufügen"]
-                            [:li "Zur Kasse gehen"]
-                            [:li "Bei \"2. Bezahlart wählen\" als \"Anmerkung\" die Artikelbeschreibung von oben einfügen (Rechtsklick --> Einfügen)"]
-                            [:li "Bestellung überprüfen und abschicken"]]]]]]]
-
+            (html [:div.card
+                   [:div.card-body
+                    [:div.card-text
+                     [:p "Die Abwicklung des Bestellvorgangs erfolgt über
+                      unseren Onlineshop ausruester-eschwege.de. Dort findest du
+                      alle Grundartikel, wobei diese Artikel keine Farben
+                      definiert haben. Die Definition der Farben hast du aber
+                      über diese Seite schon erledigt und musst sie bei der
+                      Bestellung später mit angeben."]
+                     [:p "Dein Grundartikel hat die Nummer "
+                      [:strong current]
+                      ". Die Artikelnummer des Artikels im Shop muss mit dieser Nummer übereinstimmen."]
+                     [:p "Klicke auf diesen Link, um direkt zum Artikel im Shop zu springen:"]
+                     [:p
                       [:a {:class "btn btn-sm btn-primary pointer"
                            :href (get urls current)
-                           :target :_blank
-                           :style {:margin-top "0.5rem"}}
+                           :target :_blank}
                        "Link zum Artikel"]]]]]))))
 (def shop-link (om/factory ShopLink))
 
+(defn- add-article-to-cart []
+  (html
+   [:div.row
+    [:div.col-9
+     [:div.card
+      [:div.card-body
+       [:div.card-text
+        [:p "Über den Link aus dem vorherigen Schritt kannst du direkt zum
+        richtigen Artikel im Shop springen. Füge diesen Artikel zu deinem
+        Warenkorb hinzu und stöbere ruhig weiter in unserem Shop."]
+        [:p "Beim Abschluss der Bestellung musst du die Artikelbeschreibung aus
+        Schritt 1 einfügen."]]]]]
+    [:div.ml-auto.col-3
+     [:div.card
+      [:div.card-header "Beispielartikel"]
+      [:div.card-body
+       [:a {:href "img/beispielartikel.png"
+            :data-lightbox "sample-article"
+            :data-title "Beispielartikel aus unserem Shop. Es handelt sich hier
+            um ein Bildschirmfoto. Der Artikel kann aus dem echten Shop
+            abweichen. Es gelten die im Onlineshop hinterlegten Details und
+            Bedingungen."}
+        [:img.img-thumbnail {:src "img/beispielartikel.png"}]]]]]]))
+
+(defn- copy-description []
+  (html
+   [:div.row
+    [:div.col-9
+     [:div.card
+      [:div.card-body
+       [:div.card-text
+        [:p "Wenn du im Onlineshop auf \"Zur Kasse\" klickst, wird der Abschluss
+        der Bestellung eingeleitet. Warst du zu diesem Zeitpunkt noch nicht
+        eingeloggt, so musst du das an dieser Stelle tun."]
+        [:p "Nachdem du die Versandart ausgewählt hast, folgt der Schritt \"2.
+        Bezahlart auswählen\". Hier hast du die Möglichkeit eine Anmerkung zu
+        deiner Bestellung einzufügen. Füge an diese Stelle bitte die
+        Artikelbeschreibung von oben ein, indem du mit der rechten Maustaste in
+        das Formular klickst und dann auf \"Einfügen\" klickst. Das fügt den
+        Inhalt deiner Zwischenablage in das Feld ein."]]]]]
+    [:div.ml-auto.col-3
+     [:div.card
+      [:div.card-header "Bestellanmerkung"]
+      [:div.card-body
+       [:a {:href "img/order-description.png"
+            :data-lightbox "sample-article"
+            :data-title "Beispielhafte Anmerkung zu einer Bestellung. Bei
+            anderen Mustern oder Farben wird eine andere Beschreibung generiert,
+            die an diese Stelle eingefügt werden kann."}
+        [:img.img-thumbnail {:src "img/order-description.png"}]]]]]]))
+
+
+;; -----------------------------------------------------------------------------
+
+(defn- order-steps [title subtitle link]
+  (html
+   [:a {:href (str "#" link)}
+    [:div {:className "card hover pointer text-center"}
+     [:div.card-body
+      [:h5.card-title title]
+      [:p.card-text subtitle]]]]))
+
 (defui Order
   Object
-  (render [this]
-          (html [:div
-                 [:p.lead
-                  "Hier bekommst du eine Beschreibung deines konfigurierten
-                   Halstuchs. Kopiere die Beschreibung bitte in deine
-                   Zwischenablage, indem du auf den entsprechenden Button unten
-                   klickst. Anschließend kommst du über einen Link zu dem
-                   Grundartikel in unserem Shop, den du personalisieren
-                   möchtest. Füge diesen Artikel in deinen Warenkorb hinzu und
-                   die kopierte Beschreibung in die Anmerkungen zu deiner
-                   Bestellung ein. Schließe den Bestellvorgang ab und erhalte
-                   von uns eine Bestellbestätigung wo du bitte noch einmal
-                   überprüfst, dass deine Bestellung auch korrekt angekommen
-                   ist."]
+  (render
+   [this]
+   (html
+    [:div
+     [:p.lead
+      "Über die Einstellungen oben hast du oben ein Halstuch konfiguriert. Die
+      passende Artikelbeschreibung findest du weiter unten. Diese Beschreibung
+      wird benötigt, um den Bestellvorgang über unsere Shop
+      ausruester-eschwege.de abzuschließen. Dabei musst du nur den folgenden
+      Schritten folgen und am Ende die Bestellung überprüfen."]
+     [:br]
 
-                 (order-no (om/props this))
-                 (shop-link (om/props this))])))
+     [:div.row
+      [:div.col
+       (order-steps "1. Artikelbeschreibung kopieren"
+                    "Die generierte Artikelbeschreibung unten im Feld in die
+                    Zwischenablage kopieren (auf den Button klicken)."
+                    "artikelbeschreibung-kopieren")]
+      [:div.col
+       (order-steps "2. Onlineshop öffnen"
+                    "Die Halstücher werden über unseren Shop vertrieben. Du
+                    benötigst dort einen Benutzeraccount."
+                    "onlineshop-oeffnen")]
+      [:div.col
+       (order-steps "3. Artikel in den Warenkorb legen"
+                    "Den passenden Grundartikel in den Warenkorb einfügen. Unten
+                    findest du einen Link dazu."
+                    "artikel-in-warenkorb")]
+      [:div.col
+       (order-steps "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"
+                    "Grundartikel + hier generierte Artikelbeschreibung
+                    beschreiben dein Halstuch."
+                    "artikelbeschreibung-einfuegen")]]
+     [:br]
+
+     [:a {:name "artikelbeschreibung-kopieren"}]
+     [:h3 "1. Artikelbeschreibung kopieren"]
+     (order-no (om/props this))
+     [:br]
+
+     [:a {:name "onlineshop-oeffnen"}]
+     [:h3 "2. Onlineshop öffnen und einloggen"]
+     (shop-link (om/props this))
+     [:br]
+
+     [:a {:name "artikel-in-warenkorb"}]
+     [:h3 "3. Artikel in den Warenkorb legen"]
+     (add-article-to-cart)
+     [:br]
+
+     [:a {:name "artikelbeschreibung-einfuegen"}]
+     [:h3 "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"]
+     (copy-description)
+     [:br]])))
 (def order (om/factory Order))
