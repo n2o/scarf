@@ -32,5 +32,8 @@
           (let [{:keys [color/items color/selected scarf/current nav/category]} (om/props this)]
             (html [:div
                    (when (and current category)
-                     (map #(color-block (merge % {:selected selected})) items))]))))
+                     (map #(color-block (merge % {:selected selected})) items))
+                   [:div
+                    "Ausgewählte Farbe: " (:name selected) ", " (:id selected)
+                    [:span#color-selection-sample (color-block selected)]]]))))
 (def colors (om/factory Colors))
