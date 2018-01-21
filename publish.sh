@@ -21,9 +21,9 @@ git add -f resources/public/index.html \
     resources/public/css/scarf.css \
     resources/public/img/ \
     resources/public/bower_components/jquery/dist/jquery.min.js \
-    resources/public/bower_components/popper.js/dist/umd/popper.min.js \
     resources/public/bower_components/bootstrap/dist/js/bootstrap.min.js \
     resources/public/bower_components/lightbox2/dist/js/lightbox.min.js \
+    resources/public/bower_components/clipboard/dist/clipboard.min.js \
     resources/public/bower_components/lightbox2/dist/images/ \
     resources/public/js/compiled/scarf.js
 
