@@ -11,7 +11,7 @@
   "Calculate aimed size of rolled scarfs depending on current screen size. Slots
    are the same as in bootstrap's grid system. Unit: px."
   []
-  (let [width (.-width js/screen)]
+  (let [width (.-innerWidth js/window)]
     (cond
       (> width 1200) 800
       (> width 992) 750
