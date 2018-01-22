@@ -18,7 +18,7 @@
                 query (scarfs/id->query current)]
             (html [:div
                    [:div.row
-                    [:div.col-6
+                    [:div.col-md-6.col-sm-12
                      [:table.table.table-striped.table-condensed
                       [:thead [:tr [:th "Eigenschaft"] [:th "Wert"]]]
                       [:tbody
@@ -26,7 +26,7 @@
                        [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
                        [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
                        [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]
-                    [:div.col-6
+                    [:div.col-md-6.col-sm-12
                      [:table.table.table-striped.table-condensed
                       [:thead [:tr [:th "Farbbereich"] [:th "Farbe"] [:th "Farbcode"]]]
                       [:tbody

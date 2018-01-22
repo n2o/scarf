@@ -17,7 +17,7 @@
       (> width 992) 750
       (> width 768) 650
       (> width 576) 450
-      :default 350)))
+      :default 400)))
 
 (defn scale-to-width
   "Calculate factor to scale SVG graphics to desired width."

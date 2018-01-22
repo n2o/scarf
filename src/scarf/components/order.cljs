@@ -180,7 +180,7 @@
             [:div.card-body
              [:div.card-text
               [:div.row
-               [:div.col-9
+               [:div.col-lg-9.col-md-7.col-sm-12 {:style {:paddingBottom "0.5em"}}
                 [:div.card.bg-light#article-description
                  [:div.card-body
                   [:div.card-text#article-no
@@ -191,7 +191,7 @@
                                      {:mid1 mid1 :mid2 mid2
                                       :stripe1 stripe1 :stripe2 stripe2
                                       :stripe-option stripe}))]]]]
-               [:div.ml-auto.col-3
+               [:div.ml-auto.col-lg-3.col-md-5.col-sm-12
                 [:div.card
                  [:div.card-header "Vorschau"]
                  [:div.card-body
@@ -234,7 +234,7 @@
 (defn- add-article-to-cart []
   (html
    [:div.row
-    [:div.col-9
+    [:div.col-md-9.col-sm-12 {:style {:paddingBottom "0.5em"}}
      [:div.card
       [:div.card-body
        [:div.card-text
@@ -243,7 +243,7 @@
         Warenkorb hinzu und stöbere ruhig weiter in unserem Shop."]
         [:p "Beim Abschluss der Bestellung musst du die Artikelbeschreibung aus
         Schritt 1 einfügen."]]]]]
-    [:div.ml-auto.col-3
+    [:div.ml-auto.col-md-3.col-sm-12
      [:div.card
       [:div.card-header "Beispielartikel"]
       [:div.card-body
@@ -258,7 +258,7 @@
 (defn- copy-description []
   (html
    [:div.row
-    [:div.col-9
+    [:div.col-md-9.col-sm-12 {:style {:paddingBottom "0.5em"}}
      [:div.card
       [:div.card-body
        [:div.card-text
@@ -271,7 +271,7 @@
         Artikelbeschreibung von oben ein, indem du mit der rechten Maustaste in
         das Formular klickst und dann auf \"Einfügen\" klickst. Das fügt den
         Inhalt deiner Zwischenablage in das Feld ein."]]]]]
-    [:div.ml-auto.col-3
+    [:div.ml-auto.col-md-3.col-sm-12
      [:div.card
       [:div.card-header "Bestellanmerkung"]
       [:div.card-body
@@ -308,22 +308,22 @@
      [:br]
 
      [:div.row
-      [:div.col
+      [:div.col.col-sm-12 {:style {:paddingBottom "0.5em"}}
        (order-steps "1. Artikelbeschreibung kopieren"
                     "Die generierte Artikelbeschreibung unten im Feld in die
                     Zwischenablage kopieren (auf den Button klicken)."
                     "artikelbeschreibung-kopieren")]
-      [:div.col
+      [:div.col.col-sm-12  {:style {:paddingBottom "0.5em"}}
        (order-steps "2. Onlineshop öffnen"
                     "Die Halstücher werden über unseren Shop vertrieben. Du
                     benötigst dort einen Benutzeraccount."
                     "onlineshop-oeffnen")]
-      [:div.col
+      [:div.col.col-sm-12  {:style {:paddingBottom "0.5em"}}
        (order-steps "3. Artikel in den Warenkorb legen"
                     "Den passenden Grundartikel in den Warenkorb einfügen. Unten
                     findest du einen Link dazu."
                     "artikel-in-warenkorb")]
-      [:div.col
+      [:div.col.col-sm-12
        (order-steps "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"
                     "Grundartikel + hier generierte Artikelbeschreibung
                     beschreiben dein Halstuch."
