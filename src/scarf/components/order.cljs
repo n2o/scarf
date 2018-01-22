@@ -54,7 +54,7 @@
    [:p "Grundfarbe: " (destructure-color mid1)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
-(defmethod order-template 5002 [current {:keys [mid1 stripe1 stripe-option] :as props}]
+(defmethod order-template 5002 [current {:keys [mid1 stripe1 stripe-option]}]
   [:div
    (add-article-header current "Mit einfachem Rand" stripe-option)
    [:p "Grundfarbe: " (destructure-color mid1)]
@@ -121,20 +121,20 @@
 
 (defmethod order-template 5013 [current {:keys [mid1 mid2]}]
   [:div
-   (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, ohne Rand und Borte")
+   (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, ohne Rand und Borte")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]])
 
 (defmethod order-template 5014 [current {:keys [mid1 mid2 stripe1]}]
   [:div
-   (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, mit einfacher Borte")
+   (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, mit einfacher Borte")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5015 [current {:keys [mid1 mid2 stripe1]}]
   [:div
-   (add-article-header current "Zweifarbig, horizontal geteilt, 3/4 zu 1/4, mit einfachem Rand")
+   (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, mit einfachem Rand")
    [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
    [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
    [:p "Farbe Rand: " (destructure-color stripe1)]

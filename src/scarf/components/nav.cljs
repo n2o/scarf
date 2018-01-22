@@ -62,7 +62,7 @@
                                                 :body "Mit und ohne Rand / Borte"}))]
              [:div.col
               (category (merge (om/props this) {:whoami :geviertelt
-                                                :title "horizontal geteilt, 3/4 zu 1/4"
+                                                :title "horizontal geteilt, 4/5 zu 1/5"
                                                 :body "Mit und ohne Rand / Borte"}))]]])))
 (def categories (om/factory Categories))
 
