@@ -8,6 +8,7 @@
             [scarf.templates.halved.triangle :as halved-triangle]
             [scarf.templates.quartered.triangle :as quartered-triangle]
             [scarf.templates.twolegs.triangle :as twolegs-triangle]
+            [scarf.templates.foursquare.flat :as foursquare-flat]
             [scarf.templates.utils :as utils]))
 
 (defn id->component [id]
@@ -167,7 +168,6 @@
 (def halbiert (om/factory Halbiert))
 
 
-
 (defui Viertel
   Object
   (render [this]
@@ -189,3 +189,44 @@
                                                 :title "Mit einfachem Rand"
                                                 :subtitle "umgeschlagen"}))))))
 (def geviertelt (om/factory Viertel))
+
+
+;; Viereckig
+(defui Viereckig
+  Object
+  (render
+   [this]
+   (html [:div
+          [:hr]
+          [:h4 "Vorschau: Viereckige Halstücher"]
+          [:div.row {:style {:paddingBottom "1em"}}
+           [:div.col
+            (scarf-card (merge (om/props this)
+                               {:scarf foursquare-flat/ohne-dekor
+                                :id 6000
+                                :title "Ohne Rand und Borte"}))]
+           [:div.col
+            (scarf-card (merge (om/props this)
+                               {:scarf foursquare-flat/borte
+                                :id 6001
+                                :title "Mit einfacher Borte"}))]
+           [:div.col
+            (scarf-card (merge (om/props this)
+                               {:scarf foursquare-flat/randstreifen
+                                :id 6002
+                                :title "Mit einfachem Rand"
+                                :subtitle "umgeschlagen oder aufgesetzt"}))]]
+          [:div.row
+           [:div.col
+            (scarf-card (merge (om/props this)
+                               {:scarf foursquare-flat/doppelrand
+                                :id 6004
+                                :title "Mit doppeltem Rand"
+                                :subtitle "umgeschlagen oder aufgesetzt"}))]
+           [:div.col
+            (scarf-card (merge (om/props this)
+                               {:scarf foursquare-flat/doppelborte
+                                :id 6006
+                                :title "Mit doppelter Borte"}))]
+           [:div.col]]])))
+(def viereckig-flach (om/factory Viereckig))

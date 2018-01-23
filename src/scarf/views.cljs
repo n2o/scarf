@@ -12,7 +12,9 @@
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.twolegs.rolled :as twolegs-rolled]
-            [scarf.templates.utils :as utils]))
+            [scarf.templates.foursquare.flat :as foursquare-flat]
+            [scarf.templates.utils :as utils]
+            [scarf.templates.scarfs :as scarfs]))
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]
@@ -64,4 +66,5 @@
                  (utils/red-heading "Übersicht")
                  (calc/view (om/props this))
                  (utils/red-heading "Bestellung vorbereiten")
-                 (order/order (om/props this))])))
+                 (order/order (om/props this))
+                 (scarfs/viereckig-flach (om/props this))])))

@@ -75,7 +75,9 @@
   (get {5002 5003
         5004 5005
         5011 5012
-        5017 5018} id))
+        5017 5018
+        6002 6003
+        6004 6005} id))
 
 (defn stripe-dispatch-with-option
   "Return article-no for article with put-on stripe, if current is in the map of
