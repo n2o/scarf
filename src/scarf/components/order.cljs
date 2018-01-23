@@ -308,22 +308,22 @@
      [:br]
 
      [:div.row
-      [:div.col.col-sm-12 {:style {:paddingBottom "0.5em"}}
+      [:div.col-sm-12.col-md {:style {:paddingBottom "0.5em"}}
        (order-steps "1. Artikelbeschreibung kopieren"
                     "Die generierte Artikelbeschreibung unten im Feld in die
                     Zwischenablage kopieren (auf den Button klicken)."
                     "artikelbeschreibung-kopieren")]
-      [:div.col.col-sm-12  {:style {:paddingBottom "0.5em"}}
+      [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
        (order-steps "2. Onlineshop öffnen"
                     "Die Halstücher werden über unseren Shop vertrieben. Du
                     benötigst dort einen Benutzeraccount."
                     "onlineshop-oeffnen")]
-      [:div.col.col-sm-12  {:style {:paddingBottom "0.5em"}}
+      [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
        (order-steps "3. Artikel in den Warenkorb legen"
                     "Den passenden Grundartikel in den Warenkorb einfügen. Unten
                     findest du einen Link dazu."
                     "artikel-in-warenkorb")]
-      [:div.col.col-sm-12
+      [:div.col-sm-12.col-md
        (order-steps "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"
                     "Grundartikel + hier generierte Artikelbeschreibung
                     beschreiben dein Halstuch."
