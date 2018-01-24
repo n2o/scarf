@@ -13,15 +13,15 @@
           (let [id 6000
                 {:keys [scarf/mid1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1)
-                width 266
-                height 266
+                width 270
+                height 270
                 scale (utils/scale-to-width thumbnail? width)
                 colorize #(utils/colorize this thumbnail? %)]
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "0,0 266,0 266,266 0,266"}))))))
+                                              :points "1,1 267,1 267,267 1,267"}))))))
 (def ohne-dekor (om/factory OhneDekor))
 
 (defui Borte
@@ -34,21 +34,21 @@
           (let [id 6001
                 {:keys [scarf/mid1 scarf/stripe1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1)
-                width 266
-                height 266
+                width 270
+                height 270
                 scale (utils/scale-to-width thumbnail? width)
                 colorize #(utils/colorize this thumbnail? %)]
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "0,0 266,0 266,266 0,266"})
+                                              :points "1,1 267,1 267,267 1,267"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
-                                              :points "8,8 258,8 258,258 8,258"})
+                                              :points "9,9 259,9 259,259 9,259"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "16,16 250,16 250,250 16,250"}))))))
+                                              :points "17,17 251,17 251,251 17,251"}))))))
 (def borte (om/factory Borte))
 
 (defui Rand
@@ -61,18 +61,18 @@
           (let [id 6002
                 {:keys [scarf/mid1 scarf/stripe1 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) c2 (:rgb stripe1)
-                width 266
-                height 266
+                width 270
+                height 270
                 scale (utils/scale-to-width thumbnail? width)
                 colorize #(utils/colorize this thumbnail? %)]
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill c2
-                                              :points "0,0 266,0 266,266 0,266"})
+                                              :points "1,1 267,1 267,267 1,267"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "8,8 258,8 258,258 8,258"}))))))
+                                              :points "9,9 259,9 259,259 9,259"}))))))
 (def randstreifen (om/factory Rand))
 
 (defui DoppelRand
@@ -85,21 +85,21 @@
           (let [id 6004
                 {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1) s2 (:rgb stripe2)
-                width 266
-                height 266
+                width 270
+                height 270
                 scale (utils/scale-to-width thumbnail? width)
                 colorize #(utils/colorize this thumbnail? %)]
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
                                               :fill s2
-                                              :points "0,0 266,0 266,266 0,266"})
+                                              :points "1,1 267,1 267,267 1,267"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
-                                              :points "8,8 258,8 258,258 8,258"})
+                                              :points "9,9 259,9 259,259 9,259"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "16,16 250,16 250,250 16,250"}))))))
+                                              :points "17,17 251,17 251,251 17,251"}))))))
 (def doppelrand (om/factory DoppelRand))
 
 (defui DoppelBorte
@@ -112,22 +112,22 @@
           (let [id 6006
                 {:keys [scarf/mid1 scarf/stripe1 scarf/stripe2 thumbnail?]} (om/props this)
                 c1 (:rgb mid1) s1 (:rgb stripe1) s2 (:rgb stripe2)
-                width 266
-                height 266
+                width 270
+                height 270
                 scale (utils/scale-to-width thumbnail? width)
                 colorize #(utils/colorize this thumbnail? %)]
             (dom/svg (utils/svg-options this id scale width height thumbnail?)
                      (dom/g #js {:transform (str "scale(" scale ")")}
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "0,0 266,0 266,266 0,266"})
+                                              :points "1,1 267,1 267,267 1,267"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe2)
                                               :fill s2
-                                              :points "8,8 258,8 258,258 8,258"})
+                                              :points "9,9 259,9 259,259 9,259"})
                             (dom/polygon #js {:onClick #(colorize :scarf/stripe1)
                                               :fill s1
-                                              :points "16,16 250,16 250,250 16,250"})
+                                              :points "17,17 251,17 251,251 17,251"})
                             (dom/polygon #js {:onClick #(colorize :scarf/mid1)
                                               :fill c1
-                                              :points "24,24 242,24 242,242 24,242"}))))))
+                                              :points "25,25 243,25 243,243 25,243"}))))))
 (def doppelborte (om/factory DoppelBorte))
