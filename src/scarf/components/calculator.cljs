@@ -37,9 +37,5 @@
                        (when (contains? query :scarf/stripe1)
                          [:tr [:td "Borte / Rand 1"] [:td (:name stripe1)] [:td (:id stripe1)]])
                        (when (contains? query :scarf/stripe2)
-                         [:tr [:td "Borte / Rand 2"] [:td (:name stripe2)] [:td (:id stripe2)]])]]
-                     (options/stripe-options (om/props this))]]
-                   [:h4 "Fertig konfiguriert?"]
-                   [:p "Dann lies bitte die Informationen zu unseren Farben und
-                   lass dir unten zeigen, wie du das Halstuch bestellen kannst."]]))))
+                         [:tr [:td "Borte / Rand 2"] [:td (:name stripe2)] [:td (:id stripe2)]])]]]]]))))
 (def view (om/factory Calculator))

@@ -207,10 +207,10 @@
 
 (defui ShopLink
   static om/IQuery
-  (query [this] [:scarf/current])
+  (query [this] [:scarf/current :option/stripe])
   Object
   (render [this]
-          (let [{:keys [scarf/current]} (om/props this)]
+          (let [{:keys [scarf/current option/stripe]} (om/props this)]
             (html [:div.card
                    [:div.card-body
                     [:div.card-text
@@ -221,12 +221,12 @@
                       über diese Seite schon erledigt und musst sie bei der
                       Bestellung später mit angeben."]
                      [:p "Dein Grundartikel hat die Nummer "
-                      [:strong current]
+                      [:strong (utils/stripe-dispatch-with-option current stripe)]
                       ". Die Artikelnummer des Artikels im Shop muss mit dieser Nummer übereinstimmen."]
                      [:p "Klicke auf diesen Link, um direkt zum Artikel im Shop zu springen:"]
                      [:p
                       [:a {:class "btn btn-sm btn-primary pointer"
-                           :href (get urls current)
+                           :href (get urls (utils/stripe-dispatch-with-option current stripe))
                            :target :_blank}
                        "Link zum Artikel"]]]]]))))
 (def shop-link (om/factory ShopLink))
