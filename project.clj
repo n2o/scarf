@@ -2,10 +2,10 @@
   :description "Create clickable SVG objects, which can be colorized"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.9.946"]
-                 [org.clojure/core.async "0.3.465"]
+                 [org.clojure/core.async "0.4.474"]
                  [org.clojure/test.check "0.9.0"]
                  [org.omcljs/om "1.0.0-beta1"]
-                 [sablono "0.8.1"]]
+                 [sablono "0.8.2"]]
 
   :plugins [[lein-ancient "0.6.15"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
@@ -40,7 +40,7 @@
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
-  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.8"]
+  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.9"]
                                   [figwheel-sidecar "0.5.14"]
                                   [com.cemerick/piggieback "0.2.2"]]
                    ;; need to add dev source path here to get user.clj loaded
