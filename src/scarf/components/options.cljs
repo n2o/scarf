@@ -64,26 +64,26 @@
               (html [:div
                      (utils/red-heading "Ränder")
                      [:p.text-center
-                      "Bei den Borten gibt es zwei Optionen: sie werden auf die
-                    Halstuchgrundfläche oben draufgenäht oder sie werden um den
-                    Rand der Halstuchgrundfläche umgeschlagen. Bitte wähle hier
-                    die gewünschte Option aus."]
+                      "Bei den Rändern gibt es zwei Optionen: sie werden auf die
+                      Halstuchgrundfläche oben draufgenäht oder sie werden um
+                      den Rand der Halstuchgrundfläche umgeschlagen. Bitte wähle
+                      hier die gewünschte Option aus."]
                      [:br]
                      [:div.row
                       [:div.col-md-2]
-                      [:div.col-12.col-md-4
-                       [:div {:class (str "card hover pointer"
-                                          (when (= :aufgesetzt stripe) " card-outline-highlight"))
-                              :onClick #(om/transact! this `[(option/stripe {:option :aufgesetzt})])}
-                        [:div.card-header "Aufgesetzter Rand" (text-when-selected :aufgesetzt stripe)]
-                        [:div.card-body [:img {:src "img/rand_aufgesetzt.jpg"
-                                               :class "img-fluid"}]]]]
                       [:div.col-12.col-md-4
                        [:div {:class (str "card hover pointer"
                                           (when (= :umgeschlagen stripe) " card-outline-highlight"))
                               :onClick #(om/transact! this `[(option/stripe {:option :umgeschlagen})])}
                         [:div.card-header "Umgeschlagener Rand" (text-when-selected :umgeschlagen stripe)]
                         [:div.card-body [:img {:src "img/rand_umgeschlagen.jpg"
+                                               :class "img-fluid"}]]]]
+                      [:div.col-12.col-md-4
+                       [:div {:class (str "card hover pointer"
+                                          (when (= :aufgesetzt stripe) " card-outline-highlight"))
+                              :onClick #(om/transact! this `[(option/stripe {:option :aufgesetzt})])}
+                        [:div.card-header "Aufgesetzter Rand" (text-when-selected :aufgesetzt stripe)]
+                        [:div.card-body [:img {:src "img/rand_aufgesetzt.jpg"
                                                :class "img-fluid"}]]]]]])))))
 (def border-options (om/factory BorderOptions))
 
