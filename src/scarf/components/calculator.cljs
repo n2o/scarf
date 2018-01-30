@@ -34,8 +34,7 @@
                        [:tr [:td "Muster"] [:td (utils/stripe-dispatch-with-option current stripe)]]
                        [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
                        [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
-                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]
-                       [:tr [:td "Randtyp"] [:td (str (name stripe))]]]]]
+                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]
                     [:div.col-md-6.col-sm-12
                      [:table.table.table-striped.table-condensed
                       [:thead [:tr [:th "Farbbereich"] [:th.text-center "Farbe"] [:th.text-center "Farbcode"]]]
