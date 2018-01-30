@@ -2,8 +2,17 @@
   (:require [om.next :as om :refer-macros [defui]]
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.scarfs :as scarfs]
-            [scarf.components.options :as options]
+            [scarf.components.colors :as colors]
             [scarf.templates.utils :as utils]))
+
+(defn- calculator-color-row [query field description color]
+  (when (contains? query field)
+    [:tr
+     [:td description]
+     [:td
+      [:span#color-selection-sample {:style {:paddingRight "0.5em"}} (colors/color-block color)]
+      (:name color)]
+     [:td (:id color)]]))
 
 (defui Calculator
   static om/IQuery
@@ -25,17 +34,14 @@
                        [:tr [:td "Muster"] [:td (utils/stripe-dispatch-with-option current stripe)]]
                        [:tr [:td "Lange Seite"] [:td (str "ca. " size-a " cm")]]
                        [:tr [:td "Kurze Seite"] [:td (str "ca. " size-b " cm")]]
-                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]]]]
+                       [:tr [:td "Höhe"] [:td (str "ca. " size-c " cm")]]
+                       [:tr [:td "Randtyp"] [:td (str (name stripe))]]]]]
                     [:div.col-md-6.col-sm-12
                      [:table.table.table-striped.table-condensed
-                      [:thead [:tr [:th "Farbbereich"] [:th "Farbe"] [:th "Farbcode"]]]
+                      [:thead [:tr [:th "Farbbereich"] [:th.text-center "Farbe"] [:th.text-center "Farbcode"]]]
                       [:tbody
-                       (when (contains? query :scarf/mid1)
-                         [:tr [:td "Mitte 1"] [:td (:name mid1)] [:td (:id mid1)]])
-                       (when (contains? query :scarf/mid2)
-                         [:tr [:td "Mitte 2"] [:td (:name mid2)] [:td (:id mid2)]])
-                       (when (contains? query :scarf/stripe1)
-                         [:tr [:td "Borte / Rand 1"] [:td (:name stripe1)] [:td (:id stripe1)]])
-                       (when (contains? query :scarf/stripe2)
-                         [:tr [:td "Borte / Rand 2"] [:td (:name stripe2)] [:td (:id stripe2)]])]]]]]))))
+                       (calculator-color-row query :scarf/mid1 "Mitte 1" mid1)
+                       (calculator-color-row query :scarf/mid2 "Mitte 2" mid2)
+                       (calculator-color-row query :scarf/stripe1 "Borte / Rand 1" stripe1)
+                       (calculator-color-row query :scarf/stripe2 "Borte / Rand 2" stripe2)]]]]]))))
 (def view (om/factory Calculator))
