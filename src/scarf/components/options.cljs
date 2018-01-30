@@ -70,21 +70,24 @@
                       hier die gewünschte Option aus."]
                      [:br]
                      [:div.row
-                      [:div.col-md-2]
-                      [:div.col-12.col-md-4
+                      [:div.col-xl-2]
+                      [:div.col-12.col-md.6.col-xl-4
                        [:div {:class (str "card hover pointer"
                                           (when (= :umgeschlagen stripe) " card-outline-highlight"))
                               :onClick #(om/transact! this `[(option/stripe {:option :umgeschlagen})])}
                         [:div.card-header "Umgeschlagener Rand" (text-when-selected :umgeschlagen stripe)]
                         [:div.card-body [:img {:src "img/rand_umgeschlagen.jpg"
                                                :class "img-fluid"}]]]]
-                      [:div.col-12.col-md-4
+                      [:div.col-12.col-md-6.col-xl-4
                        [:div {:class (str "card hover pointer"
                                           (when (= :aufgesetzt stripe) " card-outline-highlight"))
                               :onClick #(om/transact! this `[(option/stripe {:option :aufgesetzt})])}
                         [:div.card-header "Aufgesetzter Rand" (text-when-selected :aufgesetzt stripe)]
                         [:div.card-body [:img {:src "img/rand_aufgesetzt.jpg"
-                                               :class "img-fluid"}]]]]]])))))
+                                               :class "img-fluid"}]]]]]
+                     (when (empty? (str stripe))
+                       [:p.lead.text-center.text-info {:style {:paddingTop "1em"}}
+                        "Bitte wähle noch deinen bevorzugten Randtypen aus"])])))))
 (def border-options (om/factory BorderOptions))
 
 (defui Options
