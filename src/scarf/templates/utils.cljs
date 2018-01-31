@@ -58,7 +58,8 @@
 	c0,0-100.8-19.3-116.5-19.5C76,62.3,19.7,8.2,19.7,8.2s42.2,11.7,112.2,18.6C134.5,27.1,124,19.3,124,19.3z"}))
 
 (defn svg-options [this id scale width height thumbnail?]
-  #js {:width (scale-dimension scale width)
+  #js {:id (when-not thumbnail? "scarf-drawing")
+       :width (scale-dimension scale width)
        :height (scale-dimension scale height)
        :style #js {:cursor (change-cursor thumbnail?)}})
 
