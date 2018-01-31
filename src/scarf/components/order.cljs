@@ -122,21 +122,21 @@
 (defmethod order-template 5013 [current {:keys [mid1 mid2]}]
   [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, ohne Rand und Borte")
-   [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
-   [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]])
+   [:p "Farbe obere größere Fläche: " (destructure-color mid1)]
+   [:p "Farbe untere kleinere Fläche: " (destructure-color mid2)]])
 
 (defmethod order-template 5014 [current {:keys [mid1 mid2 stripe1]}]
   [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, mit einfacher Borte")
-   [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
-   [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
+   [:p "Farbe obere größere Fläche: " (destructure-color mid1)]
+   [:p "Farbe untere kleinere Fläche: " (destructure-color mid2)]
    [:p "Farbe Borte: " (destructure-color stripe1)]])
 
 (defmethod order-template 5015 [current {:keys [mid1 mid2 stripe1]}]
   [:div
    (add-article-header current "Zweifarbig, horizontal geteilt, 4/5 zu 1/5, mit einfachem Rand")
-   [:p "Farbe obere dreiviertel Fläche: " (destructure-color mid1)]
-   [:p "Farbe untere viertel Fläche: " (destructure-color mid2)]
+   [:p "Farbe obere größere Fläche: " (destructure-color mid1)]
+   [:p "Farbe untere kleinere Fläche: " (destructure-color mid2)]
    [:p "Farbe Rand: " (destructure-color stripe1)]
    (build-stripe-option :umgeschlagen)])
 
