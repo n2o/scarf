@@ -34,7 +34,7 @@ figwheel_server.log
 *.css.map
 bower_components
 compiled
-resources/public/js
+resources/public/js/compiled
 .#*
 .sass-cache
 .directory
