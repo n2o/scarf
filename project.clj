@@ -6,7 +6,8 @@
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/tools.reader "1.2.1"]
                  [org.omcljs/om "1.0.0-beta1"]
-                 [sablono "0.8.2"]]
+                 [sablono "0.8.2"]
+                 [com.andrewmcveigh/cljs-time "0.5.2"]]
 
   :plugins [[lein-ancient "0.6.15"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
