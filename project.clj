@@ -4,6 +4,7 @@
                  [org.clojure/clojurescript "1.9.946"]
                  [org.clojure/core.async "0.4.474"]
                  [org.clojure/test.check "0.9.0"]
+                 [org.clojure/tools.reader "1.2.1"]
                  [org.omcljs/om "1.0.0-beta1"]
                  [sablono "0.8.2"]]
 
