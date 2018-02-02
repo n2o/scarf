@@ -12,8 +12,7 @@
             [scarf.templates.halved.rolled :as halved-rolled]
             [scarf.templates.quartered.rolled :as quartered-rolled]
             [scarf.templates.twolegs.rolled :as twolegs-rolled]
-            [scarf.templates.utils :as utils]
-            [scarf.templates.scarfs :as scarfs]))
+            [scarf.templates.utils :as utils]))
 
 (defn dispatch-current-scarf [this]
   (let [{:keys [scarf/current]} (om/props this)]

@@ -3,6 +3,7 @@
             [sablono.core :as html :refer-macros [html]]
             [scarf.templates.scarfs :as scarfs]
             [scarf.components.colors :as colors]
+            [scarf.components.pdf :as pdf]
             [scarf.templates.utils :as utils]))
 
 (defn- calculator-color-row [query field description color]
@@ -42,5 +43,6 @@
                        (calculator-color-row query :scarf/mid1 "Mitte 1" mid1)
                        (calculator-color-row query :scarf/mid2 "Mitte 2" mid2)
                        (calculator-color-row query :scarf/stripe1 "Borte / Rand 1" stripe1)
-                       (calculator-color-row query :scarf/stripe2 "Borte / Rand 2" stripe2)]]]]]))))
+                       (calculator-color-row query :scarf/stripe2 "Borte / Rand 2" stripe2)]]
+                     [:div.pull-right {:style {:paddingTop "1em"}} (pdf/svg-export (om/props this))]]]]))))
 (def view (om/factory Calculator))
