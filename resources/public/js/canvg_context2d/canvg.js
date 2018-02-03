@@ -2929,39 +2929,6 @@
 				ctx.closePath();
 				ctx.clip();
 				return;
-				//ss end
-
-				var oldBeginPath = CanvasRenderingContext2D.prototype.beginPath;
-				CanvasRenderingContext2D.prototype.beginPath = function() {};
-
-				var oldClosePath = CanvasRenderingContext2D.prototype.closePath;
-				CanvasRenderingContext2D.prototype.closePath = function() {};
-
-				try {
-					oldBeginPath.call(ctx);
-					for (var i = 0; i < this.children.length; i++) {
-						var child = this.children[i];
-						if (typeof child.path != 'undefined') {
-							var transform = null;
-							if (child.style('transform', false, true).hasValue()) {
-								transform = new svg.Transform(child.style('transform', false, true)
-									.value);
-								transform.apply(ctx);
-							}
-							child.path(ctx);
-							CanvasRenderingContext2D.prototype.closePath = oldClosePath;
-							if (transform) {
-								transform.unapply(ctx);
-							}
-						}
-					}
-					oldClosePath.call(ctx);
-					ctx.clip();
-				} catch (e) {
-					console.log(e)
-				}
-				CanvasRenderingContext2D.prototype.beginPath = oldBeginPath;
-				CanvasRenderingContext2D.prototype.closePath = oldClosePath;
 			}
 
 			this.render = function(ctx) {
