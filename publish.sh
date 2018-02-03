@@ -26,6 +26,7 @@ git add -f resources/public/index.html \
     resources/public/bower_components/lightbox2/dist/js/lightbox.min.js \
     resources/public/bower_components/lightbox2/dist/js/lightbox.min.map \
     resources/public/bower_components/clipboard/dist/clipboard.min.js \
+    resources/public/bower_components/jspdf/dist/jspdf.min.js \
     resources/public/bower_components/lightbox2/dist/images/ \
     resources/public/js/canvg_context2d/ \
     resources/public/js/compiled/scarf.js

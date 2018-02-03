@@ -20,6 +20,7 @@
     "fontawesome": "~4",
     "bootstrap": "~4",
     "lightbox2": "~2",
-    "clipboard": "~1"
+    "clipboard": "~1",
+    "jspdf": "~1"
   }
 }
