@@ -19,10 +19,10 @@
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
   :jvm-opts ~(let [version (System/getProperty "java.version")
-                     [major _ _] (clojure.string/split version #"\.")]
-                 (if (>= (Integer. major) 9)
-                   ["--add-modules" "java.xml.bind"]
-                   []))
+                   [major _ _] (clojure.string/split version #"\.")]
+               (if (>= (Integer. major) 9)
+                 ["--add-modules" "java.xml.bind"]
+                 []))
 
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src"]
@@ -39,6 +39,7 @@
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"
                                    :main scarf.core
                                    :optimizations :advanced
+                                   :externs ["resources/public/bower_components/jspdf/dist/jspdf.min.js"]
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
