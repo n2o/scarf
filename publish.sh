@@ -1,18 +1,18 @@
 #!/bin/bash
 
-echo "Delete local gh-pages branch"
+echo ":: Delete local gh-pages branch"
 git branch -D gh-pages
 
-echo "Create fresh branch"
+echo ":: Create fresh branch"
 git checkout -b gh-pages
 
-echo "Get dependencies, build application"
+echo ":: Get dependencies, build application"
 rm -rf resources/public/node_modules
 yarn install
 sass resources/public/css/scarf.sass resources/public/css/scarf.css --style compressed
 lein do clean, cljsbuild once min
 
-echo "Add application"
+echo ":: Add application"
 git add -f resources/public/index.html \
     resources/public/node_modules/font-awesome/css/font-awesome.min.css \
     resources/public/node_modules/font-awesome/fonts \
@@ -31,18 +31,18 @@ git add -f resources/public/index.html \
     resources/public/js/canvg_context2d/ \
     resources/public/js/compiled/scarf.js
 
-echo "Add empty .nojekyll file for node_modules support"
-touch .nojekyll
-git add .nojekyll
+echo ":: Add empty .nojekyll file for node_modules support"
+touch resources/public/.nojekyll
+git add resources/public/.nojekyll
 
-echo "Remove remote gh-pages branch"
+echo ":: Remove remote gh-pages branch"
 git push origin --delete gh-pages
 
-echo "Publish application"
+echo ":: Publish application"
 git commit -m "Release to gh-pages"
 git subtree push --prefix resources/public origin gh-pages
 
-echo "Finished. Switching back to develop"
+echo ":: Finished. Switching back to develop"
 git checkout develop
 
 rm -r resources/public/node_modules
