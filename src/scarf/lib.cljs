@@ -9,14 +9,12 @@
     (js/setTimeout (fn [] (close! c)) ms)
     c))
 
-(defn timed-tooltip [elem]
+(defn hide-show-elem [elem]
   (let [jquery (js* "$")]
     (go
-      (.tooltip (jquery elem) "show")
-      (<! (timeout 1500))
-      (.tooltip (jquery elem) "hide"))))
-(s/fdef timed-tooltip
-        :args (s/cat :element string?))
+      (.fadeIn (jquery elem))
+      (<! (timeout 2000))
+      (.fadeOut (jquery elem) "hide"))))
 
 (defn num->currency
   [value]

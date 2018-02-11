@@ -19,7 +19,6 @@
             (html [:div {:class (str "card hover pointer"
                                      (when (= category whoami) " card-outline-highlight")
                                      (when disabled? " not-allowed text-muted"))
-                         :title "Mehr Kategorien folgen bald!"
                          :on-click (when-not disabled? #(change-category this whoami))}
                    [:div.card-body
                     (when title [:h5.card-title title])
@@ -35,7 +34,7 @@
   (render [this]
           (html
            [:div
-            [:h3 "Kategorien"] [:br] [:h6 "Einfarbig"]
+            [:h3 "Kategorien"] [:br] [:h6 "Einfarbige Grundfläche"]
             [:div.row
              [:div.col
               (category (merge (om/props this) {:whoami :einfach
@@ -54,7 +53,7 @@
                                                 :title "einfach"
                                                 :body "Mit zweifarbigem Rand / Borte"}))]]
             [:br]
-            [:h6 "Zweifarbig"]
+            [:h6 "Zweifarbige Grundfläche"]
             [:div.row
              [:div.col
               (category (merge (om/props this) {:whoami :halbiert

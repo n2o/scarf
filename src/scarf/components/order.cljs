@@ -178,7 +178,7 @@
                  option/stripe]} (om/props this)]
      (html [:div.card
             [:div.card-body
-             [:div.card-text
+             [:div.card-text {:style {:margin-bottom "0.5rem"}}
               [:div.row
                [:div.col-lg-9.col-md-7.col-sm-12 {:style {:paddingBottom "0.5em"}}
                 [:div.card.bg-light#article-description
@@ -200,9 +200,10 @@
               [:btn {:class "btn btn-sm btn-primary pointer"
                      :id "copy-to-clipboard"
                      :data-clipboard-target "#article-no"
-                     :onClick #(lib/timed-tooltip "#copy-to-clipboard")
-                     :style {:margin-top "0.5rem"}}
-               "Artikelbeschreibung kopieren"]]]]))))
+                     :onClick #(lib/hide-show-elem "#copied-to-clipboard")}
+               "Artikelbeschreibung kopieren"]
+              [:btn.btn.btn-sm.hidden#copied-to-clipboard
+               [:span.text-success "In Zwischenablage kopiert!"]]]]]))))
 (def order-no (om/factory OrderNo))
 
 (defui ShopLink
