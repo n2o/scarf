@@ -23,8 +23,6 @@ git add -f resources/public/index.html \
     resources/public/node_modules/jquery/dist/jquery.min.js \
     resources/public/node_modules/bootstrap/dist/js/bootstrap.min.js \
     resources/public/node_modules/bootstrap/dist/js/bootstrap.min.js.map \
-    resources/public/node_modules/popper.js/dist/umd/popper.min.js \
-    resources/public/node_modules/popper.js/dist/umd/popper.min.js.map \
     resources/public/node_modules/lightbox2/dist/js/lightbox.min.js \
     resources/public/node_modules/lightbox2/dist/js/lightbox.min.map \
     resources/public/node_modules/clipboard/dist/clipboard.min.js \
