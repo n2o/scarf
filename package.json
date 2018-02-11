@@ -1,0 +1,18 @@
+{
+  "name": "scarf",
+  "version": "1.0.0",
+  "description": "Configure your personal scarf",
+  "main": "resources/public/js/scarf.js",
+  "repository": "git@github.com:n2o/scarf.git",
+  "author": "Christian Meter <christian.meter@uni-duesseldorf.de>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "clipboard": "^1.7.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "jspdf": "^1.3.5",
+    "lightbox2": "^2.10.0",
+    "popper.js": "^1.12.9"
+  }
+}

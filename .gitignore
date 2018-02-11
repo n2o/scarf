@@ -38,3 +38,4 @@ resources/public/js/compiled
 .#*
 .sass-cache
 .directory
+yarn.lock

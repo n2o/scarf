@@ -39,7 +39,7 @@
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"
                                    :main scarf.core
                                    :optimizations :advanced
-                                   :externs ["resources/public/bower_components/jspdf/dist/jspdf.min.js"]
+                                   :externs ["resources/public/node_modules/jspdf/dist/jspdf.min.js"]
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
