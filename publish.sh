@@ -31,6 +31,10 @@ git add -f resources/public/index.html \
     resources/public/js/canvg_context2d/ \
     resources/public/js/compiled/scarf.js
 
+echo "Add empty .nojekyll file for node_modules support"
+touch .nojekyll
+git add .nojekyll
+
 echo "Remove remote gh-pages branch"
 git push origin --delete gh-pages
 
