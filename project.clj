@@ -33,12 +33,14 @@
                                    :output-to "resources/public/js/compiled/scarf.js"
                                    :output-dir "resources/public/js/compiled/out"
                                    :source-map-timestamp true
+                                   :closure-defines {scarf.core/version ~(-> "project.clj" slurp read-string (nth 2))}
                                    :preloads [devtools.preload scarf.extensions]}}
                        {:id "min"
                         :source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/scarf.js"
                                    :main scarf.core
                                    :optimizations :advanced
+                                   :closure-defines {scarf.core/version ~(-> "project.clj" slurp read-string (nth 2))}
                                    :externs ["resources/public/node_modules/jspdf/dist/jspdf.min.js"
                                              "resources/public/node_modules/jquery/dist/jquery.min.js"]
                                    :pretty-print false}}]}
