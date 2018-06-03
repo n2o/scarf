@@ -296,58 +296,80 @@
 
 (defui Order
   Object
-  (render
-   [this]
-   (html
-    [:div
-     [:p.lead
-      "Über die Einstellungen oben hast du oben ein Halstuch konfiguriert. Die
-      passende Artikelbeschreibung findest du weiter unten. Diese Beschreibung
-      wird benötigt, um den Bestellvorgang über unsere Shop
-      ausruester-eschwege.de abzuschließen. Dabei musst du nur den folgenden
-      Schritten folgen und am Ende die Bestellung überprüfen."]
-     [:br]
+  (render [this]
+          (let [clicked? (or (:clicked? (om/get-state this)) false)]
+            (html
+             [:div
+              [:p.lead
+               "Über die Einstellungen oben hast du oben ein Halstuch
+               konfiguriert. Die passende Artikelbeschreibung findest du weiter
+               unten. Diese Beschreibung wird benötigt, um den Bestellvorgang
+               über unsere Shop ausruester-eschwege.de abzuschließen. Dabei
+               musst du nur den folgenden Schritten folgen und am Ende die
+               Bestellung überprüfen."]
 
-     [:div.row
-      [:div.col-sm-12.col-md {:style {:paddingBottom "0.5em"}}
-       (order-steps "1. Artikelbeschreibung kopieren"
-                    "Die generierte Artikelbeschreibung unten im Feld in die
+              [:p
+               "Wir haben hier ein kleines Video aufgenommen wie die
+               Konfiguration und der der Bestellprozess über unseren Shop
+               ablaufen kann."]
+
+              [:button.btn.btn-primary {:data-toggle "collapse"
+                                        :data-target "#bildschirmaufnahme"
+                                        :onClick #(om/update-state! this assoc :clicked? (not clicked?))
+                                        :aria-expanded false
+                                        :aria-controls "bildschirmaufnahme"}
+               (if clicked? "Video schließen" "Video öffnen")]
+
+              [:br]
+
+              [:div.collapse#bildschirmaufnahme
+               [:div.embed-responsive.embed-responsive-16by9
+                [:iframe {:src "https://www.youtube-nocookie.com/embed/CE58R-XKHJM?rel=0"
+                          :frameborder 0
+                          :allowfullscreen "allowfullscreen"}]]]
+
+              [:br]
+
+              [:div.row
+               [:div.col-sm-12.col-md {:style {:paddingBottom "0.5em"}}
+                (order-steps "1. Artikelbeschreibung kopieren"
+                             "Die generierte Artikelbeschreibung unten im Feld in die
                     Zwischenablage kopieren (auf den Button klicken)."
-                    "artikelbeschreibung-kopieren")]
-      [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
-       (order-steps "2. Onlineshop öffnen"
-                    "Die Halstücher werden über unseren Shop vertrieben. Du
+                             "artikelbeschreibung-kopieren")]
+               [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
+                (order-steps "2. Onlineshop öffnen"
+                             "Die Halstücher werden über unseren Shop vertrieben. Du
                     benötigst dort einen Benutzeraccount."
-                    "onlineshop-oeffnen")]
-      [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
-       (order-steps "3. Artikel in den Warenkorb legen"
-                    "Den passenden Grundartikel in den Warenkorb einfügen. Unten
+                             "onlineshop-oeffnen")]
+               [:div.col-sm-12.col-md  {:style {:paddingBottom "0.5em"}}
+                (order-steps "3. Artikel in den Warenkorb legen"
+                             "Den passenden Grundartikel in den Warenkorb einfügen. Unten
                     findest du einen Link dazu."
-                    "artikel-in-warenkorb")]
-      [:div.col-sm-12.col-md
-       (order-steps "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"
-                    "Grundartikel + hier generierte Artikelbeschreibung
+                             "artikel-in-warenkorb")]
+               [:div.col-sm-12.col-md
+                (order-steps "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"
+                             "Grundartikel + hier generierte Artikelbeschreibung
                     beschreiben dein Halstuch."
-                    "artikelbeschreibung-einfuegen")]]
-     [:br]
+                             "artikelbeschreibung-einfuegen")]]
+              [:br]
 
-     [:a {:name "artikelbeschreibung-kopieren"}]
-     [:h3 "1. Artikelbeschreibung kopieren"]
-     (order-no (om/props this))
-     [:br]
+              [:a {:name "artikelbeschreibung-kopieren"}]
+              [:h3 "1. Artikelbeschreibung kopieren"]
+              (order-no (om/props this))
+              [:br]
 
-     [:a {:name "onlineshop-oeffnen"}]
-     [:h3 "2. Onlineshop öffnen und einloggen"]
-     (shop-link (om/props this))
-     [:br]
+              [:a {:name "onlineshop-oeffnen"}]
+              [:h3 "2. Onlineshop öffnen und einloggen"]
+              (shop-link (om/props this))
+              [:br]
 
-     [:a {:name "artikel-in-warenkorb"}]
-     [:h3 "3. Artikel in den Warenkorb legen"]
-     (add-article-to-cart)
-     [:br]
+              [:a {:name "artikel-in-warenkorb"}]
+              [:h3 "3. Artikel in den Warenkorb legen"]
+              (add-article-to-cart)
+              [:br]
 
-     [:a {:name "artikelbeschreibung-einfuegen"}]
-     [:h3 "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"]
-     (copy-description)
-     [:br]])))
+              [:a {:name "artikelbeschreibung-einfuegen"}]
+              [:h3 "4. Artikelbeschreibung in die Bestellanmerkungen einfügen"]
+              (copy-description)
+              [:br]]))))
 (def order (om/factory Order))
