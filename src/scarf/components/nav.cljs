@@ -32,37 +32,39 @@
          [:nav/category])
   Object
   (render [this]
-          (html
-           [:div
-            [:h3 "Kategorien"] [:br] [:h6 "Einfarbige Grundfläche"]
-            [:div.row
-             [:div.col
-              (category (merge (om/props this) {:whoami :einfach
-                                                :title "einfach"
-                                                :body "Mit und ohne Rand / Borte"}))]
-             [:div.col
-              (category (merge (om/props this) {:whoami :doppelt
-                                                :title "doppelt"
-                                                :body "Mit doppeltem Rand / Borte"}))]
-             [:div.col
-              (category (merge (om/props this) {:whoami :gekreuzt
-                                                :title "gekreuzt"
-                                                :body "Mit gekreuzten Borten"}))]
-             [:div.col
-              (category (merge (om/props this) {:whoami :zweifarbige-schenkel
-                                                :title "einfach"
-                                                :body "Mit zweifarbigem Rand / Borte"}))]]
-            [:br]
-            [:h6 "Zweifarbige Grundfläche"]
-            [:div.row
-             [:div.col
-              (category (merge (om/props this) {:whoami :halbiert
-                                                :title "vertikal geteilt, 1/2 zu 1/2"
-                                                :body "Mit und ohne Rand / Borte"}))]
-             [:div.col
-              (category (merge (om/props this) {:whoami :geviertelt
-                                                :title "horizontal geteilt, 4/5 zu 1/5"
-                                                :body "Mit und ohne Rand / Borte"}))]]])))
+          (let [card-definition {:class "col col-md-3 col-sm-6 col-12"
+                                 :style {:paddingTop "1rem"}}]
+            (html
+             [:div
+              [:h3 "Kategorien"] [:br] [:h6 "Einfarbige Grundfläche"]
+              [:div.row
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :einfach
+                                                  :title "einfach"
+                                                  :body "Mit und ohne Rand / Borte"}))]
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :doppelt
+                                                  :title "doppelt"
+                                                  :body "Mit doppeltem Rand / Borte"}))]
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :gekreuzt
+                                                  :title "gekreuzt"
+                                                  :body "Mit gekreuzten Borten"}))]
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :zweifarbige-schenkel
+                                                  :title "einfach"
+                                                  :body "Mit zweifarbigem Rand / Borte"}))]]
+              [:br]
+              [:h6 "Zweifarbige Grundfläche"]
+              [:div.row
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :halbiert
+                                                  :title "vertikal geteilt, 1/2 zu 1/2"
+                                                  :body "Mit und ohne Rand / Borte"}))]
+               [:div card-definition
+                (category (merge (om/props this) {:whoami :geviertelt
+                                                  :title "horizontal geteilt, 4/5 zu 1/5"
+                                                  :body "Mit und ohne Rand / Borte"}))]]]))))
 (def categories (om/factory Categories))
 
 (defui SubCategories
