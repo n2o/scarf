@@ -197,12 +197,12 @@
                  [:div.card-body
                   ((scarfs/id->scarf-factory current)
                    (merge (om/props this) {:thumbnail? true}))]]]]
-              [:btn {:class "btn btn-sm btn-primary pointer"
+              [:div {:class "btn btn-sm btn-primary pointer"
                      :id "copy-to-clipboard"
                      :data-clipboard-target "#article-no"
                      :onClick #(lib/hide-show-elem "#copied-to-clipboard")}
                "Artikelbeschreibung kopieren"]
-              [:btn.btn.btn-sm.hidden#copied-to-clipboard
+              [:div.btn.btn-sm.hidden#copied-to-clipboard
                [:span.text-success "In Zwischenablage kopiert!"]]]]]))))
 (def order-no (om/factory OrderNo))
 
@@ -301,7 +301,7 @@
             (html
              [:div
               [:p.lead
-               "Über die Einstellungen oben hast du oben ein Halstuch
+               "Über deine gewählten Einstellungen hast du oben ein Halstuch
                konfiguriert. Die passende Artikelbeschreibung findest du weiter
                unten. Diese Beschreibung wird benötigt, um den Bestellvorgang
                über unsere Shop ausruester-eschwege.de abzuschließen. Dabei
@@ -309,9 +309,9 @@
                Bestellung überprüfen."]
 
               [:p
-               "Wir haben hier ein kleines Video aufgenommen wie die
-               Konfiguration und der der Bestellprozess über unseren Shop
-               ablaufen kann."]
+               "Wir haben hier ein kleines Video aufgenommen, wie die
+               Konfiguration und der Bestellprozess über unseren Shop ablaufen
+               kann."]
 
               [:button.btn.btn-primary {:data-toggle "collapse"
                                         :data-target "#bildschirmaufnahme"
@@ -325,8 +325,8 @@
               [:div.collapse#bildschirmaufnahme
                [:div.embed-responsive.embed-responsive-16by9
                 [:iframe {:src "https://www.youtube-nocookie.com/embed/CE58R-XKHJM?rel=0"
-                          :frameborder 0
-                          :allowfullscreen "allowfullscreen"}]]]
+                          :frameBorder 0
+                          :allowFullScreen "allowfullscreen"}]]]
 
               [:br]
 
