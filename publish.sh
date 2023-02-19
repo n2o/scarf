@@ -18,6 +18,7 @@ git add -f resources/public/index.html \
     resources/public/node_modules/font-awesome/fonts \
     resources/public/node_modules/bootstrap/dist/css/bootstrap.min.css \
     resources/public/node_modules/lightbox2/dist/css/lightbox.min.css \
+    resources/public/node_modules/@fontsource \
     resources/public/css/scarf.css \
     resources/public/img/ \
     resources/public/node_modules/jquery/dist/jquery.min.js \
@@ -43,7 +44,7 @@ git commit -m "Release to gh-pages"
 git subtree push --prefix resources/public origin gh-pages
 
 echo ":: Finished. Switching back to develop"
-git checkout develop
+git checkout master
 
 rm -r resources/public/node_modules
 yarn install
