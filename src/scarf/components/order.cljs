@@ -313,22 +313,10 @@
                Konfiguration und der Bestellprozess über unseren Shop ablaufen
                kann."]
 
-              [:button.btn.btn-primary {:data-toggle "collapse"
-                                        :data-target "#bildschirmaufnahme"
-                                        :onClick #(om/update-state! this assoc :clicked? (not clicked?))
-                                        :aria-expanded false
-                                        :aria-controls "bildschirmaufnahme"}
-               (if clicked? "Video schließen" "Video öffnen")]
-
-              [:br]
-
-              [:div.collapse#bildschirmaufnahme
-               [:div.embed-responsive.embed-responsive-16by9
-                [:iframe {:src "https://www.youtube-nocookie.com/embed/CE58R-XKHJM?rel=0"
-                          :frameBorder 0
-                          :allowFullScreen "allowfullscreen"}]]]
-
-              [:br]
+              [:a.btn.btn-primary.mb-5
+               {:href "https://youtu.be/CE58R-XKHJM"
+                :target :_blank}
+               "Video auf YouTube ansehen"]
 
               [:div.row
                [:div.col-sm-12.col-md {:style {:paddingBottom "0.5em"}}
