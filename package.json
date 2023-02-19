@@ -7,6 +7,7 @@
   "author": "Christian Meter <christian.meter@uni-duesseldorf.de>",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/fira-sans": "^4.5.10",
     "bootstrap": "^4.0.0",
     "clipboard": "^1.7.1",
     "font-awesome": "^4.7.0",
