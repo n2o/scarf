@@ -41,3 +41,5 @@ resources/public/js/compiled
 .directory
 *.lock
 *.log
+.calva/
+.cache/
