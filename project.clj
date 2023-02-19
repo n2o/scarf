@@ -1,4 +1,4 @@
-(defproject scarf "1.0.0"
+(defproject scarf "1.0.1"
   :description "Create clickable SVG objects, which can be colorized"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]

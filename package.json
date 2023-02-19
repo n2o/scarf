@@ -1,11 +1,16 @@
 {
   "name": "scarf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Configure your personal scarf",
   "main": "resources/public/js/scarf.js",
   "repository": "git@github.com:n2o/scarf.git",
   "author": "Christian Meter <christian.meter@uni-duesseldorf.de>",
   "license": "MIT",
+  "scripts": {
+    "build:css": "sass resources/public/css/scarf.sass resources/public/css/scarf.css --style compressed",
+    "build:js": "lein do clean, cljsbuild once min",
+    "build": "yarn build:css && yarn build:js"
+  },
   "dependencies": {
     "@fontsource/fira-sans": "^4.5.10",
     "bootstrap": "^4.0.0",
