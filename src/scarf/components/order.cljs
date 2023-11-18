@@ -6,25 +6,25 @@
             [scarf.lib :as lib]))
 
 (def urls
-  {5000 "https://www.ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-A-einfarbig::32023.html"
-   5001 "https://www.ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-B-einfarbig-mit-Borte::32024.html"
-   5002 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-C-einfarbig-mit-Rand-umlegt-::32025.html"
-   5003 "https://www.ausruester-eschwege.de/Pfadfinderbuende-und-Ringe/Ring-Ev-Gemeindepfadfinder-REGP/Halstuecher-REGP/Halstuch-D-einfarbig-mit-Rand-aufgesetzt-::32026.html"
-   5004 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-E-einfarbig-mit-2-Raendern-umlegt-::32027.html"
-   5005 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-F-einfarbig-mit-2-Raendern-aufgesetzt::32134.html"
-   5006 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-G-einfarbig-mit-2-Borten::40819.html"
+  {5000 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-A-einfarbig::56634.html"
+   5001 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-B-einfarbig-mit-Borte::56633.html"
+   5002 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-C-einfarbig-mit-Rand-umlegt::57105.html"
+   5003 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-D-einfarbig-mit-Rand-aufgesetzt::32026.html"
+   5004 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-E-einfarbig-mit-2-Raendern-umlegt::59346.html"
+   5005 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-F-einfarbig-mit-2-Raendern-aufgesetzt::57083.html"
+   5006 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-G-einfarbig-mit-2-Borten::57108.html"
    5007 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-H-einfarbig-mit-gekreuzter-Borte::45344.html"
    5008 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-I-einfarbig-mit-2-gekreuzter-Borten::45345.html"
    5009 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-J-zweifarbig-vertikal-geteilt::45346.html"
    5010 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-K-zweifarbig-vertikal-geteilt-mit-Borte::32028.html"
    5011 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-L-zweifarbig-vert-get-mit-Rand-umlegt::32135.html"
-   5012 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-M-zweifarbig-vert-get-mit-Rand-aufges::32029.html"
-   5013 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-N-horizontal-geteilt-4-5-zu-1-5::32030.html"
-   5014 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-O-horizontal-get-4-5-zu-1-5-mit-Borte::32031.html"
-   5015 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-P-horiz-get-4-5-zu-1-5-mit-Rand-umschl::32136.html"
+   5012 ""
+   5013 ""
+   5014 ""
+   5015 ""
    5016 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-Q-einfarbig-mit-zweifarbiger-Borte::45347.html"
-   5017 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-R-einfarbig-mit-zweifarbigem-Rand-aufg-::45349.html"
-   5018 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-S-einfarbig-mit-zweifarbigem-Rand-uml-::45350.html"})
+   5017 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-R-einfarbig-mit-zweifarbigem-Rand-aufg::45349.html"
+   5018 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-S-einfarbig-mit-zweifarbigem-Rand-uml::45350.html"})
 
 (defn- destructure-color [color]
   (str (:name color) ", " (:id color)))
