@@ -18,10 +18,10 @@
    5009 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-J-zweifarbig-vertikal-geteilt::45346.html"
    5010 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-K-zweifarbig-vertikal-geteilt-mit-Borte::32028.html"
    5011 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-L-zweifarbig-vert-get-mit-Rand-umlegt::32135.html"
-   5012 ""
-   5013 ""
-   5014 ""
-   5015 ""
+   5012 nil
+   5013 nil
+   5014 nil
+   5015 nil
    5016 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-Q-einfarbig-mit-zweifarbiger-Borte::45347.html"
    5017 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-R-einfarbig-mit-zweifarbigem-Rand-aufg::45349.html"
    5018 "https://www.ausruester-eschwege.de/Halstuchnaeherei/Halstuecher-dreieckig/Halstuch-S-einfarbig-mit-zweifarbigem-Rand-uml::45350.html"})
@@ -211,7 +211,9 @@
   (query [this] [:scarf/current :option/stripe])
   Object
   (render [this]
-          (let [{:keys [scarf/current option/stripe]} (om/props this)]
+          (let [{:keys [scarf/current option/stripe]} (om/props this)
+                article-number (utils/stripe-dispatch-with-option current stripe)
+                article-link (get urls article-number)]
             (html [:div.card
                    [:div.card-body
                     [:div.card-text
@@ -222,14 +224,18 @@
                       über diese Seite schon erledigt und musst sie bei der
                       Bestellung später mit angeben."]
                      [:p "Dein Grundartikel hat die Nummer "
-                      [:strong (utils/stripe-dispatch-with-option current stripe)]
+                      [:strong article-number]
                       ". Die Artikelnummer des Artikels im Shop muss mit dieser Nummer übereinstimmen."]
-                     [:p "Klicke auf diesen Link, um direkt zum Artikel im Shop zu springen:"]
-                     [:p
-                      [:a {:class "btn btn-sm btn-primary pointer"
-                           :href (get urls (utils/stripe-dispatch-with-option current stripe))
-                           :target :_blank}
-                       "Link zum Artikel"]]]]]))))
+                     (if article-link
+                       [:span
+                        [:p "Klicke auf diesen Link, um direkt zum Artikel im Shop zu springen:"]
+                        [:p
+                         [:a {:class "btn btn-sm btn-primary pointer"
+                              :href (get urls article-number)
+                              :target :_blank}
+                          "Link zum Artikel"]]]
+                       [:p.font-weight-bold.font-italic
+                        "Dieser Artikel wird gerade nicht bei uns angeboten, weshalb es keinen Link zu unserem Shop gibt."])]]]))))
 (def shop-link (om/factory ShopLink))
 
 (defn- add-article-to-cart []

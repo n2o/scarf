@@ -1,6 +1,6 @@
 {
   "name": "scarf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Configure your personal scarf",
   "main": "resources/public/js/scarf.js",
   "repository": "git@github.com:n2o/scarf.git",

@@ -3,10 +3,10 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.async "0.4.474"]
-                 [org.clojure/test.check "0.9.0"]
-                 [org.clojure/tools.reader "1.2.2"]
+                 [org.clojure/test.check "1.1.1"]
+                 [org.clojure/tools.reader "1.3.7"]
                  [org.omcljs/om "1.0.0-beta3"]
-                 [sablono "0.8.4"]
+                 [sablono "0.8.6"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]]
 
   :plugins [[lein-ancient "0.6.15"]
@@ -46,8 +46,8 @@
                                    :pretty-print false}}]}
   :figwheel {:css-dirs ["resources/public/css"]} ;; watch and update CSS
 
-  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
-                                  [figwheel-sidecar "0.5.16"]
+  :profiles {:dev {:dependencies [[binaryage/devtools "1.0.7"]
+                                  [figwheel-sidecar "0.5.20"]
                                   [com.cemerick/piggieback "0.2.2"]]
                    ;; need to add dev source path here to get user.clj loaded
                    :source-paths ["src" "dev"]
