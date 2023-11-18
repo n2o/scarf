@@ -11,7 +11,9 @@
     "dev:css": "sass --watch resources/public/css/scarf.sass resources/public/css/scarf.css",
     "build:css": "sass resources/public/css/scarf.sass resources/public/css/scarf.css --style compressed",
     "build:js": "lein do clean, cljsbuild once min",
-    "build": "yarn build:css && yarn build:js"
+    "build": "yarn build:css && yarn build:js",
+    "release:preview": "rm -rf .vercel/output && vercel build && vercel deploy --prebuilt",
+    "release:production": "rm -rf .vercel/output && vercel build --prod && vercel deploy --prebuilt --prod"
   },
   "dependencies": {
     "@fontsource/fira-sans": "^4.5.10",
